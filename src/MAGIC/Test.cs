@@ -586,7 +586,7 @@ namespace ClashLand
             {
                 this.OCredentials = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(Stream).Secrets, new[]
                 {
-                    GamesService.Scope.Games, GamesService.Scope.PlusLogin
+                    GamesService.Scope.Games,
                 }, "com.barbarianland.galileo", CancellationToken.None, new FileDataStore("Galileo.Server")).Result;
             }
 

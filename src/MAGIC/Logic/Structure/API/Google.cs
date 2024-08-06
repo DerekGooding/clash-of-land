@@ -45,7 +45,7 @@ namespace ClashLand.Logic.Structure.API
             {
                 this.OCredentials = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(Stream).Secrets, new[]
                 {
-                    GamesService.Scope.Games, GamesService.Scope.PlusLogin
+                    GamesService.Scope.Games,
                 }, "com.supercell.clashland", CancellationToken.None, new FileDataStore("clashland.Server")).Result;
             }
         }
