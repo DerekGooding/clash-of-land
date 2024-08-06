@@ -13,6 +13,7 @@ namespace ClashLand.Packets.Messages.Server.Clans
         {
             this.Identifier = 24306;
         }
+
         internal override void Encode()
         {
             this.Data.AddLong(this.UserID);

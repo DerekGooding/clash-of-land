@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using ClashLand.Core.Database;
+using ClashLand.Extensions;
 using ClashLand.Logic;
 using ClashLand.Logic.Structure.Slots.Items;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Timers;
-using ClashLand.Core.Database;
-using ClashLand.Extensions;
 
 namespace ClashLand.Core
 {
@@ -41,7 +41,6 @@ namespace ClashLand.Core
                 AutoReset = true,
             };
 
-
             Timer.Elapsed += (_Sender, _Args) =>
             {
                 this.TryRemove("INTERNATIONAL");
@@ -55,9 +54,9 @@ namespace ClashLand.Core
 
             this.LTimers.Add(Timer);
         }
+
         internal void Add(string Region, Level Player)
         {
-
             if (!string.IsNullOrEmpty(Region))
             {
                 if (this.ContainsKey(Region))

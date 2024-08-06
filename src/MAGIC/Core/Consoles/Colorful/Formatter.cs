@@ -18,6 +18,7 @@
                 return this.backingClass.Target;
             }
         }
+
         /// <summary>
         /// The color to be applied to the target.
         /// </summary>

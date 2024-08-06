@@ -3,6 +3,7 @@
 namespace ClashLand.Logic.Structure
 {
     using System;
+
     internal class Timer
     {
         internal int Seconds;
@@ -15,6 +16,7 @@ namespace ClashLand.Logic.Structure
             this.EndTime = 0;
             this.Seconds = 0;
         }
+
         internal void FastForward(int seconds) => this.Seconds -= seconds;
 
         internal void IncreaseTime(int seconds)

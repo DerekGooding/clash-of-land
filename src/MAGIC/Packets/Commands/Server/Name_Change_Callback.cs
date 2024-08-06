@@ -18,7 +18,7 @@ namespace ClashLand.Packets.Commands.Server
             this.Previous = this.Name;
             this.Name = this.Reader.ReadString();
         }
-        
+
         internal override void Encode()
         {
             this.Data.AddString(this.Device.Player.Avatar.Name);

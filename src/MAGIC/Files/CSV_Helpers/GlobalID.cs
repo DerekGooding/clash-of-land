@@ -4,7 +4,6 @@
     {
         internal const int Reference = 1125899907;
 
-
         internal static int CreateGlobalID(int index, int count) => count + 1000000 * index;
 
         internal static int GetType(int GlobalID)

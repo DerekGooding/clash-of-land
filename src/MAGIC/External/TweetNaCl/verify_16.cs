@@ -13,7 +13,7 @@
                 differentbits |= (x[xoffset + i] ^ y[i]) & 0xff;
             }
 
-            return (1 & (int) ((uint) (differentbits - 1) >> 8)) - 1;
+            return (1 & (int)((uint)(differentbits - 1) >> 8)) - 1;
         }
     }
 }

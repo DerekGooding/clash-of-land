@@ -9,6 +9,7 @@ namespace ClashLand.Packets.Messages.Server.Errors
         {
             this.Identifier = 24104;
         }
+
         internal override void Encode()
         {
             this.Data.AddInt(0);

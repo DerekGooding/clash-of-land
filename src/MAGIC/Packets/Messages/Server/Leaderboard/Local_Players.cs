@@ -1,8 +1,6 @@
 ﻿using ClashLand.Core;
-using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +19,6 @@ namespace ClashLand.Packets.Messages.Server.Leaderboard
             {
                 this.Players = new List<Level>();
             }
-
         }
 
         internal override void Encode()
@@ -49,16 +46,15 @@ namespace ClashLand.Packets.Messages.Server.Leaderboard
                 this.Data.AddLong(_Player.Avatar.UserId);
                 this.Data.AddInt(3);
                 this.Data.AddInt(2);
-                this.Data.AddBool(_Player.Avatar.ClanId >0);
+                this.Data.AddBool(_Player.Avatar.ClanId > 0);
 
-                if (_Player.Avatar.ClanId >0)
+                if (_Player.Avatar.ClanId > 0)
                 {
                     var _Clan = Resources.Clans.Get(_Player.Avatar.ClanId);
                     this.Data.AddLong(_Player.Avatar.ClanId);
                     this.Data.AddString(_Clan.Name);
                     this.Data.AddInt(_Clan.Badge);
                 }
-                
             }
         }
     }

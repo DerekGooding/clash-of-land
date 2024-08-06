@@ -8,7 +8,6 @@ namespace ClashLand.Files.CSV_Reader
     {
         internal readonly Dictionary<int, DataTable> DataTables;
 
-
         internal Gamefiles()
         {
             this.DataTables = new Dictionary<int, DataTable>(CSV.Gamefiles.Count);

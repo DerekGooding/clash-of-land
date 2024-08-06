@@ -71,7 +71,7 @@
 
             for (j = 0; j < 16; ++j)
             {
-                outv[j + outvoffset] = (byte) h[j];
+                outv[j + outvoffset] = (byte)h[j];
             }
 
             return 0;
@@ -94,7 +94,7 @@
             {
                 u += h[j] + c[j];
                 h[j] = u & 255;
-                u = (int) ((uint) u >> 8);
+                u = (int)((uint)u >> 8);
             }
         }
 
@@ -109,7 +109,7 @@
 
             poly1305.add(h, poly1305.minusp);
 
-            int negative = -(int) ((uint) h[16] >> 7);
+            int negative = -(int)((uint)h[16] >> 7);
 
             for (int j = 0; j < 17; ++j)
             {
@@ -154,18 +154,18 @@
             {
                 u += h[j];
                 h[j] = u & 255;
-                u = (int) ((uint) u >> 8);
+                u = (int)((uint)u >> 8);
             }
 
             u += h[16];
             h[16] = u & 3;
-            u = 5 * (int) ((uint) u >> 2);
+            u = 5 * (int)((uint)u >> 2);
 
             for (int j = 0; j < 16; ++j)
             {
                 u += h[j];
                 h[j] = u & 255;
-                u = (int) ((uint) u >> 8);
+                u = (int)((uint)u >> 8);
             }
 
             u += h[16];

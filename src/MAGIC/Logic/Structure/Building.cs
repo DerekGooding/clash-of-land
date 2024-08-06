@@ -6,6 +6,7 @@ namespace ClashLand.Logic.Structure
     using ClashLand.Files;
     using ClashLand.Files.CSV_Helpers;
     using ClashLand.Files.CSV_Logic;
+
     internal class Building : ConstructionItem
     {
         public Building(Data data, Level level) : base(data, level)
@@ -18,7 +19,7 @@ namespace ClashLand.Logic.Structure
             }
             if (GetBuildingData.UpgradesUnits)
                 AddComponent(new Unit_Upgrade_Component(this));
-            
+
             if (GetBuildingData.UnitProduction[0] > 0)
             {
                 AddComponent(new Unit_Production_Component(this));
@@ -44,7 +45,6 @@ namespace ClashLand.Logic.Structure
                 AddComponent(new Resource_Storage_Component(this));
             }
         }
-
 
         internal override int ClassId => 0;
 

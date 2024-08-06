@@ -1,7 +1,5 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server;
 using ClashLand.Packets.Messages.Server.Clans;

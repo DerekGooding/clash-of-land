@@ -1,6 +1,5 @@
-﻿using ClashLand.Logic;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Core.Networking;
+using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.Clans;
 
 namespace ClashLand.Packets.Messages.Client.Clans
@@ -9,7 +8,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
     {
         public Joinable_Alliance(Device Device) : base(Device)
         {
-
         }
 
         internal override void Process()

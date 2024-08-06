@@ -3,7 +3,6 @@ using ClashLand.Files.CSV_Logic;
 
 namespace ClashLand.Logic.Structure
 {
-
     internal class Deco : GameObject
     {
         public Deco(Data data, Level l) : base(data, l)

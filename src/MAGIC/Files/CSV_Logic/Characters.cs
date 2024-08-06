@@ -164,6 +164,5 @@ namespace ClashLand.Files.CSV_Logic
         public override Resource GetUpgradeResource() => CSV.Tables.Get(Gamefile.Resources).GetData(UpgradeResource) as Resource;
 
         public override int GetUpgradeTime(int level) => UpgradeTimeH[level] * 3600;
-
     }
 }

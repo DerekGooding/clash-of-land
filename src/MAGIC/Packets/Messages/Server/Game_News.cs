@@ -1,10 +1,5 @@
-﻿using ClashLand.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Messages.Server
 {
@@ -33,7 +28,6 @@ namespace ClashLand.Packets.Messages.Server
             this.Data.AddInt(0);
             this.Data.AddString(null);
             this.Data.AddString(null);
-
         }
     }
 }

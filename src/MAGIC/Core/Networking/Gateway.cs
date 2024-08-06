@@ -3,7 +3,6 @@ using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Packets;
 using System;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -18,7 +17,6 @@ namespace ClashLand.Core.Networking
         internal static Socket Listener;
 
         internal static int ConnectedSockets;
-
 
         internal static int NumberOfBuffers => BufferPool.Count;
         internal static int NumberOfBuffersCreated => BuffersCreated;
@@ -130,10 +128,9 @@ namespace ClashLand.Core.Networking
                 StartAccept(e);
         }
 
-
         internal static void StartReceive(SocketAsyncEventArgs e)
         {
-            var device = (Device) e.UserToken;
+            var device = (Device)e.UserToken;
             var socket = device.Socket;
 
             try
@@ -153,7 +150,7 @@ namespace ClashLand.Core.Networking
 
         internal static void ProcessReceive(SocketAsyncEventArgs e, bool startNew)
         {
-            var device = (Device) e.UserToken;
+            var device = (Device)e.UserToken;
             var transferred = e.BytesTransferred;
             if (transferred == 0 || e.SocketError != SocketError.Success)
             {
@@ -181,7 +178,6 @@ namespace ClashLand.Core.Networking
                             Exceptions.Log(ex, $"Exception while processing incoming message {message.GetType()}");
                         }
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -216,7 +212,7 @@ namespace ClashLand.Core.Networking
 
         internal static void StartSend(SocketAsyncEventArgs e)
         {
-            var token = (Device) e.UserToken;
+            var token = (Device)e.UserToken;
             var socket = token.Socket;
 
             try
@@ -298,17 +294,19 @@ namespace ClashLand.Core.Networking
                             case SocketAsyncOperation.Accept:
                                 ProcessAccept(e, true);
                                 break;
+
                             case SocketAsyncOperation.Receive:
                                 ProcessReceive(e, true);
                                 break;
+
                             case SocketAsyncOperation.Send:
                                 ProcessSend(e);
                                 break;
+
                             default:
                                 throw new Exception("Unexpected operation.");
                         }
                     }
-
                     else
                     {
                         Loggers.Log($"A socket operation wasn't successful => {e.LastOperation}. Dropping connection.", true);
@@ -381,7 +379,7 @@ namespace ClashLand.Core.Networking
             ArgsPool.Push(e);
         }
 
-        internal static  void Recycle(byte[] buffer)
+        internal static void Recycle(byte[] buffer)
         {
             if (buffer?.Length == Constants.Buffer)
                 BufferPool.Push(buffer);
@@ -443,6 +441,5 @@ namespace ClashLand.Core.Networking
             }
             return buffer;
         }
-
     }
 }

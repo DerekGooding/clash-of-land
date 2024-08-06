@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions.List;
 using ClashLand.Logic.Structure.Slots.Items;
 using ClashLand.Packets.Messages.Server;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure.Slots
 {
-    internal class Inbox 
+    internal class Inbox
     {
         internal Player Player;
         [JsonProperty("seed")] internal int Seed;
@@ -80,6 +78,5 @@ namespace ClashLand.Logic.Structure.Slots
                 } */
             }
         }
-
     }
 }

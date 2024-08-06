@@ -1,6 +1,7 @@
 ﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Components;
+
 namespace ClashLand.Packets.Commands.Client
 {
     internal class Gear_Up : Command
@@ -25,7 +26,7 @@ namespace ClashLand.Packets.Commands.Client
             if (go?.GetComponent(1, true) == null)
                 return;
 
-            var a = ((Combat_Component) go.GetComponent(1, false));
+            var a = ((Combat_Component)go.GetComponent(1, false));
             a.GearUp = 1;
             if (a.AltAttackMode)
             {

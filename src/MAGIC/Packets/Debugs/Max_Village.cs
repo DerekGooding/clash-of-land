@@ -1,12 +1,12 @@
-﻿using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
 using ClashLand.Packets.Messages.Server;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ClashLand.Packets.Debugs
 {
@@ -17,7 +17,6 @@ namespace ClashLand.Packets.Debugs
 
         public Max_Village(Device device, params string[] Parameters) : base(device, Parameters)
         {
-
         }
 
         internal override void Process()
@@ -57,8 +56,8 @@ namespace ClashLand.Packets.Debugs
 
                             Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(4), t =>
                             {
-                                var trap = (Trap) t;
-                                var data = (Traps) trap.Data;
+                                var trap = (Trap)t;
+                                var data = (Traps)trap.Data;
 
                                 trap.SetUpgradeLevel(data.GetUpgradeLevelCount() - 1);
                             });
@@ -73,8 +72,8 @@ namespace ClashLand.Packets.Debugs
                             {
                                 Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(7), b =>
                                 {
-                                    var building = (ConstructionItem) b;
-                                    var data = (Buildings) building.GetConstructionItemData();
+                                    var building = (ConstructionItem)b;
+                                    var data = (Buildings)building.GetConstructionItemData();
 
                                     if (building.Locked)
                                     {
@@ -103,8 +102,8 @@ namespace ClashLand.Packets.Debugs
 
                                 Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(11), t =>
                                 {
-                                    var trap = (Builder_Trap) t;
-                                    var data = (Traps) trap.Data;
+                                    var trap = (Builder_Trap)t;
+                                    var data = (Traps)trap.Data;
 
                                     trap.SetUpgradeLevel(data.GetUpgradeLevelCount() - 1);
                                 });
@@ -121,8 +120,8 @@ namespace ClashLand.Packets.Debugs
                             {
                                 Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(0), b =>
                                 {
-                                    var building = (Building) b;
-                                    var data = (Buildings) building.Data;
+                                    var building = (Building)b;
+                                    var data = (Buildings)building.Data;
 
                                     if (building.Locked)
                                         building.Unlock();
@@ -141,23 +140,21 @@ namespace ClashLand.Packets.Debugs
                                         this.Device.Player.Avatar.Castle_Total_SP = al.GetAltUnitStorageCapacity(this.Device.Player.Avatar.Castle_Level);
                                     }
 
-
                                     building.SetUpgradeLevel(data.GetUpgradeLevelCount() - 1);
                                 });
 
                                 Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(4), t =>
                                 {
-                                    var trap = (Trap) t;
-                                    var data = (Traps) trap.Data;
+                                    var trap = (Trap)t;
+                                    var data = (Traps)trap.Data;
 
                                     trap.SetUpgradeLevel(data.GetUpgradeLevelCount() - 1);
                                 });
 
                                 Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(7), b =>
                                 {
-                                    var building = (ConstructionItem) b;
-                                    var data = (Buildings) building.GetConstructionItemData();
-
+                                    var building = (ConstructionItem)b;
+                                    var data = (Buildings)building.GetConstructionItemData();
 
                                     if (building.Locked)
                                     {
@@ -187,8 +184,8 @@ namespace ClashLand.Packets.Debugs
 
                                 Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(11), t =>
                                 {
-                                    var trap = (Builder_Trap) t;
-                                    var data = (Traps) trap.Data;
+                                    var trap = (Builder_Trap)t;
+                                    var data = (Traps)trap.Data;
 
                                     trap.SetUpgradeLevel(data.GetUpgradeLevelCount() - 1);
                                 });

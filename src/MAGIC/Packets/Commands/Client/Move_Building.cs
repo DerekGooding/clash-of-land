@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client
@@ -14,6 +13,7 @@ namespace ClashLand.Packets.Commands.Client
         {
             this.Position = new Vector(0, 0);
         }
+
         internal override void Decode()
         {
             this.Position.X = this.Reader.ReadInt32();

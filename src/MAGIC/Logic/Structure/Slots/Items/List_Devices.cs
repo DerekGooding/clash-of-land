@@ -1,7 +1,6 @@
-﻿using System;
+﻿using ClashLand.Extensions;
+using System;
 using System.Collections.Concurrent;
-using ClashLand.Core;
-using ClashLand.Extensions;
 
 namespace ClashLand.Logic.Structure.Slots.Items
 {
@@ -35,7 +34,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
                     Devices.TryRemove(Device.Socket.Handle);
                 }
                 //else
-                    //this.Devices.Remove(Device.Socket.Handle);
+                //this.Devices.Remove(Device.Socket.Handle);
             }
         }
     }

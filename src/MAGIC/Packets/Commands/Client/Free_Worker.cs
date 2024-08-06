@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.Errors;
+using System;
 
 namespace ClashLand.Packets.Commands.Client
 {
     internal class Free_Worker : Command
     {
-
         internal int Time_Left;
         internal int Unknown1;
         internal bool EmbedCommands;

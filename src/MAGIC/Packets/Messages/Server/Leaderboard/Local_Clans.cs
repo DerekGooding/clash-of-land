@@ -5,14 +5,13 @@ using ClashLand.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClashLand.Packets.Messages.Server.Leaderboard
 {
     internal class Local_Clans : Message
     {
         internal List<Clan> Clans;
+
         public Local_Clans(Device Device) : base(Device)
         {
             this.Identifier = 24402;
@@ -24,6 +23,7 @@ namespace ClashLand.Packets.Messages.Server.Leaderboard
                 this.Clans = new List<Clan>();
             }
         }
+
         internal override void Encode()
         {
             this.Data.AddInt(this.Clans.Count);

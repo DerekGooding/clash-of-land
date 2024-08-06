@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using ClashLand.Logic.Structure.Slots.Items;
+﻿using ClashLand.Logic.Structure.Slots.Items;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace ClashLand.Logic.Structure.Slots
 {

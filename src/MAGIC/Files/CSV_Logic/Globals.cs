@@ -9,6 +9,7 @@ namespace ClashLand.Files.CSV_Logic
         {
             Load(Row);
         }
+
         public string Name { get; set; }
         public int NumberValue { get; set; }
         public bool BooleanValue { get; set; }
@@ -16,6 +17,5 @@ namespace ClashLand.Files.CSV_Logic
         public int[] NumberArray { get; set; }
         public int[] AltNumberArray { get; set; }
         public string StringArray { get; set; }
-
     }
 }

@@ -1,13 +1,12 @@
-﻿using ClashLand.Extensions;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
 
 namespace ClashLand.Packets.Messages.Server.Clans
 {
     internal class Alliance_All_Stream_Entry : Message
     {
-
         internal Clan Alliance = null;
+
         internal Alliance_All_Stream_Entry(Device _Device) : base(_Device)
         {
             this.Identifier = 24311;

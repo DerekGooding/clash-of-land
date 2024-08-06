@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
 using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
@@ -12,6 +6,9 @@ using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Packets.Messages.Server.Errors;
 using SharpRaven.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Packets.Messages.Client
 {
@@ -23,7 +20,7 @@ namespace ClashLand.Packets.Messages.Client
 
         internal byte[] Commands;
         internal List<Command> LCommands;
-        
+
         public Execute_Commands(Device device) : base(device)
         {
         }
@@ -45,83 +42,82 @@ namespace ClashLand.Packets.Messages.Client
         internal override void Process()
         {
             if (!this.Device.Player.Avatar.Modes.IsAttackingOwnBase && this.Device.State == Logic.Enums.State.IN_PC_BATTLE)
-                 Resources.Battles.Get(this.Device.Player.Avatar.Battle_ID).Battle_Tick = (int) this.CTick;
-            
+                Resources.Battles.Get(this.Device.Player.Avatar.Battle_ID).Battle_Tick = (int)this.CTick;
+
             if (this.Count > -1)
             {
                 if (Constants.MaxCommand == 0 || this.Count <= Constants.MaxCommand)
                 {
-                        //this.Device.Player.Tick();
-                        using (Reader Reader = new Reader(this.Commands))
+                    //this.Device.Player.Tick();
+                    using (Reader Reader = new Reader(this.Commands))
+                    {
+                        for (int _Index = 0; _Index < this.Count; _Index++)
                         {
-                            for (int _Index = 0; _Index < this.Count; _Index++)
+                            int CommandID = Reader.ReadInt32();
+                            if (CommandFactory.Commands.ContainsKey(CommandID))
                             {
-                                int CommandID = Reader.ReadInt32();
-                                if (CommandFactory.Commands.ContainsKey(CommandID))
-                                {
-                                    var Command = Activator.CreateInstance(CommandFactory.Commands[CommandID], Reader,
-                                        this.Device, CommandID) as Command;
+                                var Command = Activator.CreateInstance(CommandFactory.Commands[CommandID], Reader,
+                                    this.Device, CommandID) as Command;
 
-                                    if (Command != null)
-                                    {
+                                if (Command != null)
+                                {
 #if DEBUG
                                     Console.ForegroundColor = ConsoleColor.Blue;
                                     Console.WriteLine("Command " + CommandID + " has  been handled.");
                                     Console.ResetColor();
 #endif
-                                        try
-                                        {
-                                            Command.Decode();
-                                        }
-                                        catch (Exception Exception)
-                                        {
-                                            Exceptions.Log(Exception,
-                                                Exception.Message + Environment.NewLine + Exception.StackTrace +
-                                                Environment.NewLine + Exception.Data, this.Device.Model,
-                                                this.Device.OSVersion,
-                                                this.Device.Player.Avatar.Token,
-                                                this.Device.Player?.Avatar.UserId ?? 0);
+                                    try
+                                    {
+                                        Command.Decode();
+                                    }
+                                    catch (Exception Exception)
+                                    {
+                                        Exceptions.Log(Exception,
+                                            Exception.Message + Environment.NewLine + Exception.StackTrace +
+                                            Environment.NewLine + Exception.Data, this.Device.Model,
+                                            this.Device.OSVersion,
+                                            this.Device.Player.Avatar.Token,
+                                            this.Device.Player?.Avatar.UserId ?? 0);
 
-                                            Loggers.Log(Utils.Padding(Exception.GetType().Name, 15) + " : " +
-                                                        Exception.Message + ". [" +
-                                                        (this.Device.Player != null
-                                                            ? this.Device.Player.Avatar.UserId + ":" +
-                                                              GameUtils.GetHashtag(this.Device.Player.Avatar.UserId)
-                                                            : "---") + ']' + Environment.NewLine + Exception.StackTrace,
-                                                true,
-                                                Defcon.ERROR);
-                                        }
+                                        Loggers.Log(Utils.Padding(Exception.GetType().Name, 15) + " : " +
+                                                    Exception.Message + ". [" +
+                                                    (this.Device.Player != null
+                                                        ? this.Device.Player.Avatar.UserId + ":" +
+                                                          GameUtils.GetHashtag(this.Device.Player.Avatar.UserId)
+                                                        : "---") + ']' + Environment.NewLine + Exception.StackTrace,
+                                            true,
+                                            Defcon.ERROR);
+                                    }
 
-                                        try
-                                        {
-                                            Command.Process();
-                                        }
-                                        catch (Exception Exception)
-                                        {
-                                            Exceptions.Log(Exception,
-                                                Exception.Message + Environment.NewLine + Exception.StackTrace +
-                                                Environment.NewLine + Exception.Data, this.Device.Model,
-                                                this.Device.OSVersion,
-                                                this.Device.Player.Avatar.Token,
-                                                this.Device.Player?.Avatar.UserId ?? 0);
+                                    try
+                                    {
+                                        Command.Process();
+                                    }
+                                    catch (Exception Exception)
+                                    {
+                                        Exceptions.Log(Exception,
+                                            Exception.Message + Environment.NewLine + Exception.StackTrace +
+                                            Environment.NewLine + Exception.Data, this.Device.Model,
+                                            this.Device.OSVersion,
+                                            this.Device.Player.Avatar.Token,
+                                            this.Device.Player?.Avatar.UserId ?? 0);
 
-                                            Loggers.Log(Utils.Padding(Exception.GetType().Name, 15) + " : " +
-                                                        Exception.Message + ". [" +
-                                                        (this.Device.Player != null
-                                                            ? this.Device.Player.Avatar.UserId + ":" +
-                                                              GameUtils.GetHashtag(this.Device.Player.Avatar.UserId)
-                                                            : "---") + ']' + Environment.NewLine + Exception.StackTrace,
-                                                true,
-                                                Defcon.ERROR);
-                                        }
+                                        Loggers.Log(Utils.Padding(Exception.GetType().Name, 15) + " : " +
+                                                    Exception.Message + ". [" +
+                                                    (this.Device.Player != null
+                                                        ? this.Device.Player.Avatar.UserId + ":" +
+                                                          GameUtils.GetHashtag(this.Device.Player.Avatar.UserId)
+                                                        : "---") + ']' + Environment.NewLine + Exception.StackTrace,
+                                            true,
+                                            Defcon.ERROR);
+                                    }
 #if DEBUG
                                     this.LCommands.Add(Command);
 #endif
-                                    }
-
                                 }
-                                else
-                                {
+                            }
+                            else
+                            {
 #if DEBUG
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("Command " + CommandID + " has not been handled.");
@@ -131,9 +127,9 @@ namespace ClashLand.Packets.Messages.Client
                                 Console.ResetColor();
                                 break;
 #endif
-                                }
                             }
                         }
+                    }
                 }
             }
             else

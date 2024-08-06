@@ -1,7 +1,7 @@
-﻿using System;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace ClashLand.Logic.Structure.Slots.Items
 {
@@ -66,6 +66,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
         [JsonProperty("globals")] internal Globals_Replay Globals = new Globals_Replay();
 
         [JsonProperty("prep_skip")] internal int Preparation_Skip;
+
         internal Battle_V2()
         {
             //Battle

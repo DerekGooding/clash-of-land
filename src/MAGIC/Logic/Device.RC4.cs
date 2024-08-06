@@ -1,5 +1,5 @@
-﻿using System;
-using ClashLand.Packets.Cryptography;
+﻿using ClashLand.Packets.Cryptography;
+using System;
 
 namespace ClashLand.Logic
 {
@@ -45,6 +45,7 @@ namespace ClashLand.Logic
                 buffer[i] = (int)(1812433253 * ((buffer[i - 1] ^ (buffer[i - 1] >> 30)) + 1));
             }
         }
+
         // Extract a tempered pseudorandom number based on the index-th value,
         // calling generate_numbers() every 624 numbers
 

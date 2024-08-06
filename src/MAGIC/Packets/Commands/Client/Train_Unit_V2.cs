@@ -1,5 +1,4 @@
-﻿using System;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
@@ -15,9 +14,9 @@ namespace ClashLand.Packets.Commands.Client
         internal int Unknown1;
         internal Characters Unit;
         internal int Tick;
+
         public Train_Unit_V2(Reader reader, Device client, int id) : base(reader, client, id)
         {
-
         }
 
         internal override void Decode()
@@ -33,7 +32,7 @@ namespace ClashLand.Packets.Commands.Client
             var go = this.Device.Player.GameObjectManager.GetBuilderVillageGameObjectByID(this.BuildingID);
             if (go != null)
             {
-                Builder_Building b = (Builder_Building) go;
+                Builder_Building b = (Builder_Building)go;
                 Unit_Storage_V2_Componenent c = b.GetUnitStorageV2Component();
                 c?.AddUnit(this.Unit);
             }

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Packets.Messages.Server.Leaderboard
 {
-
     internal class League_Players : Message
     {
         internal List<Level> Players_List;
@@ -18,12 +17,10 @@ namespace ClashLand.Packets.Messages.Server.Leaderboard
             this.Identifier = 24503;
             this.Players_List = Players.Levels.Values.Where(t => t.Avatar.League == this.Device.Player.Avatar.League).OrderByDescending(t => t.Avatar.Trophies).Take(100).ToList() ??
                            new List<Level>();
-            
         }
 
         internal override void Encode()
         {
-            
             var i = 0;
 
             this.Data.AddInt((int)(DateTime.UtcNow.LastDayOfMonth() - DateTime.UtcNow).TotalSeconds);
@@ -60,7 +57,6 @@ namespace ClashLand.Packets.Messages.Server.Leaderboard
                     this.Data.AddInt(_Clan.Badge);
                 }
                 i++;
-
             }
         }
     }

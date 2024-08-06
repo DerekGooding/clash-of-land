@@ -8,7 +8,6 @@ using ClashLand.Logic.Structure;
 
 namespace ClashLand.Packets.Commands.Client
 {
-
     internal class Unlock_Building : Command
     {
         internal int BuildingId;
@@ -16,7 +15,6 @@ namespace ClashLand.Packets.Commands.Client
 
         public Unlock_Building(Reader reader, Device client, int id) : base(reader, client, id)
         {
-
         }
 
         internal override void Decode()
@@ -31,9 +29,9 @@ namespace ClashLand.Packets.Commands.Client
 
             var go = this.Device.Player.Avatar.Variables.IsBuilderVillage ? this.Device.Player.GameObjectManager.GetBuilderVillageGameObjectByID(BuildingId) : this.Device.Player.GameObjectManager.GetGameObjectByID(BuildingId);
 
-            var b = (ConstructionItem) go;
+            var b = (ConstructionItem)go;
 
-            var bd = (Buildings) b.GetConstructionItemData();
+            var bd = (Buildings)b.GetConstructionItemData();
 
             if (ca.HasEnoughResources(bd.GetBuildResource(b.GetUpgradeLevel()).GetGlobalID(), bd.GetBuildCost(b.GetUpgradeLevel())))
             {
@@ -52,10 +50,9 @@ namespace ClashLand.Packets.Commands.Client
                 }
                 if (name == "Hero Altar Warmachine")
                 {
-
                     if (b.GetHeroBaseComponent(true) != null)
                     {
-                        Buildings data = (Buildings)b. GetData();
+                        Buildings data = (Buildings)b.GetData();
                         Heroes hd = CSV.Tables.Get(Gamefile.Heroes).GetData(data.HeroType) as Heroes;
                         this.Device.Player.Avatar.SetUnitUpgradeLevel(hd, 0);
                         this.Device.Player.Avatar.SetHeroHealth(hd, 0);

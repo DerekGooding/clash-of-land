@@ -38,7 +38,7 @@
             {
                 int runningWidthTotal = 0;
 
-                for (int c = 0; c < value.Length; c++) 
+                for (int c = 0; c < value.Length; c++)
                 {
                     char character = value[c];
                     string fragment = Figlet.GetCharacter(this.font, character, line);

@@ -11,9 +11,9 @@ namespace ClashLand.Packets.Commands.Client
     {
         internal int BuildingId;
         internal uint Tick;
+
         public Upgrade_Hero(Reader reader, Device client, int id) : base(reader, client, id)
         {
-
         }
 
         internal override void Decode()

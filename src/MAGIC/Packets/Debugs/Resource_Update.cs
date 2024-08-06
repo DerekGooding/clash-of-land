@@ -1,7 +1,7 @@
-﻿using System.Text;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server;
+using System.Text;
 using Resource = ClashLand.Logic.Enums.Resource;
 
 namespace ClashLand.Packets.Debugs
@@ -13,7 +13,6 @@ namespace ClashLand.Packets.Debugs
 
         public Resource_Update(Device device, params string[] Parameters) : base(device, Parameters)
         {
-
         }
 
         internal override void Process()
@@ -30,7 +29,7 @@ namespace ClashLand.Packets.Debugs
                         case 3:
                         case 7:
                         case 8:
-                            var resource = (Resource) this.ResourceID;
+                            var resource = (Resource)this.ResourceID;
                             SendChatMessage($"Your resource amount for {resource} have been updated to 200000000");
                             this.Device.Player.Avatar.Resources.Set(resource, 200000000);
                             new Own_Home_Data(this.Device).Send();

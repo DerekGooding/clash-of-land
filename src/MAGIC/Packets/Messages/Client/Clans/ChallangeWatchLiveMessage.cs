@@ -1,9 +1,6 @@
-﻿using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
-using ClashLand.Packets;
 using ClashLand.Packets.Messages.Server;
 
 namespace ClashLand.Packets.Messages.Client.Clans

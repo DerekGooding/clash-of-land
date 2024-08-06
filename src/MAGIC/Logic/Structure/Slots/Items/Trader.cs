@@ -9,7 +9,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
         [JsonProperty("cycle")] internal int Cycle;
 
         [JsonProperty("event")] internal int Event;
-        
+
         [JsonProperty("seen")] internal bool Seen;
     }
 }

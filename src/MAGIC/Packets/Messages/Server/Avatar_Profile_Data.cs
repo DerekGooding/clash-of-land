@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core;
-using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
 
@@ -14,6 +13,7 @@ namespace ClashLand.Packets.Messages.Server
         {
             this.Identifier = 24334;
         }
+
         internal override void Encode()
         {
             this.Player = this.UserID == this.Device.Player.Avatar.UserId ? this.Device.Player : Players.Get(UserID, false);

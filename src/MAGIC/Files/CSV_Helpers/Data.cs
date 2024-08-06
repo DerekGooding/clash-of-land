@@ -1,7 +1,5 @@
-﻿using System;
-using ClashLand.Files.CSV_Reader;
-using System.Reflection;
-using System.Collections.Generic;
+﻿using ClashLand.Files.CSV_Reader;
+using System;
 
 namespace ClashLand.Files.CSV_Helpers
 {
@@ -106,6 +104,7 @@ namespace ClashLand.Files.CSV_Helpers
                 }
             }
         }
+
         internal int GetID()
         {
             return GlobalID.GetID(this.Id);

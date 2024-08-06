@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions.List;
-using ClashLand.Files;
-using ClashLand.Files.CSV_Logic;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic.Structure.Slots.Items;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure.Slots
 {

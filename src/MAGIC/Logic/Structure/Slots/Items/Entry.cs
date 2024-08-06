@@ -21,6 +21,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
 
         // Stream 1
         [JsonProperty("max_troops", DefaultValueHandling = DefaultValueHandling.Ignore)] internal int Max_Troops = 0;
+
         [JsonProperty("max_spells", DefaultValueHandling = DefaultValueHandling.Ignore)] internal int Max_Spells = 0;
 
         [JsonProperty("space_troops", DefaultValueHandling = DefaultValueHandling.Ignore)] internal int Used_Space_Troops = 0;
@@ -37,10 +38,12 @@ namespace ClashLand.Logic.Structure.Slots.Items
 
         // Stream 3InviteState
         [JsonProperty("judge_name", DefaultValueHandling = DefaultValueHandling.Ignore)] internal string Judge_Name = string.Empty;
+
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Ignore)] internal InviteState Stream_State = InviteState.WAITING;
 
         // Stream 4
         [JsonProperty("event_id", DefaultValueHandling = DefaultValueHandling.Ignore)] internal Events Event_ID = 0;
+
         [JsonProperty("event_pl_id", DefaultValueHandling = DefaultValueHandling.Ignore)] internal long Event_Player_ID = 0;
         [JsonProperty("event_pl_name", DefaultValueHandling = DefaultValueHandling.Ignore)] internal string Event_Player_Name = string.Empty;
 
@@ -78,12 +81,11 @@ namespace ClashLand.Logic.Structure.Slots.Items
             }
         }
 
-
         internal byte[] ToBytes()
         {
             List<byte> _Packet = new List<byte>();
             _Packet.AddInt((int)this.Stream_Type);
-            _Packet.AddInt(this.Message_HighID);    
+            _Packet.AddInt(this.Message_HighID);
             _Packet.AddInt(this.Message_LowID);
             _Packet.Add(3);
 
@@ -125,19 +127,23 @@ namespace ClashLand.Logic.Structure.Slots.Items
                     }
 
                     break;
+
                 case Alliance_Stream.CHAT:
                     _Packet.AddString(this.Message);
                     break;
+
                 case Alliance_Stream.INVITATION:
                     _Packet.AddString(this.Message);
                     _Packet.AddString(this.Judge_Name);
                     _Packet.AddInt((int)this.Stream_State);
                     break;
+
                 case Alliance_Stream.EVENT:
                     _Packet.AddInt((int)this.Event_ID);
                     _Packet.AddLong(this.Event_Player_ID);
                     _Packet.AddString(this.Event_Player_Name);
                     break;
+
                 case Alliance_Stream.AMICAL_BATTLE:
                     _Packet.AddString(this.Message);
                     _Packet.AddInt((int)this.Amical_State);

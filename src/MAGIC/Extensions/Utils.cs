@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace ClashLand.Extensions
 {
@@ -88,6 +86,7 @@ namespace ClashLand.Extensions
         {
             return value % 2 != 0;
         }
+
         public static bool TryRemove<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> self, TKey key)
         {
             TValue ignored;
@@ -112,55 +111,56 @@ namespace ClashLand.Extensions
                 {
                     case JsonToken.Null:
                         return null;
+
                     case JsonToken.StartArray:
-                    {
-                        // No $ref.  Deserialize as a List<T> to avoid infinite recursion and return as an array.
-                        var elementType = objectType.GetElementType();
-                        var listType = typeof(List<>).MakeGenericType(elementType);
-                        var list = (IList)serializer.Deserialize(reader, listType);
-                        if (list == null)
-                            return null;
-                        var array = Array.CreateInstance(elementType, list.Count);
-                        list.CopyTo(array, 0);
-                        return array;
-                    }
-                    default:
-                    {
-                        var obj = JObject.Load(reader);
-                        var refId = (string)obj[RefProperty];
-                        if (refId != null)
                         {
-                            var reference = serializer.ReferenceResolver.ResolveReference(serializer, refId);
-                            if (reference != null)
-                                return reference;
-                        }
-                        var values = obj[ValuesProperty];
-                        if (values == null || values.Type == JTokenType.Null)
-                            return null;
-                        if (!(values is JArray))
-                        {
-                            throw new JsonSerializationException($"{values} was not an array");
-                        }
-                        var count = ((JArray)values).Count;
-
-                        var elementType = objectType.GetElementType();
-                        var array = Array.CreateInstance(elementType, count);
-
-                        var objId = (string)obj[IdProperty];
-                        if (objId != null)
-                        {
-                            serializer.ReferenceResolver.AddReference(serializer, objId, array);
-                        }
-
-                        var listType = typeof(List<>).MakeGenericType(elementType);
-                        using (var subReader = values.CreateReader())
-                        {
-                            var list = (IList)serializer.Deserialize(subReader, listType);
+                            // No $ref.  Deserialize as a List<T> to avoid infinite recursion and return as an array.
+                            var elementType = objectType.GetElementType();
+                            var listType = typeof(List<>).MakeGenericType(elementType);
+                            var list = (IList)serializer.Deserialize(reader, listType);
+                            if (list == null)
+                                return null;
+                            var array = Array.CreateInstance(elementType, list.Count);
                             list.CopyTo(array, 0);
+                            return array;
                         }
+                    default:
+                        {
+                            var obj = JObject.Load(reader);
+                            var refId = (string)obj[RefProperty];
+                            if (refId != null)
+                            {
+                                var reference = serializer.ReferenceResolver.ResolveReference(serializer, refId);
+                                if (reference != null)
+                                    return reference;
+                            }
+                            var values = obj[ValuesProperty];
+                            if (values == null || values.Type == JTokenType.Null)
+                                return null;
+                            if (!(values is JArray))
+                            {
+                                throw new JsonSerializationException($"{values} was not an array");
+                            }
+                            var count = ((JArray)values).Count;
 
-                        return array;
-                    }
+                            var elementType = objectType.GetElementType();
+                            var array = Array.CreateInstance(elementType, count);
+
+                            var objId = (string)obj[IdProperty];
+                            if (objId != null)
+                            {
+                                serializer.ReferenceResolver.AddReference(serializer, objId, array);
+                            }
+
+                            var listType = typeof(List<>).MakeGenericType(elementType);
+                            using (var subReader = values.CreateReader())
+                            {
+                                var list = (IList)serializer.Deserialize(subReader, listType);
+                                list.CopyTo(array, 0);
+                            }
+
+                            return array;
+                        }
                 }
             }
 
@@ -173,4 +173,3 @@ namespace ClashLand.Extensions
         }
     }
 }
-    

@@ -4,11 +4,11 @@
 
     using System;
 
-    #endregion
+    #endregion Usings
 
     public sealed partial class Blake2BCore
     {
-        partial void Compress(byte[] _Block, int _Start)
+        private partial void Compress(byte[] _Block, int _Start)
         {
             ulong[] h = this._h;
             ulong[] m = this._m;

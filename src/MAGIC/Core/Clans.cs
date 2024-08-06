@@ -1,12 +1,11 @@
-﻿using System;
+﻿using ClashLand.Core.Database;
+using ClashLand.Extensions;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Concurrent;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using ClashLand.Core.Database;
-using ClashLand.Extensions;
-using Newtonsoft.Json;
-using ClashLand.Logic.Enums;
 using Clan = ClashLand.Logic.Clan;
 
 namespace ClashLand.Core
@@ -22,9 +21,8 @@ namespace ClashLand.Core
             PreserveReferencesHandling = PreserveReferencesHandling.All,
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
             Formatting = Formatting.Indented,
-            Converters = {new Utils.ArrayReferencePreservngConverter()},
+            Converters = { new Utils.ArrayReferencePreservngConverter() },
         };
-
 
         internal long Seed;
 
@@ -41,7 +39,6 @@ namespace ClashLand.Core
             else
             {
                 this.TryAdd(Clan.Clan_ID, Clan);
-
             }
         }
 
@@ -85,9 +82,11 @@ namespace ClashLand.Core
                             Database.SaveChanges();
                         }
                         break;
+
                     case DBMS.Redis:
                         Redis.Clans.KeyDelete(Clan.Clan_ID.ToString());
                         break;
+
                     case DBMS.Both:
                         this.Delete(Clan);
                         DBMS = DBMS.Redis;
@@ -96,7 +95,7 @@ namespace ClashLand.Core
         }
                 */
 
-            #endregion
+            #endregion Old
         }
 
         internal Clan Get(long ClanID, bool Store = true)
@@ -117,9 +116,9 @@ namespace ClashLand.Core
                         {
                             this.Add(Clan);
                         }
-
                     }
                 }
+
                 #region Old
 
                 /*
@@ -138,7 +137,6 @@ namespace ClashLand.Core
                                 {
                                     this.Add(Clan);
                                 }
-
                             }
                         }
                         break;
@@ -154,7 +152,6 @@ namespace ClashLand.Core
                             {
                                 this.Add(Clan);
                             }
-
                         }
                         break;
 
@@ -167,11 +164,12 @@ namespace ClashLand.Core
                             if (Clan != null)
                                 Redis.Clans.StringSet(Clan.Clan_ID.ToString(),
                                     JsonConvert.SerializeObject(Clan, this.Settings), TimeSpan.FromHours(4));
-
                         }
                         break;
                 }*/
-                #endregion
+
+                #endregion Old
+
                 return Clan;
             }
             return this[ClanID];
@@ -268,18 +266,14 @@ namespace ClashLand.Core
 
                 Database.SaveChanges();
             }
-            
-
 
             /*
             while (true)
             {
-
                 switch (DBMS)
                 {
                     case DBMS.Mysql:
                     {
-
                         using (MysqlEntities Database = new MysqlEntities())
                         {
                             Database.Configuration.AutoDetectChangesEnabled = false;
@@ -343,7 +337,6 @@ namespace ClashLand.Core
             /*
             while (true)
             {
-
                 switch (DBMS)
                 {
                     case DBMS.Mysql:

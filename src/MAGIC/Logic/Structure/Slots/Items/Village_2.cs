@@ -8,6 +8,5 @@ namespace ClashLand.Logic.Structure.Slots.Items
         [JsonProperty("TownHallMaxLevel")] internal int TownHallMaxLevel = 8;
         [JsonProperty("ScoreChangeForLosing")] internal JArray ScoreChangeForLosing = new JArray();
         [JsonProperty("StrengthRangeForScore")] internal JArray StrengthRangeForScore = new JArray();
-
     }
 }

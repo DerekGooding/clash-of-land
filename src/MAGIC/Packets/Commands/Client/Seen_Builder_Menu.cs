@@ -1,12 +1,8 @@
-﻿using ClashLand.Logic;
-using ClashLand.Logic.Enums;
-using ClashLand.Extensions.Binary;
-
+﻿using ClashLand.Extensions.Binary;
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client
 {
-    
-
     internal class Seen_Builder_Menu : Command
     {
         internal int State;

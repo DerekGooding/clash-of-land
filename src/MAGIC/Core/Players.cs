@@ -1,13 +1,12 @@
-﻿using System;
+﻿using ClashLand.Core.Database;
+using ClashLand.Extensions;
+using ClashLand.Logic;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Concurrent;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using ClashLand.Core.Database;
-using ClashLand.Extensions;
-using ClashLand.Logic;
-using Newtonsoft.Json;
-using ClashLand.Logic.Enums;
 
 namespace ClashLand.Core
 {
@@ -15,10 +14,14 @@ namespace ClashLand.Core
     {
         internal static JsonSerializerSettings Settings = new JsonSerializerSettings
         {
-            TypeNameHandling = TypeNameHandling.Auto,                    MissingMemberHandling = MissingMemberHandling.Ignore,
-            DefaultValueHandling = DefaultValueHandling.Include,         NullValueHandling = NullValueHandling.Ignore,
-            PreserveReferencesHandling = PreserveReferencesHandling.All, ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-            Formatting = Formatting.Indented,                            Converters = { new Utils.ArrayReferencePreservngConverter() },
+            TypeNameHandling = TypeNameHandling.Auto,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Include,
+            NullValueHandling = NullValueHandling.Ignore,
+            PreserveReferencesHandling = PreserveReferencesHandling.All,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            Formatting = Formatting.Indented,
+            Converters = { new Utils.ArrayReferencePreservngConverter() },
         };
 
         internal static long Seed;
@@ -32,7 +35,6 @@ namespace ClashLand.Core
 
         internal static void Add(Level Player)
         {
-
             if (Levels.ContainsKey(Player.Avatar.UserId))
             {
                 Levels[Player.Avatar.UserId] = Player;
@@ -110,14 +112,13 @@ namespace ClashLand.Core
 
             var Player = new Level(UserId);
 
-
             if (string.IsNullOrEmpty(token))
             {
                 if (string.IsNullOrEmpty(Player.Avatar.Token))
                 {
                     for (int i = 0; i < 20; i++)
                     {
-                        char Letter = (char) Resources.Random.Next('A', 'Z');
+                        char Letter = (char)Resources.Random.Next('A', 'Z');
                         Player.Avatar.Token += Letter;
                     }
                 }
@@ -131,8 +132,8 @@ namespace ClashLand.Core
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    char Letter = (char) Resources.Random.Next('A', 'Z');
-                    char Number = (char) Resources.Random.Next('1', '9');
+                    char Letter = (char)Resources.Random.Next('A', 'Z');
+                    char Number = (char)Resources.Random.Next('1', '9');
                     Player.Avatar.Password += Letter;
                     Player.Avatar.Password += Number;
                 }
@@ -151,7 +152,7 @@ namespace ClashLand.Core
                 {
                     ID = Player.Avatar.UserId,
                     Avatar = JsonConvert.SerializeObject(Player.Avatar, Settings),
-                    Village =  Player.JSON,
+                    Village = Player.JSON,
                     FacebookID = "#:#:#:#",
                 });
 

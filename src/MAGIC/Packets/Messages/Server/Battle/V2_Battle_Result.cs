@@ -1,5 +1,4 @@
-﻿using System;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
 using ClashLand.Logic.Structure.Slots;
 
@@ -10,6 +9,7 @@ namespace ClashLand.Packets.Messages.Server.Battle
         internal Battle_V2 Battle;
         internal Logic.Structure.Slots.Items.Battle_V2 Home;
         internal Logic.Structure.Slots.Items.Battle_V2 Enemy;
+
         public V2_Battle_Result(Device Device, Battle_V2 Battle) : base(Device)
         {
             this.Identifier = 24371;

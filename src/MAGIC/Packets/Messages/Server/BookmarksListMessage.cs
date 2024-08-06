@@ -1,19 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClashLand.Core;
 using ClashLand.Extensions.Binary;
-using ClashLand.Core.Networking;
-using ClashLand.Logic.Enums;
 using ClashLand.Logic;
-using ClashLand.Logic.Structure.Slots;
 
 namespace ClashLand.Packets.Messages.Server
 {
     // Packet 24341
     internal class BookmarksListMessage : Message
     {
-        public Player Avatar  { get; set; }
+        public Player Avatar { get; set; }
 
         internal string Bookmark;
         //public object Bookmark { get; private set; }

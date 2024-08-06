@@ -36,7 +36,6 @@ namespace ClashLand.Packets.Cryptography.RC4
 
         internal static byte[] KSA(byte[] key)
         {
-
             var keyLength = key.Length;
             var S = new byte[256];
 

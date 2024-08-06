@@ -1,5 +1,5 @@
-﻿using ClashLand.Files.CSV_Helpers;
-using ClashLand.Files;
+﻿using ClashLand.Files;
+using ClashLand.Files.CSV_Helpers;
 using Newtonsoft.Json.Linq;
 
 namespace ClashLand.Logic.Structure.Slots
@@ -27,6 +27,5 @@ namespace ClashLand.Logic.Structure.Slots
             jsonObject.Add("cnt", this.Value);
             return jsonObject;
         }
-
     }
 }

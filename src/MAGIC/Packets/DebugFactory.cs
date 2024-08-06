@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ClashLand.Packets.Debugs;
+using System;
 using System.Collections.Generic;
-using ClashLand.Packets.Debugs;
 
 namespace ClashLand.Packets
 {

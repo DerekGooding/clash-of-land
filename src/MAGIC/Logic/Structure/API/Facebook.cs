@@ -1,6 +1,5 @@
 ﻿using Facebook;
 using Newtonsoft.Json;
-using System;
 
 namespace ClashLand.Logic.Structure.API
 {
@@ -30,6 +29,7 @@ namespace ClashLand.Logic.Structure.API
                 this.Connect();
             }
         }
+
         internal bool Connected => this.Filled && this.FBClient != null;
 
         internal bool Filled => !string.IsNullOrEmpty(this.Identifier) && !string.IsNullOrEmpty(this.Token);

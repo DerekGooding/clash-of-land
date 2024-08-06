@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using ClashLand.Core;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions;
 using ClashLand.Logic.Enums;
 using ClashLand.Packets;
 using ClashLand.Packets.Cryptography;
-using ClashLand.Packets.Cryptography.RC4;
 using ClashLand.Packets.Messages.Server;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
-using System.Text;
+using System.Net.Sockets;
 
 namespace ClashLand.Logic
 {
@@ -22,7 +17,6 @@ namespace ClashLand.Logic
         internal string AndroidID, OpenUDID, Model, OSVersion, MACAddress, AdvertiseID, VendorID, IPAddress;
         internal bool Android, Advertising;
         internal int Last_Checksum, Last_Tick, Depth;
-
 
         internal Crypto Keys { get; }
         internal Socket Socket { get; }
@@ -40,7 +34,6 @@ namespace ClashLand.Logic
         internal DateTime LastKeepAlive { get; set; }
 
         internal readonly Keep_Alive_OK Keep_Alive;
-
 
         public Device(Socket so)
         {
@@ -61,7 +54,7 @@ namespace ClashLand.Logic
 
             this.SocketHandle = so.Handle;
 
-            this.IPAddress = ((IPEndPoint) so.RemoteEndPoint).Address.ToString();
+            this.IPAddress = ((IPEndPoint)so.RemoteEndPoint).Address.ToString();
 
             this.Keep_Alive = new Keep_Alive_OK(this);
             this.LastKeepAlive = DateTime.Now;
@@ -96,9 +89,9 @@ namespace ClashLand.Logic
                         try
                         {
                             if (Constants.RC4)
-                            message.Decrypt();
+                                message.Decrypt();
                             else
-                            message.DecryptSexy();
+                                message.DecryptSexy();
                         }
                         catch (Exception ex)
                         {

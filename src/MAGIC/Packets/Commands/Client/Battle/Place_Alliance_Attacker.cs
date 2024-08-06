@@ -1,5 +1,4 @@
-﻿using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
@@ -12,6 +11,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
         internal int X;
         internal int Y;
         internal int Tick;
+
         public Place_Alliance_Attacker(Reader reader, Device client, int id) : base(reader, client, id)
         {
         }
@@ -28,7 +28,6 @@ namespace ClashLand.Packets.Commands.Client.Battle
         {
             if (this.Device.State == State.IN_PC_BATTLE)
             {
-
                 if (!this.Device.Player.Avatar.Modes.IsAttackingOwnBase)
                 {
                     var Battle = Core.Resources.Battles.Get(this.Device.Player.Avatar.Battle_ID);

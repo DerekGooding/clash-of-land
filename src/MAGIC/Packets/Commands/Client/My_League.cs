@@ -9,7 +9,6 @@ namespace ClashLand.Packets.Commands.Client
     {
         public My_League(Reader reader, Device client, int id) : base(reader, client, id)
         {
-
         }
 
         internal override void Process()

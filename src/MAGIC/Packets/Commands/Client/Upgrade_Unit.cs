@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
@@ -21,6 +16,7 @@ namespace ClashLand.Packets.Commands.Client
         internal bool IsSpell;
         internal Characters Troop;
         internal Spells Spell;
+
         public Upgrade_Unit(Reader reader, Device client, int id) : base(reader, client, id)
         {
         }
@@ -51,43 +47,11 @@ namespace ClashLand.Packets.Commands.Client
             {
                 if (!ca.Variables.IsBuilderVillage)
                 {
-                    var building = (Building) go;
+                    var building = (Building)go;
                     var upgradeComponent = building.GetUnitUpgradeComponent();
 
+                    var unitLevel = ca.GetUnitUpgradeLevel(this.IsSpell ? (Combat_Item)this.Spell : (Combat_Item)this.Troop);
 
-                    var unitLevel = ca.GetUnitUpgradeLevel(this.IsSpell ? (Combat_Item) this.Spell : (Combat_Item) this.Troop);
-                    
-                    if (upgradeComponent.CanStartUpgrading(this.IsSpell ? (Combat_Item) this.Spell  : (Combat_Item) this.Troop))
-                    {
-                        var cost = this.IsSpell ? this.Spell.GetUpgradeCost(unitLevel) : this.Troop.GetUpgradeCost(unitLevel);
-                        var upgradeResource = this.IsSpell
-                            ? this.Spell.GetUpgradeResource()
-                            : this.Troop.GetUpgradeResource();
-                        if (ca.HasEnoughResources(upgradeResource.GetGlobalID(), cost))
-                        {
-#if DEBUG
-                            Loggers.Log(
-                                this.IsSpell
-                                    ? $"Spell : Upgrading {this.Spell.Row.Name} with ID {GlobalId}"
-                                    : $"Unit : Upgrading {this.Troop.Row.Name} with ID {GlobalId}", true);
-#endif
-                            ca.Resources.Minus(upgradeResource.GetGlobalID(), cost);
-                            upgradeComponent.StartUpgrading(this.IsSpell
-                                ? (Combat_Item) this.Spell
-                                : (Combat_Item) this.Troop);
-                        }
-                    }
-                }
-                else
-                {
-                    var building = (Builder_Building) go;
-                    var upgradeComponent = building.GetUnitUpgradeComponent();
-
-
-                    var unitLevel = ca.GetUnitUpgradeLevel(this.IsSpell
-                        ? (Combat_Item) this.Spell
-                        : (Combat_Item) this.Troop);
-                    
                     if (upgradeComponent.CanStartUpgrading(this.IsSpell ? (Combat_Item)this.Spell : (Combat_Item)this.Troop))
                     {
                         var cost = this.IsSpell ? this.Spell.GetUpgradeCost(unitLevel) : this.Troop.GetUpgradeCost(unitLevel);
@@ -104,8 +68,38 @@ namespace ClashLand.Packets.Commands.Client
 #endif
                             ca.Resources.Minus(upgradeResource.GetGlobalID(), cost);
                             upgradeComponent.StartUpgrading(this.IsSpell
-                                ? (Combat_Item) this.Spell
-                                : (Combat_Item) this.Troop);
+                                ? (Combat_Item)this.Spell
+                                : (Combat_Item)this.Troop);
+                        }
+                    }
+                }
+                else
+                {
+                    var building = (Builder_Building)go;
+                    var upgradeComponent = building.GetUnitUpgradeComponent();
+
+                    var unitLevel = ca.GetUnitUpgradeLevel(this.IsSpell
+                        ? (Combat_Item)this.Spell
+                        : (Combat_Item)this.Troop);
+
+                    if (upgradeComponent.CanStartUpgrading(this.IsSpell ? (Combat_Item)this.Spell : (Combat_Item)this.Troop))
+                    {
+                        var cost = this.IsSpell ? this.Spell.GetUpgradeCost(unitLevel) : this.Troop.GetUpgradeCost(unitLevel);
+                        var upgradeResource = this.IsSpell
+                            ? this.Spell.GetUpgradeResource()
+                            : this.Troop.GetUpgradeResource();
+                        if (ca.HasEnoughResources(upgradeResource.GetGlobalID(), cost))
+                        {
+#if DEBUG
+                            Loggers.Log(
+                                this.IsSpell
+                                    ? $"Spell : Upgrading {this.Spell.Row.Name} with ID {GlobalId}"
+                                    : $"Unit : Upgrading {this.Troop.Row.Name} with ID {GlobalId}", true);
+#endif
+                            ca.Resources.Minus(upgradeResource.GetGlobalID(), cost);
+                            upgradeComponent.StartUpgrading(this.IsSpell
+                                ? (Combat_Item)this.Spell
+                                : (Combat_Item)this.Troop);
                         }
                     }
                 }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server;
@@ -28,8 +21,8 @@ namespace ClashLand.Packets.Messages.Client.Clans
         internal override void Process()
         {
             new Own_Home_Data(this.Device).Send();
-            //var defender = ResourcesManager.GetPlayer(AvatarID); // TODO: FIX BUGS		
-            //PacketManager.ProcessOutgoingPacket(new VisitedHomeDataMessage(Client, defender, level)); 
+            //var defender = ResourcesManager.GetPlayer(AvatarID); // TODO: FIX BUGS
+            //PacketManager.ProcessOutgoingPacket(new VisitedHomeDataMessage(Client, defender, level));
         }
     }
 }

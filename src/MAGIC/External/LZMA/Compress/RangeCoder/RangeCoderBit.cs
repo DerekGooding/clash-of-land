@@ -6,11 +6,11 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
     {
         public const int kNumBitModelTotalBits = 11;
         public const uint kBitModelTotal = (1 << kNumBitModelTotalBits);
-        const int kNumMoveBits = 5;
-        const int kNumMoveReducingBits = 2;
+        private const int kNumMoveBits = 5;
+        private const int kNumMoveReducingBits = 2;
         public const int kNumBitPriceShiftBits = 6;
 
-        uint Prob;
+        private uint Prob;
 
         public void Init()
         {
@@ -46,24 +46,24 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
             }
         }
 
-        static UInt32[] ProbPrices = new UInt32[kBitModelTotal >> kNumMoveReducingBits];
+        private static UInt32[] ProbPrices = new UInt32[kBitModelTotal >> kNumMoveReducingBits];
 
         static BitEncoder()
         {
             const int kNumBits = (kNumBitModelTotalBits - kNumMoveReducingBits);
             for (int i = kNumBits - 1; i >= 0; i--)
             {
-                UInt32 start = (UInt32) 1 << (kNumBits - i - 1);
-                UInt32 end = (UInt32) 1 << (kNumBits - i);
+                UInt32 start = (UInt32)1 << (kNumBits - i - 1);
+                UInt32 end = (UInt32)1 << (kNumBits - i);
                 for (UInt32 j = start; j < end; j++)
-                    ProbPrices[j] = ((UInt32) i << kNumBitPriceShiftBits) +
+                    ProbPrices[j] = ((UInt32)i << kNumBitPriceShiftBits) +
                         (((end - j) << kNumBitPriceShiftBits) >> (kNumBits - i - 1));
             }
         }
 
         public uint GetPrice(uint symbol)
         {
-            return ProbPrices[(((Prob - symbol) ^ ((-(int) symbol))) & (kBitModelTotal - 1)) >> kNumMoveReducingBits];
+            return ProbPrices[(((Prob - symbol) ^ ((-(int)symbol))) & (kBitModelTotal - 1)) >> kNumMoveReducingBits];
         }
 
         public uint GetPrice0()
@@ -81,9 +81,9 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
     {
         public const int kNumBitModelTotalBits = 11;
         public const uint kBitModelTotal = (1 << kNumBitModelTotalBits);
-        const int kNumMoveBits = 5;
+        private const int kNumMoveBits = 5;
 
-        uint Prob;
+        private uint Prob;
 
         public void UpdateModel(int numMoveBits, uint symbol)
         {
@@ -100,14 +100,14 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
 
         public uint Decode(RangeCoder.Decoder rangeDecoder)
         {
-            uint newBound = (uint) (rangeDecoder.Range >> kNumBitModelTotalBits) * (uint) Prob;
+            uint newBound = (uint)(rangeDecoder.Range >> kNumBitModelTotalBits) * (uint)Prob;
             if (rangeDecoder.Code < newBound)
             {
                 rangeDecoder.Range = newBound;
                 Prob += (kBitModelTotal - Prob) >> kNumMoveBits;
                 if (rangeDecoder.Range < Decoder.kTopValue)
                 {
-                    rangeDecoder.Code = (rangeDecoder.Code << 8) | (byte) rangeDecoder.Stream.ReadByte();
+                    rangeDecoder.Code = (rangeDecoder.Code << 8) | (byte)rangeDecoder.Stream.ReadByte();
                     rangeDecoder.Range <<= 8;
                 }
                 return 0;
@@ -119,7 +119,7 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
                 Prob -= (Prob) >> kNumMoveBits;
                 if (rangeDecoder.Range < Decoder.kTopValue)
                 {
-                    rangeDecoder.Code = (rangeDecoder.Code << 8) | (byte) rangeDecoder.Stream.ReadByte();
+                    rangeDecoder.Code = (rangeDecoder.Code << 8) | (byte)rangeDecoder.Stream.ReadByte();
                     rangeDecoder.Range <<= 8;
                 }
                 return 1;

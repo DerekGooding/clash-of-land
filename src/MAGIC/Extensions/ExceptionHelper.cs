@@ -49,9 +49,9 @@ namespace ClashLand.Extensions
                 if (inner.Message.Contains("datetime2"))
                 {
                     var propertyNames2 = from x in type.GetProperties()
-                        where x.PropertyType == typeof(DateTime) ||
-                              x.PropertyType == typeof(DateTime?)
-                        select x.Name;
+                                         where x.PropertyType == typeof(DateTime) ||
+                                               x.PropertyType == typeof(DateTime?)
+                                         select x.Name;
                     propertyNames.AddRange(propertyNames2);
                 }
 

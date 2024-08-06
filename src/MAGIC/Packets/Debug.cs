@@ -6,7 +6,6 @@ namespace ClashLand.Packets
 {
     internal class Debug
     {
-
         internal Device Device;
         internal string[] Parameters;
 

@@ -1,16 +1,17 @@
-﻿using ClashLand.Extensions;
-using ClashLand.Logic.Enums;
+﻿using ClashLand.Logic.Enums;
 using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using System.Drawing;
 
 namespace ClashLand.Core.Events
 {
     internal class EventsHandler
     {
         internal static EventHandler EHandler;
+
         internal delegate void EventHandler(Exits Type = Exits.CTRL_CLOSE_EVENT);
+
         internal EventsHandler()
         {
             EventsHandler.EHandler += this.Handler;
@@ -31,6 +32,7 @@ namespace ClashLand.Core.Events
                 Console.WriteLine("Mmh, something happen when we tried to save everything.");
             }
         }
+
         internal void Handler(Exits Type = Exits.CTRL_CLOSE_EVENT)
         {
             Console.WriteLine("The program is shutting down.", Color.IndianRed);

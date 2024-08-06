@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core;
-using ClashLand.Core.Database;
-using ClashLand.Extensions;
+﻿using ClashLand.Core;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
 
@@ -27,7 +20,7 @@ namespace ClashLand.Packets.Messages.Server
         internal override void Encode()
         {
             this.Data.AddString(this.Message);
-            this.Data.AddString(Bot ? "Clashology" : Sender  ? "You" : Regex ? $"[{this.Message_Sender.Rank}] {this.Message_Sender.Name}" : this.Message_Sender.Name);
+            this.Data.AddString(Bot ? "Clashology" : Sender ? "You" : Regex ? $"[{this.Message_Sender.Rank}] {this.Message_Sender.Name}" : this.Message_Sender.Name);
 
             this.Data.AddInt(this.Message_Sender.Level); // Unknown
             this.Data.AddInt(Bot ? 22 : this.Message_Sender.League);

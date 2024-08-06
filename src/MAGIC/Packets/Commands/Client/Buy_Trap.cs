@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
@@ -35,7 +29,7 @@ namespace ClashLand.Packets.Commands.Client
         internal override void Process()
         {
             var ca = this.Device.Player.Avatar;
-            var td = (Traps) CSV.Tables.Get(Gamefile.Traps).GetDataWithID(this.TrapID);
+            var td = (Traps)CSV.Tables.Get(Gamefile.Traps).GetDataWithID(this.TrapID);
             if (!ca.Variables.IsBuilderVillage)
             {
                 var b = new Trap(td, this.Device.Player);

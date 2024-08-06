@@ -1,8 +1,8 @@
-﻿using System;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
+using System;
 
 namespace ClashLand.Packets.Messages.Server.Battle
 {
@@ -38,7 +38,7 @@ namespace ClashLand.Packets.Messages.Server.Battle
         {
             if (this.BattleMode == Battle_Mode.PVP)
             {
-                this.Device.Player.Avatar.Last_Attack_Enemy_ID.Add((int) this.Enemy.Avatar.UserId);
+                this.Device.Player.Avatar.Last_Attack_Enemy_ID.Add((int)this.Enemy.Avatar.UserId);
 
                 if (this.Device.State == State.SEARCH_BATTLE)
                 {
@@ -62,13 +62,12 @@ namespace ClashLand.Packets.Messages.Server.Battle
             }
             else if (this.BattleMode == Battle_Mode.AMICAL)
             {
-                this.Device.State = State.IN_AMICAL_BATTLE;               
+                this.Device.State = State.IN_AMICAL_BATTLE;
             }
-            else if(this.BattleMode == Battle_Mode.NEXT_BUTTON_DISABLE)
+            else if (this.BattleMode == Battle_Mode.NEXT_BUTTON_DISABLE)
             {
-                this.Device.State = State.IN_PC_BATTLE;          
+                this.Device.State = State.IN_PC_BATTLE;
             }
         }
-
     }
 }

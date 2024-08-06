@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Files;
+﻿using ClashLand.Files;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Components
 {

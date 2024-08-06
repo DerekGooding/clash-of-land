@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
-using ClashLand.Packets.Commands.Client.List;
-using ClashLand.Extensions.Binary;
-
+using System.Collections.Generic;
 
 namespace ClashLand.Packets.Commands.Client
 {
-
     internal class Layout_Building_Position : Command
     {
         internal List<BuildingToMove> Buildings;

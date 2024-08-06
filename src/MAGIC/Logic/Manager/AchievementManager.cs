@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ClashLand.Logic.Structure.Slots.Items;
 
 namespace ClashLand.Logic.Manager.AchievementManager
 {

@@ -59,7 +59,7 @@
 
             int chocolateEnd = 0;
             for (int i = 0; i < locations.Count(); i++)
-			{
+            {
                 int vanillaStart = 0;
                 if (i > 0)
                 {
@@ -74,7 +74,7 @@
 
                 formatMap.Add(new KeyValuePair<string, Color>(vanilla, this.defaultColor));
                 formatMap.Add(new KeyValuePair<string, Color>(chocolate, colors[i]));
-			}
+            }
 
             if (chocolateEnd < input.Length)
             {

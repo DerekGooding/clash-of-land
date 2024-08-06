@@ -1,7 +1,6 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
 using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
@@ -17,9 +16,9 @@ namespace ClashLand.Packets.Messages.Client.Clans
     internal class Create_Alliance : Message
     {
         internal Clan Clan = Resources.Clans.New();
+
         public Create_Alliance(Device device) : base(device)
         {
-
         }
 
         internal override void Decode()

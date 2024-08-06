@@ -10,6 +10,7 @@ namespace ClashLand.Packets.Commands.Server
         {
             this.Identifier = 1;
         }
+
         public Joined_Alliance(Device _Client, Clan Clan) : base(_Client)
         {
             this.Identifier = 1;
@@ -20,6 +21,7 @@ namespace ClashLand.Packets.Commands.Server
         {
             this.Data.AddRange(this.Clan.ToBytesHeader());
         }
+
         public void SetAlliance(Clan Alliance)
         {
             Clan = Alliance;

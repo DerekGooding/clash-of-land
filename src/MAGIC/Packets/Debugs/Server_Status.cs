@@ -1,13 +1,10 @@
-﻿using System;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
-using ClashLand.Core.Networking;
-
+using System;
 
 namespace ClashLand.Packets.Debugs
 {
-
-
     internal class Server_Status : Debug
     {
         public Server_Status(Device Device, params string[] Parameters) : base(Device, Parameters)

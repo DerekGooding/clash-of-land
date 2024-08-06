@@ -1,10 +1,10 @@
-﻿using System;
-using ClashLand.Extensions;
-using ClashLand.Logic.Structure.Slots;
-using Newtonsoft.Json;
-using ClashLand.Logic.Structure.Slots.Items;
-using Newtonsoft.Json.Linq;
+﻿using ClashLand.Extensions;
 using ClashLand.Files;
+using ClashLand.Logic.Structure.Slots;
+using ClashLand.Logic.Structure.Slots.Items;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace ClashLand.Logic
 {
@@ -68,6 +68,7 @@ namespace ClashLand.Logic
         [JsonProperty("prep_skip")] internal int Preparation_Skip;
 
         [JsonProperty("battle_id")] internal long Battle_ID;
+
         internal Battle()
         {
             //Batle
@@ -111,8 +112,8 @@ namespace ClashLand.Logic
         internal string Json => JsonConvert.SerializeObject(new
         {
             level = this.Level,
-            attacker = this.Attacker, //TODO: Only add required stuff,Possible issue..Gain access to other user acc 
-            defender = this.Defender, //TODO: Only add required stuff,Possible issue..Gain access to other user acc 
+            attacker = this.Attacker, //TODO: Only add required stuff,Possible issue..Gain access to other user acc
+            defender = this.Defender, //TODO: Only add required stuff,Possible issue..Gain access to other user acc
             end_tick = this.End_Tick,
             timestamp = this.TimeStamp,
             cmd = this.Commands,

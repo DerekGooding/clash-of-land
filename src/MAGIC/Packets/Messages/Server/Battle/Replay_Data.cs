@@ -1,7 +1,5 @@
-﻿using System;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
-using ClashLand.Extensions;
-using ClashLand.Extensions.List;
 
 namespace ClashLand.Packets.Messages.Server.Battle
 {

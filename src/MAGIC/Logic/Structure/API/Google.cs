@@ -1,15 +1,14 @@
-﻿using System.IO;
-using System.Threading;
-using Newtonsoft.Json;
-
+﻿using global::Google.Apis.Auth.OAuth2;
 using global::Google.Apis.Games.v1;
-using global::Google.Apis.Auth.OAuth2;
 using global::Google.Apis.Services;
 using global::Google.Apis.Util.Store;
+using Newtonsoft.Json;
+using System.IO;
+using System.Threading;
 
 namespace ClashLand.Logic.Structure.API
 {
-    internal class Google 
+    internal class Google
     {
         internal const string GlobalPlayersID = "";
         internal const string GlobalClansID = "";
@@ -69,7 +68,7 @@ namespace ClashLand.Logic.Structure.API
             this.GetCredentials();
             this.Login();
 
-             var ScoreSubmit = this.OClient.Scores.Submit(Google.GlobalPlayersID, this.Player.Trophies);
+            var ScoreSubmit = this.OClient.Scores.Submit(Google.GlobalPlayersID, this.Player.Trophies);
             var ScoreResult = ScoreSubmit.Execute();
         }
     }

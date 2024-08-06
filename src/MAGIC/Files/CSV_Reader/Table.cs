@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+
     public class Table
     {
-
         public Table(string path)
         {
             if (path == null)
@@ -18,6 +18,7 @@
             using (var file = new FileStream(path, FileMode.Open))
                 ParseTable(file);
         }
+
         internal readonly RowCollection _rows;
         internal readonly ColumnCollection _columns;
 
@@ -94,6 +95,7 @@
                     prev._end = rowCount;
             }
         }
+
         private string[] ParseLine(string line)
         {
             var token = string.Empty;
@@ -126,10 +128,10 @@
 
             return columns.ToArray();
         }
+
         public string GetValueAt(int _Column, int _Row)
         {
             return this.Columns[_Column].Get(_Row);
         }
     }
 }
-

@@ -1,7 +1,7 @@
-﻿using System.Text;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions;
 using ClashLand.Logic;
+using System.Text;
 
 namespace ClashLand.Packets.Debugs
 {
@@ -9,9 +9,9 @@ namespace ClashLand.Packets.Debugs
     {
         internal long UserID;
         internal StringBuilder Help;
+
         public Statistics(Device device, params string[] Parameters) : base(device, Parameters)
         {
-
         }
 
         internal override void Process()
@@ -32,7 +32,6 @@ namespace ClashLand.Packets.Debugs
                         builder.AppendLine($"Date joined: {level.Avatar.Created}");
                         builder.AppendLine($"Date saved: {level.Avatar.LastSave}");
                         SendChatMessage(builder.ToString());
-
                     }
                     else
                         SendChatMessage("Unable to fetch stats,Player is null");

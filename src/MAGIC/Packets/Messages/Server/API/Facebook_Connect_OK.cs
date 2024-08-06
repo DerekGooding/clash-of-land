@@ -1,5 +1,4 @@
-﻿using ClashLand.Extensions.List;
-using ClashLand.Logic;
+﻿using ClashLand.Logic;
 
 namespace ClashLand.Packets.Messages.Server.API
 {
@@ -9,6 +8,7 @@ namespace ClashLand.Packets.Messages.Server.API
         {
             this.Identifier = 24201;
         }
+
         internal override void Encode()
         {
             this.Data.Add(1);

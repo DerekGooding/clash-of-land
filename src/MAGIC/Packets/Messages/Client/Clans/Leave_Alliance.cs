@@ -1,27 +1,23 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
 using ClashLand.Packets.Commands.Server;
 using ClashLand.Packets.Messages.Server;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClashLand.Packets.Messages.Client.Clans
 {
     internal class Leave_Alliance : Message
     {
         internal bool done;
+
         public Leave_Alliance(Device device) : base(device)
         {
-
         }
+
         internal override void Process()
         {
             Player User = this.Device.Player.Avatar;
@@ -89,8 +85,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
                         Event_Player_Name = this.Device.Player.Avatar.Name
                     });
                 }
-
-
             }
         }
     }

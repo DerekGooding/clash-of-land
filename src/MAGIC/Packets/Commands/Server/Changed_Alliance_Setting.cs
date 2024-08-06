@@ -1,10 +1,5 @@
 ﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClashLand.Packets.Commands.Server
 {
@@ -22,7 +17,7 @@ namespace ClashLand.Packets.Commands.Server
             this.Data.AddLong(this.Clan.Clan_ID);
             this.Data.AddInt(this.Clan.Badge);
             this.Data.AddInt(this.Clan.Level);
-            this.Data.AddInt(-1); 
+            this.Data.AddInt(-1);
         }
     }
 }

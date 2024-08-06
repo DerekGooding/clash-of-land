@@ -1,6 +1,6 @@
-﻿using System;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using StackExchange.Redis;
+using System;
 
 namespace ClashLand.Core.Database
 {

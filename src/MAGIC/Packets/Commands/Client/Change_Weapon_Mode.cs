@@ -8,14 +8,13 @@ namespace ClashLand.Packets.Commands.Client
     {
         internal int BuildingID;
         internal int Tick;
+
         public Change_Weapon_Mode(Reader reader, Device client, int id) : base(reader, client, id)
         {
-
         }
 
         internal override void Decode()
         {
-
             this.BuildingID = this.Reader.ReadInt32();
             this.Reader.ReadByte();
             this.Reader.ReadInt32();
@@ -27,7 +26,7 @@ namespace ClashLand.Packets.Commands.Client
             var Object = this.Device.Player.Avatar.Variables.IsBuilderVillage ? this.Device.Player.GameObjectManager.GetBuilderVillageGameObjectByID(this.BuildingID) : this.Device.Player.GameObjectManager.GetGameObjectByID(this.BuildingID);
             if (Object?.GetComponent(1, true) == null)
                 return;
-            var a = ((Combat_Component) Object.GetComponent(1, false));
+            var a = ((Combat_Component)Object.GetComponent(1, false));
             if (a.AltAttackMode)
             {
                 a.AttackMode = !a.AttackMode;

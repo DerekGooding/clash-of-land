@@ -3,7 +3,6 @@ using ClashLand.Extensions.List;
 using ClashLand.Logic.Structure.Slots.Items;
 using ClashLand.Packets.Messages.Server.Clans;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure.Slots
@@ -102,6 +101,5 @@ namespace ClashLand.Logic.Structure.Slots
                 return Packet.ToArray();
             }
         }
-
     }
 }

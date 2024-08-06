@@ -1,6 +1,6 @@
-﻿using System;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Packets;
+using System;
 
 namespace ClashLand.Core.Networking
 {
@@ -12,7 +12,6 @@ namespace ClashLand.Core.Networking
             Message.Decode();
             Message.Process();
         }
-
 
         internal static void Send(this Message Message)
         {
@@ -31,10 +30,10 @@ namespace ClashLand.Core.Networking
 #if DEBUG
                 Loggers.Log(Message, Utils.Padding(Message.Device.Socket.RemoteEndPoint.ToString(), 15));
 #endif
-                    Message.Encrypt();
+                Message.Encrypt();
 
                 Gateway.Send(Message);
-      
+
                 Message.Process();
             }
             catch (Exception)

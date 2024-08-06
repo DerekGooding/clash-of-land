@@ -1,11 +1,8 @@
-﻿using ClashLand.Logic;
-using ClashLand.Extensions.Binary;
-
+﻿using ClashLand.Extensions.Binary;
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client.Unknown
 {
-    
-
     internal class Unknown_560 : Command
     {
         public Unknown_560(Reader Reader, Device Device, int Identifier) : base(Reader, Device, Identifier)

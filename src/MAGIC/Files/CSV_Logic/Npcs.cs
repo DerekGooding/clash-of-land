@@ -9,6 +9,7 @@ namespace ClashLand.Files.CSV_Logic
         {
             Load(Row);
         }
+
         public string Name { get; set; }
         public string MapInstanceName { get; set; }
         public string[] MapDependencies { get; set; }
@@ -22,6 +23,5 @@ namespace ClashLand.Files.CSV_Logic
         public bool AlwaysUnlocked { get; set; }
         public string PlayerName { get; set; }
         public string AllianceName { get; set; }
-
     }
 }

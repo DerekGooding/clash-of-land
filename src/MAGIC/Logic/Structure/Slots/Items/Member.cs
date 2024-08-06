@@ -1,7 +1,6 @@
-﻿using System;
-using ClashLand.Extensions;
-using ClashLand.Logic.Enums;
+﻿using ClashLand.Logic.Enums;
 using Newtonsoft.Json;
+using System;
 
 namespace ClashLand.Logic.Structure.Slots.Items
 {
@@ -28,7 +27,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
             this.UserID = Player.UserId;
 
             this.Joined = DateTime.UtcNow;
-            this.Role = Role.Member;       
+            this.Role = Role.Member;
         }
     }
 }

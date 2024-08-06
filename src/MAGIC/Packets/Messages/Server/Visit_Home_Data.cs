@@ -1,12 +1,13 @@
-﻿using System;   
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
+using System;
 
 namespace ClashLand.Packets.Messages.Server
 {
     internal class Visit_Home_Data : Message
     {
         internal Level Player = null;
+
         internal Visit_Home_Data(Device Device, Level HomeOwner) : base(Device)
         {
             this.Identifier = 24113;
@@ -19,7 +20,6 @@ namespace ClashLand.Packets.Messages.Server
         {
             using (Objects Home = new Objects(Player, Player.JSON))
             {
-
                 this.Data.AddInt((int)(Home.Timestamp - DateTime.UtcNow).TotalSeconds);
 
                 this.Data.AddRange(Home.ToBytes);

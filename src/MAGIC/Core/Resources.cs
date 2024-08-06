@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading;
-using ClashLand.Core.API;
+﻿using ClashLand.Core.API;
 using ClashLand.Core.Events;
 using ClashLand.Core.Networking;
+using System;
 
 namespace ClashLand.Core
 {

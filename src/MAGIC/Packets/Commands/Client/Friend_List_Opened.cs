@@ -1,15 +1,8 @@
-using ClashLand.Logic;
-using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
-using ClashLand.Files.CSV_Logic;
-using ClashLand.Logic.Structure.Slots.Items;
-using ClashLand.Files;
-using ClashLand.Logic.Enums;
-
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client
 {
-
     internal class Friend_List_Opened : Command
 
     {
@@ -28,9 +21,9 @@ namespace ClashLand.Packets.Commands.Client
             level.GetPlayerAvatar().UpdateLastFriendListOpened();
             return 0;
         }*/
+
         public Friend_List_Opened(Reader Reader, Device Device, int Identifier) : base(Reader, Device, Identifier)
         {
-
         }
 
         public int Tick { get; private set; }

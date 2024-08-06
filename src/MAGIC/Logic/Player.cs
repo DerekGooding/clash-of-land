@@ -1,5 +1,4 @@
-﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Helpers;
@@ -7,8 +6,6 @@ using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots;
 using ClashLand.Logic.Structure.Slots.Items;
-using ClashLand.Logic.Manager.AchievementManager;
-using ClashLand.Packets.Messages.Server.Errors;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -24,7 +21,6 @@ namespace ClashLand.Logic
         [JsonIgnore] internal long Battle_ID;
         [JsonIgnore] internal int Amical_ID;
         [JsonIgnore] internal int ObstacleClearCount;
-        
 
         internal void SetAchievment(AchievementData ad, bool v)
         {
@@ -41,10 +37,9 @@ namespace ClashLand.Logic
             set
             {
                 this.UserHighId = Convert.ToInt32(value >> 32);
-                this.UserLowId = (int) value;
+                this.UserLowId = (int)value;
             }
         }
-
 
         [JsonIgnore]
         internal long ClanId
@@ -53,7 +48,7 @@ namespace ClashLand.Logic
             set
             {
                 this.ClanHighID = Convert.ToInt32(value >> 32);
-                this.ClanLowID = (int) value;
+                this.ClanLowID = (int)value;
             }
         }
 
@@ -64,7 +59,7 @@ namespace ClashLand.Logic
             bool found = false;
             while (!found && i < table.Datas.Count)
             {
-                var league = (Leagues) table.Datas[i];
+                var league = (Leagues)table.Datas[i];
                 if (this.Trophies <= league.BucketPlacementRangeHigh[league.BucketPlacementRangeHigh.Length - 1] && this.Trophies >= league.BucketPlacementRangeLow[0])
                 {
                     found = true;
@@ -105,7 +100,6 @@ namespace ClashLand.Logic
         [JsonProperty("legend_troph")] internal int Legendary_Trophies; //= Core.Resources.Random.Next(0, 100);
         [JsonProperty("league_type")] internal int League;
 
-
         [JsonProperty("war_state")] internal bool WarState = true;
         [JsonProperty("name_state")] internal byte NameState;
 
@@ -136,7 +130,6 @@ namespace ClashLand.Logic
         [JsonProperty("spells")] internal Units Spells;
         [JsonProperty("alliance_units")] internal Castle_Units Castle_Units;
         [JsonProperty("alliance_spells")] internal Castle_Units Castle_Spells;
-
 
         [JsonProperty("unit_upgrades")] internal Upgrades Unit_Upgrades;
         [JsonProperty("spell_upgrades")] internal Upgrades Spell_Upgrades;
@@ -173,13 +166,11 @@ namespace ClashLand.Logic
 
         internal Player()
         {
-
             this.Facebook = new Structure.API.Facebook(this);
             this.Google = new Structure.API.Google(this);
             this.Gamecenter = new Structure.API.Gamecenter(this);
             this.Achievements = new AchievementsSlot();
             this.Inbox = new Inbox(this);
-
 
             this.Castle_Resources = new Resources(this);
             this.Resources = new Resources(this);
@@ -246,7 +237,6 @@ namespace ClashLand.Logic
                 _Packet.AddLong(this.UserId);
                 _Packet.AddLong(this.UserId);
 
-
                 if (this.ClanId > 0)
                 {
                     Clan clan = Core.Resources.Clans.Get(ClanId);
@@ -264,7 +254,6 @@ namespace ClashLand.Logic
                         {
                             // _Packet.AddLong(1); // War ID
                         }
-
                     }
                     else
                     {
@@ -290,7 +279,6 @@ namespace ClashLand.Logic
                 _Packet.AddInt(0);
                 _Packet.AddInt(0);
                 _Packet.AddInt(0);
-
 
                 _Packet.AddInt(0);
                 _Packet.AddInt(0);
@@ -393,18 +381,17 @@ namespace ClashLand.Logic
                     _Packet.AddInt(_Spell.Level);
                 }
 
-
                 _Packet.AddInt(this.Tutorials.Count);
                 foreach (var Tutorial in this.Tutorials)
                 {
                     _Packet.AddInt(Tutorial);
                 }
 
-                 _Packet.AddInt(this.Achievements.Count);
-                 foreach (var Achivement in this.Achievements)
-                 {
-                     _Packet.AddInt(Achivement.Id);
-                 }
+                _Packet.AddInt(this.Achievements.Count);
+                foreach (var Achivement in this.Achievements)
+                {
+                    _Packet.AddInt(Achivement.Id);
+                }
                 _Packet.AddInt(this.Achievements.Count); //Achievements Progress
                 foreach (var Achivement in this.Achievements)
                 {
@@ -447,7 +434,6 @@ namespace ClashLand.Logic
 
         internal void Set_Unit_Count_V2(Combat_Item cd, int count)
         {
-
             var index = GetDataIndex(this.Units2, cd);
             if (index != -1)
                 this.Units2[index].Count = count;
@@ -534,82 +520,83 @@ namespace ClashLand.Logic
             switch (cd.GetCombatItemType())
             {
                 case 2:
-                {
-                    int index = GetDataIndex(this.Heroes_Upgrades, cd);
-                    if (index != -1)
                     {
-                        result = this.Heroes_Upgrades[index].Count;
+                        int index = GetDataIndex(this.Heroes_Upgrades, cd);
+                        if (index != -1)
+                        {
+                            result = this.Heroes_Upgrades[index].Count;
+                        }
+                        break;
                     }
-                    break;
-                }
                 case 1:
-                {
-                    int index = GetDataIndex(this.Spell_Upgrades, cd);
-                    if (index != -1)
                     {
-                        result = this.Spell_Upgrades[index].Count;
+                        int index = GetDataIndex(this.Spell_Upgrades, cd);
+                        if (index != -1)
+                        {
+                            result = this.Spell_Upgrades[index].Count;
+                        }
+                        break;
                     }
-                    break;
-                }
 
                 default:
-                {
-                    int index = GetDataIndex(this.Unit_Upgrades, cd);
-                    if (index != -1)
                     {
-                        result = this.Unit_Upgrades[index].Count;
+                        int index = GetDataIndex(this.Unit_Upgrades, cd);
+                        if (index != -1)
+                        {
+                            result = this.Unit_Upgrades[index].Count;
+                        }
+                        break;
                     }
-                    break;
-                }
             }
             return result;
         }
+
         public void SetUnitUpgradeLevel(Combat_Item cd, int level)
         {
             switch (cd.GetCombatItemType())
             {
                 case 2:
-                {
-                    int index = GetDataIndex(this.Heroes_Upgrades, cd);
-                    if (index != -1)
                     {
-                        this.Heroes_Upgrades[index].Count = level;
+                        int index = GetDataIndex(this.Heroes_Upgrades, cd);
+                        if (index != -1)
+                        {
+                            this.Heroes_Upgrades[index].Count = level;
+                        }
+                        else
+                        {
+                            Slot ds = new Slot(cd.GetGlobalID(), level);
+                            this.Heroes_Upgrades.Add(ds);
+                        }
+                        break;
                     }
-                    else
-                    {
-                        Slot ds = new Slot(cd.GetGlobalID(), level);
-                        this.Heroes_Upgrades.Add(ds);
-                    }
-                    break;
-                }
                 case 1:
-                {
-                    int index = GetDataIndex(this.Spell_Upgrades, cd);
-                    if (index != -1)
                     {
-                        this.Spell_Upgrades[index].Count = level;
+                        int index = GetDataIndex(this.Spell_Upgrades, cd);
+                        if (index != -1)
+                        {
+                            this.Spell_Upgrades[index].Count = level;
+                        }
+                        else
+                        {
+                            Slot ds = new Slot(cd.GetGlobalID(), level);
+                            this.Spell_Upgrades.Add(ds);
+                        }
+                        break;
                     }
-                    else
-                    {
-                        Slot ds = new Slot(cd.GetGlobalID(), level);
-                        this.Spell_Upgrades.Add(ds);
-                    }
-                    break;
-                }
                 default:
-                {
-                    int index = GetDataIndex(this.Unit_Upgrades, cd);
-                    if (index != -1)
                     {
-                        this.Unit_Upgrades[index].Count = level;
+                        int index = GetDataIndex(this.Unit_Upgrades, cd);
+                        if (index != -1)
+                        {
+                            this.Unit_Upgrades[index].Count = level;
+                        }
+                        else
+                        {
+                            Slot ds = new Slot(cd.GetGlobalID(), level);
+                            this.Unit_Upgrades.Add(ds);
+                        }
+                        break;
                     }
-                    else
-                    {
-                        Slot ds = new Slot(cd.GetGlobalID(), level);
-                        this.Unit_Upgrades.Add(ds);
-                    }
-                    break;
-                }
             }
         }
 

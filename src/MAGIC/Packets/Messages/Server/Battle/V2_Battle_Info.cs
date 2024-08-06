@@ -1,12 +1,13 @@
-﻿using System;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
+using System;
 
 namespace ClashLand.Packets.Messages.Server.Battle
 {
     internal class V2_Battle_Info : Message
     {
         internal Level Enemy;
+
         public V2_Battle_Info(Device Device, Level Enemy) : base(Device)
         {
             this.Identifier = 24372;
@@ -30,7 +31,7 @@ namespace ClashLand.Packets.Messages.Server.Battle
             this.Data.AddLong(this.Enemy.Avatar.UserId);
             this.Data.AddLong(this.Enemy.Avatar.UserId);
             this.Data.AddString(this.Enemy.Avatar.Name);
-            
+
             this.Data.AddInt(2);
             this.Data.AddByte(0);
             this.Data.AddVInt(15000);
@@ -39,7 +40,6 @@ namespace ClashLand.Packets.Messages.Server.Battle
             this.Data.AddVInt(15000);
             this.Data.AddVInt(0);
             this.Data.AddVInt((int)TimeSpan.FromMinutes(4).TotalSeconds);
-
         }
     }
 }

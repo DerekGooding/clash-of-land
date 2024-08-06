@@ -15,7 +15,7 @@ namespace ClashLand.Files
 
             NPC.Levels.Add(17000000, File.ReadAllText(@"Gamefiles\level\tutorial_npc.json", Encoding.UTF8));
             NPC.Levels.Add(17000001, File.ReadAllText(@"Gamefiles\level\tutorial_npc2.json", Encoding.UTF8));
-           
+
             for (int _Index = 0; _Index < Files.Length; _Index++)
             {
                 NPC.Levels.Add(_Index + 17000002, File.ReadAllText($@"Gamefiles\level\npc{_Index + 1}.json", Encoding.UTF8));

@@ -1,7 +1,5 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
@@ -10,11 +8,6 @@ using ClashLand.Logic.Structure.Slots.Items;
 using ClashLand.Packets.Commands.Server;
 using ClashLand.Packets.Messages.Server;
 using ClashLand.Packets.Messages.Server.Clans;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClashLand.Packets.Messages.Client.Clans
 {
@@ -28,10 +21,11 @@ namespace ClashLand.Packets.Messages.Client.Clans
         internal bool PaidTroop;
 
         internal bool IsSpell;
+
         public Donate_Alliance_Unit(Device device) : base(device)
         {
-
         }
+
         internal override void Decode()
         {
             this.Reader.ReadInt32();
@@ -93,7 +87,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
                 {
                     if (Stream.Max_Troops >= (Stream.Used_Space_Troops + this.Troop.HousingSpace))
                     {
-
                         var Unit_Level = this.Device.Player.Avatar.GetUnitUpgradeLevel(this.Troop);
                         Stream.AddTroop(this.Device.Player.Avatar.UserId, this.GlobalId, 1, Unit_Level);
                         Stream.Used_Space_Troops += this.Troop.HousingSpace;

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure.Slots.Items
 {
@@ -16,7 +16,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
         [JsonProperty("units")] internal List<int[]> Units = new List<int[]>();
 
         [JsonProperty("levels")] internal List<int[]> Levels = new List<int[]>();
-        
+
         [JsonProperty("stats")] internal Replay_Stats Stats = new Replay_Stats();
 
         internal void Add_Unit(int Data, int Count)
@@ -26,7 +26,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
             if (Index > -1)
                 this.Units[Index][1] += Count;
             else
-                this.Units.Add(new[] {Data, Count});
+                this.Units.Add(new[] { Data, Count });
         }
 
         internal void Add_Level(int Data, int Count)
@@ -36,7 +36,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
             if (Index > -1)
                 this.Levels[Index][1] += Count;
             else
-                this.Levels.Add(new[] {Data, Count});
+                this.Levels.Add(new[] { Data, Count });
         }
 
         internal string Json => JsonConvert.SerializeObject(new

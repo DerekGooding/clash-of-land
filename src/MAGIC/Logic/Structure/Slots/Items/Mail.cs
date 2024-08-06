@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic.Enums;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure.Slots.Items
 {
@@ -24,6 +24,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Ignore)] internal string Message = string.Empty;
 
         [JsonProperty("battle_id", DefaultValueHandling = DefaultValueHandling.Ignore)] internal long Battle_ID;
+
         [JsonIgnore]
         internal int GetTime => (int)DateTime.UtcNow.Subtract(this.Sent).TotalSeconds;
 
@@ -45,13 +46,13 @@ namespace ClashLand.Logic.Structure.Slots.Items
                     case Avatar_Stream.DEFENSE:
                         Battle = Core.Resources.Battles.Get(Battle_ID, false);
                         break;
+
                     case Avatar_Stream.REMOVED_CLAN:
                     case Avatar_Stream.CLAN_MAIL:
                     case Avatar_Stream.INVITATION:
                         Clan = Core.Resources.Clans.Get(this.Alliance_ID, false);
                         break;
                 }
-                
 
                 List<byte> _Packet = new List<byte>();
                 _Packet.AddInt((int)this.Stream_Type);
@@ -65,6 +66,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
                         _Packet.AddInt(Battle.Defender.Level);
                         _Packet.AddInt(Battle.Defender.League);
                         break;
+
                     case Avatar_Stream.DEFENSE:
                         _Packet.AddLong(this.Battle_ID);
                         _Packet.AddBool(true);
@@ -73,6 +75,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
                         _Packet.AddInt(Battle.Attacker.Level);
                         _Packet.AddInt(Battle.Attacker.League);
                         break;
+
                     default:
                         _Packet.AddInt(this.Message_HighID);
                         _Packet.AddInt(this.Message_LowID);
@@ -120,6 +123,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
                         _Packet.AddString(Clan.Name);
                         _Packet.AddInt(Clan.Badge);
                         break;
+
                     case Avatar_Stream.INVITATION:
                         _Packet.AddLong(this.Alliance_ID);
                         _Packet.AddString(Clan.Name);

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using ClashLand.Files.CSV_Helpers;
+﻿using ClashLand.Files.CSV_Helpers;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure
 {
@@ -68,7 +63,7 @@ namespace ClashLand.Logic.Structure
         {
             X = jsonObject["x"].ToObject<int>();
             Y = jsonObject["y"].ToObject<int>();
-        
+
             /* if (TownHallLevel() >= 4)
              {
                  L1X = jsonObject["l1x"].ToObject<int>();
@@ -118,7 +113,7 @@ namespace ClashLand.Logic.Structure
                 {
                     jsonObject.Add("l3x", L3X);
                     jsonObject.Add("l3y", L3Y);
-                }  
+                }
             }*/
 
             foreach (Component c in this.Components)
@@ -134,8 +129,8 @@ namespace ClashLand.Logic.Structure
             /*if (Layout == LayoutID())
             {*/
 
-            X = (int) vector.X;
-            Y = (int) vector.Y;
+            X = (int)vector.X;
+            Y = (int)vector.Y;
             //}
             /*if (Layout == Convert.ToInt32(Layouts.Layout.WarLayout1))
             {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Extensions.Binary;
-using ClashLand.Logic;
+﻿using ClashLand.Logic;
 using ClashLand.Packets.Client.Authentication;
 using ClashLand.Packets.Messages.Client;
 using ClashLand.Packets.Messages.Client.API;
@@ -10,6 +7,8 @@ using ClashLand.Packets.Messages.Client.Battle;
 using ClashLand.Packets.Messages.Client.Clans;
 using ClashLand.Packets.Messages.Client.Clans.War;
 using ClashLand.Packets.Messages.Client.Leaderboard;
+using System;
+using System.Collections.Generic;
 
 namespace ClashLand.Packets
 {
@@ -80,6 +79,7 @@ namespace ClashLand.Packets
                 {16003, typeof(Device_Link_Confirm_Yes)},
             };
         }
+
         internal static Message Parse(Device client, int messageId)
         {
             if (Messages.ContainsKey(messageId))

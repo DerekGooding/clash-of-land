@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server;
 
@@ -26,8 +25,7 @@ namespace ClashLand.Packets.Messages.Client
 
         internal override void Process()
         {
-            new Avatar_Profile_Data(this.Device) {UserID = this.UserID}.Send();
+            new Avatar_Profile_Data(this.Device) { UserID = this.UserID }.Send();
         }
     }
-
 }

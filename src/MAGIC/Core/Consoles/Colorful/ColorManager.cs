@@ -30,7 +30,7 @@
         /// necessary to keep track of this, because the Windows console can only display 16 different colors in
         /// a given session.</param>
         /// <param name="initialColorChangeCountValue">The number of color changes which have already occurred.</param>
-        public ColorManager(ColorStore colorStore, ColorMapper colorMapper, int maxColorChanges , int initialColorChangeCountValue, bool isInCompatibilityMode)
+        public ColorManager(ColorStore colorStore, ColorMapper colorMapper, int maxColorChanges, int initialColorChangeCountValue, bool isInCompatibilityMode)
         {
             this.colorStore = colorStore;
             this.colorMapper = colorMapper;
@@ -82,7 +82,7 @@
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
 #endif
-                    return this.GetConsoleColorNative(color);
+                return this.GetConsoleColorNative(color);
 
 #if NETSTANDARD1_3
                 }

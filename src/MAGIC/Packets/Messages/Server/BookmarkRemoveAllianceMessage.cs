@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using ClashLand.Extensions.List;
-using ClashLand.Core;
-using ClashLand.Files;
-using ClashLand.Logic;
-using ClashLand.Logic.Structure.Slots;
+﻿using ClashLand.Logic;
 
 namespace ClashLand.Packets.Messages.Server
 {

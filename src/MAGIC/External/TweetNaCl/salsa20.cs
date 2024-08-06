@@ -35,38 +35,38 @@
 
             for (i = salsa20.ROUNDS; i > 0; i -= 2)
             {
-                x4 ^= (int) salsa20.rotate(x0 + x12, 7);
-                x8 ^= (int) salsa20.rotate(x4 + x0, 9);
-                x12 ^= (int) salsa20.rotate(x8 + x4, 13);
-                x0 ^= (int) salsa20.rotate(x12 + x8, 18);
-                x9 ^= (int) salsa20.rotate(x5 + x1, 7);
-                x13 ^= (int) salsa20.rotate(x9 + x5, 9);
-                x1 ^= (int) salsa20.rotate(x13 + x9, 13);
-                x5 ^= (int) salsa20.rotate(x1 + x13, 18);
-                x14 ^= (int) salsa20.rotate(x10 + x6, 7);
-                x2 ^= (int) salsa20.rotate(x14 + x10, 9);
-                x6 ^= (int) salsa20.rotate(x2 + x14, 13);
-                x10 ^= (int) salsa20.rotate(x6 + x2, 18);
-                x3 ^= (int) salsa20.rotate(x15 + x11, 7);
-                x7 ^= (int) salsa20.rotate(x3 + x15, 9);
-                x11 ^= (int) salsa20.rotate(x7 + x3, 13);
-                x15 ^= (int) salsa20.rotate(x11 + x7, 18);
-                x1 ^= (int) salsa20.rotate(x0 + x3, 7);
-                x2 ^= (int) salsa20.rotate(x1 + x0, 9);
-                x3 ^= (int) salsa20.rotate(x2 + x1, 13);
-                x0 ^= (int) salsa20.rotate(x3 + x2, 18);
-                x6 ^= (int) salsa20.rotate(x5 + x4, 7);
-                x7 ^= (int) salsa20.rotate(x6 + x5, 9);
-                x4 ^= (int) salsa20.rotate(x7 + x6, 13);
-                x5 ^= (int) salsa20.rotate(x4 + x7, 18);
-                x11 ^= (int) salsa20.rotate(x10 + x9, 7);
-                x8 ^= (int) salsa20.rotate(x11 + x10, 9);
-                x9 ^= (int) salsa20.rotate(x8 + x11, 13);
-                x10 ^= (int) salsa20.rotate(x9 + x8, 18);
-                x12 ^= (int) salsa20.rotate(x15 + x14, 7);
-                x13 ^= (int) salsa20.rotate(x12 + x15, 9);
-                x14 ^= (int) salsa20.rotate(x13 + x12, 13);
-                x15 ^= (int) salsa20.rotate(x14 + x13, 18);
+                x4 ^= (int)salsa20.rotate(x0 + x12, 7);
+                x8 ^= (int)salsa20.rotate(x4 + x0, 9);
+                x12 ^= (int)salsa20.rotate(x8 + x4, 13);
+                x0 ^= (int)salsa20.rotate(x12 + x8, 18);
+                x9 ^= (int)salsa20.rotate(x5 + x1, 7);
+                x13 ^= (int)salsa20.rotate(x9 + x5, 9);
+                x1 ^= (int)salsa20.rotate(x13 + x9, 13);
+                x5 ^= (int)salsa20.rotate(x1 + x13, 18);
+                x14 ^= (int)salsa20.rotate(x10 + x6, 7);
+                x2 ^= (int)salsa20.rotate(x14 + x10, 9);
+                x6 ^= (int)salsa20.rotate(x2 + x14, 13);
+                x10 ^= (int)salsa20.rotate(x6 + x2, 18);
+                x3 ^= (int)salsa20.rotate(x15 + x11, 7);
+                x7 ^= (int)salsa20.rotate(x3 + x15, 9);
+                x11 ^= (int)salsa20.rotate(x7 + x3, 13);
+                x15 ^= (int)salsa20.rotate(x11 + x7, 18);
+                x1 ^= (int)salsa20.rotate(x0 + x3, 7);
+                x2 ^= (int)salsa20.rotate(x1 + x0, 9);
+                x3 ^= (int)salsa20.rotate(x2 + x1, 13);
+                x0 ^= (int)salsa20.rotate(x3 + x2, 18);
+                x6 ^= (int)salsa20.rotate(x5 + x4, 7);
+                x7 ^= (int)salsa20.rotate(x6 + x5, 9);
+                x4 ^= (int)salsa20.rotate(x7 + x6, 13);
+                x5 ^= (int)salsa20.rotate(x4 + x7, 18);
+                x11 ^= (int)salsa20.rotate(x10 + x9, 7);
+                x8 ^= (int)salsa20.rotate(x11 + x10, 9);
+                x9 ^= (int)salsa20.rotate(x8 + x11, 13);
+                x10 ^= (int)salsa20.rotate(x9 + x8, 18);
+                x12 ^= (int)salsa20.rotate(x15 + x14, 7);
+                x13 ^= (int)salsa20.rotate(x12 + x15, 9);
+                x14 ^= (int)salsa20.rotate(x13 + x12, 13);
+                x15 ^= (int)salsa20.rotate(x14 + x13, 18);
             }
 
             x0 += j0;
@@ -137,8 +137,8 @@
                 for (int i = 8; i < 16; ++i)
                 {
                     u += inv[i] & 0xff;
-                    inv[i] = (byte) u;
-                    u = (int) ((uint) u >> 8);
+                    inv[i] = (byte)u;
+                    u = (int)((uint)u >> 8);
                 }
 
                 clen -= 64;
@@ -187,7 +187,7 @@
 
                 for (int i = 0; i < 64; ++i)
                 {
-                    c[coffset + i] = (byte) (m[moffset + i] ^ block[i]);
+                    c[coffset + i] = (byte)(m[moffset + i] ^ block[i]);
                 }
 
                 int u = 1;
@@ -195,8 +195,8 @@
                 for (int i = 8; i < 16; ++i)
                 {
                     u += inv[i] & 0xff;
-                    inv[i] = (byte) u;
-                    u = (int) ((uint) u >> 8);
+                    inv[i] = (byte)u;
+                    u = (int)((uint)u >> 8);
                 }
 
                 mlen -= 64;
@@ -210,7 +210,7 @@
 
                 for (int i = 0; i < mlen; ++i)
                 {
-                    c[coffset + i] = (byte) (m[moffset + i] ^ block[i]);
+                    c[coffset + i] = (byte)(m[moffset + i] ^ block[i]);
                 }
             }
 
@@ -224,18 +224,18 @@
 
         internal static long rotate(int u, int c)
         {
-            return (u << c) | (int) ((uint) u >> (32 - c));
+            return (u << c) | (int)((uint)u >> (32 - c));
         }
 
         internal static void store_littleendian(byte[] x, int offset, int u)
         {
-            x[offset] = (byte) u;
-            u = (int) ((uint) u >> 8);
-            x[offset + 1] = (byte) u;
-            u = (int) ((uint) u >> 8);
-            x[offset + 2] = (byte) u;
-            u = (int) ((uint) u >> 8);
-            x[offset + 3] = (byte) u;
+            x[offset] = (byte)u;
+            u = (int)((uint)u >> 8);
+            x[offset + 1] = (byte)u;
+            u = (int)((uint)u >> 8);
+            x[offset + 2] = (byte)u;
+            u = (int)((uint)u >> 8);
+            x[offset + 3] = (byte)u;
         }
     }
 }

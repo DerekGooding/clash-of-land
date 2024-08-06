@@ -8,7 +8,6 @@ namespace ClashLand.Packets.Messages.Client.Leaderboard
     {
         public Request_Local_Clans(Device Device) : base(Device)
         {
-
         }
 
         internal override void Decode()
@@ -19,7 +18,6 @@ namespace ClashLand.Packets.Messages.Client.Leaderboard
         {
             if (this.Device.Player.Avatar.Variables.IsBuilderVillage)
             {
-
             }
             else
             {

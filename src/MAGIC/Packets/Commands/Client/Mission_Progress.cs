@@ -1,11 +1,9 @@
-﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
-using ClashLand.Packets.Messages.Server.Errors;
 
 namespace ClashLand.Packets.Commands.Client
 {
@@ -15,7 +13,6 @@ namespace ClashLand.Packets.Commands.Client
 
         public Mission_Progress(Reader _Reader, Device _Client, int _ID) : base(_Reader, _Client, _ID)
         {
-
         }
 
         internal override void Decode()

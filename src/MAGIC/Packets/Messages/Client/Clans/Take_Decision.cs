@@ -1,7 +1,5 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
@@ -44,7 +42,7 @@ namespace ClashLand.Packets.Messages.Client.Clans
                             Player.Avatar.ClanId = Alliance.Clan_ID;
                             Player.Avatar.Alliance_Name = Alliance.Name;
                             Player.Avatar.Alliance_Level = Alliance.Level;
-                            Player.Avatar.Alliance_Role = (int) Role.Member;
+                            Player.Avatar.Alliance_Role = (int)Role.Member;
                             Player.Avatar.Badge_ID = Alliance.Badge;
 
                             Alliance.Members.Add(Player.Avatar);
@@ -53,7 +51,7 @@ namespace ClashLand.Packets.Messages.Client.Clans
                             {
                                 new Server_Commands(Player.Device)
                                 {
-                                    Command = new Joined_Alliance(Player.Device) { Clan = Alliance}
+                                    Command = new Joined_Alliance(Player.Device) { Clan = Alliance }
                                 }.Send();
 
                                 new Alliance_All_Stream_Entry(Player.Device).Send();
@@ -90,7 +88,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
                     Alliance.Chats.Remove(Stream);
                 }
             }
-
         }
     }
 }

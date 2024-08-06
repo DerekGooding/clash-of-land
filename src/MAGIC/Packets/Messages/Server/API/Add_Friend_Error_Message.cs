@@ -1,14 +1,8 @@
 ﻿namespace ClashLand.Packets.Messages.Server.Friend
 {
+    using ClashLand.Extensions.List;
     using ClashLand.Logic;
     using ClashLand.Logic.Enums;
-    using ClashLand.Extensions.List;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using ClashLand.Core;
-    using ClashLand.Core.Database;
-    using ClashLand.Extensions;
 
     internal class Add_Friend_Error_Message : Message
     {
@@ -43,7 +37,7 @@
         /// <param name="Command">The command.</param>
         public Add_Friend_Error_Message(Device Device, AddFriendErrorReason Reason) : base(Device)
         {
-            this.Reason     = Reason;
+            this.Reason = Reason;
         }
 
         /// <summary>
@@ -51,7 +45,7 @@
         /// </summary>
         internal override void Encode()
         {
-            this.Data.AddInt((int) this.Reason);
+            this.Data.AddInt((int)this.Reason);
         }
     }
 }

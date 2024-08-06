@@ -1,15 +1,10 @@
-﻿using System;
-using ClashLand.Core.Networking;
-using ClashLand.Core;
-using ClashLand.Logic;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions.Binary;
+using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.Battle;
-
-
 
 namespace ClashLand.Packets.Messages.Client.Battle
 {
-
     internal class DuelLiveReplayMessage : Message
     {
         internal long LiveId;

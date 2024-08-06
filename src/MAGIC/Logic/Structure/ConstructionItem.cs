@@ -1,12 +1,11 @@
-﻿using System;
-using System.Windows;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Helpers;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic.Components;
 using ClashLand.Logic.Enums;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace ClashLand.Logic.Structure
 {
@@ -20,17 +19,18 @@ namespace ClashLand.Logic.Structure
             this.IsGearing = false;
             this.UpgradeLevel = -1;
         }
-        
+
         internal Timer BoostTimer;
         internal Timer Timer;
 
         internal bool Locked;
         internal bool IsBoosted;
         internal bool IsBoostPause;
-        internal int  UpgradeLevel;
+        internal int UpgradeLevel;
         internal bool IsConstructing;
         internal bool IsGearing;
         internal bool Builder_Village;
+
         public void BoostBuilding()
         {
             this.IsBoosted = true;
@@ -68,7 +68,6 @@ namespace ClashLand.Logic.Structure
             }
             return null;
         }
-
 
         internal Hero_Base_Component GetHeroBaseComponent(bool enabled = false)
         {
@@ -146,7 +145,7 @@ namespace ClashLand.Logic.Structure
             {
                 return ((Globals)CSV.Tables.Get(Gamefile.Globals).GetData("RESOURCE_PRODUCTION_BOOST_MINS")).NumberValue;
             }
-           if (GetUnitProductionComponent() != null)
+            if (GetUnitProductionComponent() != null)
             {
                 if (GetUnitProductionComponent().IsSpellForge)
                 {
@@ -194,7 +193,7 @@ namespace ClashLand.Logic.Structure
                     result = true;
                     if (ClassId == 0 || ClassId == 4)
                     {
-                         int currentTownHallLevel = this.Level.Avatar.TownHall_Level;
+                        int currentTownHallLevel = this.Level.Avatar.TownHall_Level;
                         int requiredTownHallLevel = GetRequiredTownHallLevelForUpgrade();
                         if (currentTownHallLevel < requiredTownHallLevel)
                         {
@@ -243,9 +242,9 @@ namespace ClashLand.Logic.Structure
                 this.Level.VillageWorkerManager.DeallocateWorker(this);
 
             SetUpgradeLevel(GetUpgradeLevel() + 1);
-             if (GetResourceProductionComponent() != null)
+            if (GetResourceProductionComponent() != null)
             {
-                 GetResourceProductionComponent().Reset();
+                GetResourceProductionComponent().Reset();
             }
 
             int constructionTime = GetConstructionItemData().GetConstructionTime(GetUpgradeLevel());
@@ -274,15 +273,14 @@ namespace ClashLand.Logic.Structure
             if (builderVillageToken != null)
             {
                 this.Builder_Village = builderVillageToken.ToObject<bool>();
-
             }
             this.UpgradeLevel = jsonObject["lvl"].ToObject<int>();
 
             //TODO: Figure if this is required
             //if (Builder_Village)
-              //  this.Level.BuilderVillageWorkerManager.DeallocateWorker(this);
+            //  this.Level.BuilderVillageWorkerManager.DeallocateWorker(this);
             //else
-              //  this.Level.VillageWorkerManager.DeallocateWorker(this);
+            //  this.Level.VillageWorkerManager.DeallocateWorker(this);
 
             var gearingToken = jsonObject["gearing"];
             var gearingTimeToken = jsonObject["const_t"];
@@ -301,7 +299,6 @@ namespace ClashLand.Logic.Structure
                     duration = 0;
 
                 this.Timer.StartTimer(this.Level.Avatar.LastTick, duration);
-
 
                 if (Builder_Village)
                     this.Level.BuilderVillageWorkerManager.AllocateWorker(this);
@@ -396,8 +393,8 @@ namespace ClashLand.Logic.Structure
 
         internal void StartConstructing(Vector vector, bool builder_village, bool instant = false)
         {
-            this.X = (int) vector.X;
-            this.Y = (int) vector.Y;
+            this.X = (int)vector.X;
+            this.Y = (int)vector.Y;
             this.Builder_Village = builder_village;
             int constructionTime = instant ? 0 : GetConstructionItemData().GetConstructionTime(0);
             if (constructionTime < 1)
@@ -414,7 +411,6 @@ namespace ClashLand.Logic.Structure
                     this.Level.VillageWorkerManager.AllocateWorker(this);
                 this.IsConstructing = true;
             }
-
         }
 
         internal void StartUpgrading(bool builder_village)
@@ -501,7 +497,7 @@ namespace ClashLand.Logic.Structure
                 var resourceStorageComponent = GetResourceStorageComponent(true);
                 if (resourceStorageComponent != null)
                 {
-                   var maxStoredResourcesList = ((Buildings)GetData()).GetMaxStoredResourceCounts(UpgradeLevel);
+                    var maxStoredResourcesList = ((Buildings)GetData()).GetMaxStoredResourceCounts(UpgradeLevel);
                     resourceStorageComponent.SetMaxArray(maxStoredResourcesList);
                 }
             }
@@ -542,6 +538,5 @@ namespace ClashLand.Logic.Structure
         {
             Locked = false;
         }
-
     }
 }

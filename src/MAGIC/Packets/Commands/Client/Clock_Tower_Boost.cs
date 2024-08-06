@@ -1,6 +1,5 @@
-﻿using ClashLand.Logic;
-using ClashLand.Extensions.Binary;
-
+﻿using ClashLand.Extensions.Binary;
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client
 {

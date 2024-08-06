@@ -12,7 +12,8 @@ namespace ClashLand.Logic.Structure.Slots.Items
 
         [JsonProperty("lvl")] internal int Level = 0;
 
-        internal Alliance_Unit() { }
+        internal Alliance_Unit()
+        { }
 
         internal Alliance_Unit(long _PlayerId, int _ID, int _Count, int _Level)
         {

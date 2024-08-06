@@ -10,6 +10,7 @@ namespace ClashLand.Files.CSV_Logic
         {
             Load(Row);
         }
+
         public string Name { get; set; }
         public string TID { get; set; }
         public string InfoTID { get; set; }

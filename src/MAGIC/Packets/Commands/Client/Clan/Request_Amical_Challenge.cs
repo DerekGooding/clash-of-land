@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core;
-using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
@@ -14,6 +13,7 @@ namespace ClashLand.Packets.Commands.Client.Clan
         public Request_Amical_Challenge(Reader _Reader, Device _Client, int _ID) : base(_Reader, _Client, _ID)
         {
         }
+
         internal override void Decode()
         {
             this.Message = this.Reader.ReadString();
@@ -22,6 +22,7 @@ namespace ClashLand.Packets.Commands.Client.Clan
 
             this.Reader.ReadInt32(); // Tick ?
         }
+
         internal override void Process()
         {
             var Clan = Resources.Clans.Get(this.Device.Player.Avatar.ClanId);
@@ -30,7 +31,6 @@ namespace ClashLand.Packets.Commands.Client.Clan
             {
                 Clan.Chats.Remove(Old_Entry);
             }
-
 
             Clan.Chats.Add(
                 new Entry
@@ -45,7 +45,6 @@ namespace ClashLand.Packets.Commands.Client.Clan
                     Amical_State = Amical_Mode.ATTACK,
                     Message = this.Message
                 });
-
         }
     }
 }

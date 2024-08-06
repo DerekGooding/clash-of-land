@@ -23,7 +23,7 @@ namespace ClashLand.Packets.Commands.Client
         {
             var Object = this.Device.Player.Avatar.Variables.IsBuilderVillage ? this.Device.Player.GameObjectManager.GetBuilderVillageGameObjectByID(this.BuildingId) : this.Device.Player.GameObjectManager.GetGameObjectByID(this.BuildingId);
 
-            if (Object == null|| Object.ClassId != 0 && Object.ClassId != 7)
+            if (Object == null || Object.ClassId != 0 && Object.ClassId != 7)
                 return;
 
             var upgradeComponent = ((ConstructionItem)Object).GetUnitUpgradeComponent();

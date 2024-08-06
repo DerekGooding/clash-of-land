@@ -13,6 +13,7 @@
         /// A map from System.Drawing.Color to ConsoleColor.
         /// </summary>
         public ConcurrentDictionary<Color, ConsoleColor> Colors { get; private set; }
+
         /// <summary>
         /// A map from ConsoleColor to System.Drawing.Color.
         /// </summary>
@@ -65,7 +66,7 @@
         }
 
         /// <summary>
-        /// Notifies the caller as to whether or not the specified System.Drawing.Color needs to be added 
+        /// Notifies the caller as to whether or not the specified System.Drawing.Color needs to be added
         /// to the ColorStore.
         /// </summary>
         /// <param name="color">The System.Drawing.Color to be checked for membership.</param>

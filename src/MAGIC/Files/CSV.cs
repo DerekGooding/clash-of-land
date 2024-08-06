@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ClashLand.Files.CSV_Reader;
+using ClashLand.Logic.Enums;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using ClashLand.Files.CSV_Reader;
-using ClashLand.Logic.Enums;
 
 namespace ClashLand.Files
 {
@@ -12,6 +12,7 @@ namespace ClashLand.Files
         internal static readonly Dictionary<int, string> Gamefiles = new Dictionary<int, string>();
 
         internal static Gamefiles Tables;
+
         internal CSV()
         {
             CSV.Gamefiles.Add((int)Gamefile.Buildings, @"Gamefiles/logic/buildings.csv");

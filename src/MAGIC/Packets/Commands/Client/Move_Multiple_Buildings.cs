@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
+using System.Collections.Generic;
 
 namespace ClashLand.Packets.Commands.Client
 {

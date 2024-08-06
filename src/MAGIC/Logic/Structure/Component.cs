@@ -1,9 +1,9 @@
 ﻿namespace ClashLand.Logic.Structure
 {
     using Newtonsoft.Json.Linq;
+
     internal class Component
     {
-
         internal virtual int Type => -1;
 
         internal readonly GameObject ParentGameObject;

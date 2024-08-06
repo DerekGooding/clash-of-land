@@ -1,6 +1,6 @@
+using ClashLand.Logic.Structure;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ClashLand.Logic.Structure;
 
 namespace ClashLand.Logic.Manager
 {
@@ -47,13 +47,13 @@ namespace ClashLand.Logic.Manager
             {
                 if (go.ClassId == 3)
                 {
-                    var b = (Obstacle) go;
+                    var b = (Obstacle)go;
                     if (b.IsClearing)
                         b.SpeedUpClearing();
                 }
                 else
                 {
-                    var b = (ConstructionItem) go;
+                    var b = (ConstructionItem)go;
                     if (b.IsConstructing)
                         b.SpeedUpConstruction();
                     else

@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
@@ -52,7 +51,6 @@ namespace ClashLand.Packets.Commands.Client.Battle
                 while (this.Enemy_Player == null && this.Device.Player.Avatar.Last_Attack_Enemy_ID.Count <
                        Core.Players.Seed - 2)
                 {
-
                     if (this.Enemy_ID != this.Device.Player.Avatar.UserId && this.Enemy_ID > 0)
                     {
                         if (this.Device.Player.Avatar.Last_Attack_Enemy_ID.FindIndex(P => P == this.Enemy_ID) < 0)
@@ -101,9 +99,8 @@ namespace ClashLand.Packets.Commands.Client.Battle
                     }
                 }
 
-
                 if (this.Enemy_Player != null)
-                    new Pc_Battle_Data(this.Device) {Enemy = this.Enemy_Player, BattleMode = Battle_Mode.PVP}.Send();
+                    new Pc_Battle_Data(this.Device) { Enemy = this.Enemy_Player, BattleMode = Battle_Mode.PVP }.Send();
                 else
                     new Battle_Failed(this.Device).Send();
             }

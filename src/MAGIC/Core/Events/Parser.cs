@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections;
+﻿using ClashLand.Core.Networking;
+using ClashLand.Extensions;
+using ClashLand.Logic.Enums;
+using ClashLand.Packets.Messages.Server.Authentication;
+using ClashLandGUI;
+using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Logic.Structure;
-using ClashLand.Packets.Messages.Server.Errors;
-using ThreadState = System.Diagnostics.ThreadState;
-using ClashLand.Packets.Messages.Server.Authentication;
-using ClashLand.Logic.Enums;
 using System.Windows.Forms;
-using ClashLandGUI;
-using System.Drawing;
 
 namespace ClashLand.Core.Events
 {
     internal class Parser
     {
         internal Thread Thread;
-        
 
         internal Parser()
         {
@@ -111,7 +106,6 @@ namespace ClashLand.Core.Events
                             }
                             else
                             {
-
                                 Console.WriteLine("# " + DateTime.Now.ToString("d") +
                                                   " ---- Server is already in Maintanance Mode---- " +
                                                   DateTime.Now.ToString("T") +
@@ -166,7 +160,7 @@ namespace ClashLand.Core.Events
                                        # --------S - Status------------------- #
                                        # --------M - Maintenace Mode---------- #
                                        # --------D - Exit Maintenance--------- #
-                                       # --------C - Clear Screen------------- # 
+                                       # --------C - Clear Screen------------- #
                                        # --------T - Restart Timer------------ #
                                        # ------F10 - GUI---------------------- #
                                        # --------E - Exit Server-------------- #
@@ -188,7 +182,6 @@ namespace ClashLand.Core.Events
                             Console.ResetColor();
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
-
                         }
 
                     case ConsoleKey.R:
@@ -199,7 +192,6 @@ namespace ClashLand.Core.Events
                                 {
                                     new Authentication_Failed(_Device) { Reason = (Reason)14 }.Send();
                                 }
-                                
                             }
                             break;
                         }
@@ -229,8 +221,6 @@ namespace ClashLand.Core.Events
                             break;
                         }
 
-
-
                     case ConsoleKey.F10:
                         {
                             Console.Clear();
@@ -244,9 +234,6 @@ namespace ClashLand.Core.Events
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
                         }
-                        
-                        
-
                 }
 
                 Console.ResetColor();

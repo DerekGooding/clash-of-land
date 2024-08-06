@@ -1,10 +1,10 @@
-﻿using ClashLand.Logic.Structure.Slots;
-using System.Collections.Generic;
-using System.Linq;
-using ClashLand.Files;
+﻿using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic.Structure;
+using ClashLand.Logic.Structure.Slots;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Logic.Components
 {
@@ -36,7 +36,6 @@ namespace ClashLand.Logic.Components
                 var housingSpace = cd.GetHousingSpace();
                 if (GetUsedCapacity() < this.MaxCapacity)
                     result = maxCapacity >= usedCapacity + housingSpace;
-
             }
             return result;
         }
@@ -46,7 +45,7 @@ namespace ClashLand.Logic.Components
             //if (CanAddUnit(cd))
             {
                 var ca = GetParent.Level.Avatar;
-                var UnitInCamp = ((Characters) cd).UnitsInCamp[ca.GetUnitUpgradeLevel(cd)];
+                var UnitInCamp = ((Characters)cd).UnitsInCamp[ca.GetUnitUpgradeLevel(cd)];
                 var unitIndex = GetUnitTypeIndex(cd);
                 if (unitIndex == -1)
                 {
@@ -86,7 +85,7 @@ namespace ClashLand.Logic.Components
             var count = 0;
             if (this.Units.Count >= 1)
             {
-                count += (from t in this.Units let cnt = t.Value let housingSpace = ((Combat_Item) t.Data).GetHousingSpace() select cnt * housingSpace).Sum();
+                count += (from t in this.Units let cnt = t.Value let housingSpace = ((Combat_Item)t.Data).GetHousingSpace() select cnt * housingSpace).Sum();
             }
             return count;
         }
@@ -113,20 +112,18 @@ namespace ClashLand.Logic.Components
                 var ca = GetParent.Level.Avatar;
                 var unitCount = ca.Get_Unit_Count_V2(cd);
                 ca.Set_Unit_Count_V2(cd, unitCount - count);
-                
             }
         }
 
         internal override void Load(JObject jsonObject)
         {
-
             var unitObject = (JObject)jsonObject["up2"];
-            var unitArray = (JArray) unitObject?["unit"];
+            var unitArray = (JArray)unitObject?["unit"];
             if (unitArray?.Count > 0)
             {
                 var id = unitArray[0].ToObject<int>();
                 var cnt = unitArray[1].ToObject<int>();
-                this.Units.Add(new DataSlot((Combat_Item) CSV.Tables.GetWithGlobalID(id), cnt));
+                this.Units.Add(new DataSlot((Combat_Item)CSV.Tables.GetWithGlobalID(id), cnt));
             }
         }
 
@@ -138,7 +135,7 @@ namespace ClashLand.Logic.Components
             {
                 foreach (var unit in this.Units)
                 {
-                    unitJsonArray = new JArray {unit.Data.GetGlobalID(), unit.Value};
+                    unitJsonArray = new JArray { unit.Data.GetGlobalID(), unit.Value };
                 }
                 unitObject.Add("unit", unitJsonArray);
             }

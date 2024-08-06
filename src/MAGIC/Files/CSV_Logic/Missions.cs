@@ -9,6 +9,7 @@ namespace ClashLand.Files.CSV_Logic
         {
             Load(Row);
         }
+
         public string Name { get; set; }
         public string Dependencies { get; set; }
         public int MissionCategory { get; set; }
@@ -58,7 +59,5 @@ namespace ClashLand.Files.CSV_Logic
         public bool HideGooglePlusSignin { get; set; }
         public bool[] ShowInstructor { get; set; }
         public int Villagers { get; set; }
-
-
     }
 }

@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions.Binary;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
 using ClashLand.Logic.Structure;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Resource = ClashLand.Files.CSV_Logic.Resource;
 
 namespace ClashLand.Packets.Commands.Client
 {
     internal class Upgrade_Multiple_Buildings : Command
     {
-
         internal List<int> BuildingIds;
         internal bool IsAltResource;
         internal int Tick;
@@ -44,13 +43,12 @@ namespace ClashLand.Packets.Commands.Client
                     : this.Device.Player.GameObjectManager.GetGameObjectByID(buildingId);
                 if (go != null)
                 {
-
-                    var b = (ConstructionItem) go;
+                    var b = (ConstructionItem)go;
                     if (b.CanUpgrade())
                     {
                         if (b.ClassId == 0 || b.ClassId == 7)
                         {
-                            var bd = (Buildings) b.GetConstructionItemData();
+                            var bd = (Buildings)b.GetConstructionItemData();
                             var cost = bd.GetBuildCost(b.GetUpgradeLevel() + 1);
                             Resource rd = IsAltResource
                                 ? bd.GetAltBuildResource(b.GetUpgradeLevel() + 1)
@@ -71,7 +69,7 @@ namespace ClashLand.Packets.Commands.Client
                                             Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(7),
                                                 Object =>
                                                 {
-                                                    Builder_Building b2 = (Builder_Building) Object;
+                                                    Builder_Building b2 = (Builder_Building)Object;
                                                     var bd2 = b2.GetBuildingData;
                                                     if (b2.Locked)
                                                     {
@@ -85,14 +83,13 @@ namespace ClashLand.Packets.Commands.Client
                                                         b2.Unlock();
                                                     }
                                                 });
-
                                         }
                                         Avatar.Builder_TownHall_Level++;
                                     }
 
                                     if (bd.IsAllianceCastle())
                                     {
-                                        var a = (Building) this.Device.Player.GameObjectManager
+                                        var a = (Building)this.Device.Player.GameObjectManager
                                             .GetGameObjectByID(buildingId);
                                         var al = a.GetBuildingData;
 
@@ -110,7 +107,7 @@ namespace ClashLand.Packets.Commands.Client
                         }
                         else if (b.ClassId == 4 || b.ClassId == 11)
                         {
-                            var bd = (Traps) b.GetConstructionItemData();
+                            var bd = (Traps)b.GetConstructionItemData();
                             if (Avatar.HasEnoughResources(bd.GetBuildResource(b.GetUpgradeLevel()).GetGlobalID(),
                                 bd.GetBuildCost(b.GetUpgradeLevel())))
                             {
@@ -131,7 +128,7 @@ namespace ClashLand.Packets.Commands.Client
                         }
                         else if (b.ClassId == 8 || b.ClassId == 15)
                         {
-                            var bd = (Village_Objects) b.GetConstructionItemData();
+                            var bd = (Village_Objects)b.GetConstructionItemData();
                             if (Avatar.HasEnoughResources(bd.GetBuildResource(b.GetUpgradeLevel()).GetGlobalID(),
                                 bd.GetBuildCost(b.GetUpgradeLevel())))
                             {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Core;
-using ClashLand.Extensions;
+﻿using ClashLand.Core;
 using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
@@ -26,7 +23,6 @@ namespace ClashLand.Packets.Commands.Client.Battle
 
         internal override void Decode()
         {
-
             this.X = this.Reader.ReadInt32();
             this.Y = this.Reader.ReadInt32();
             this.GlobalId = this.Reader.ReadInt32();
@@ -49,7 +45,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                             Command_Base =
                                 new Command_Base
                                 {
-                                    Base = new Base {Tick = this.Tick},
+                                    Base = new Base { Tick = this.Tick },
                                     Data = this.GlobalId,
                                     X = this.X,
                                     Y = this.Y
@@ -61,11 +57,10 @@ namespace ClashLand.Packets.Commands.Client.Battle
                     if (Index > -1)
                         Battle.Replay_Info.Units[Index][1]++;
                     else
-                        Battle.Replay_Info.Units.Add(new[] {this.GlobalId, 1});
+                        Battle.Replay_Info.Units.Add(new[] { this.GlobalId, 1 });
 
                     Battle.Attacker.Heroes_Health.Add(new Slot(GlobalId, 0));
                 }
-
             }
             else if (this.Device.State == State.IN_1VS1_BATTLE)
             {
@@ -78,7 +73,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                         Command_Base =
                             new Command_Base
                             {
-                                Base = new Base {Tick = this.Tick},
+                                Base = new Base { Tick = this.Tick },
                                 Data = this.GlobalId,
                                 X = this.X,
                                 Y = this.Y
@@ -90,7 +85,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                 if (Index > -1)
                     Battle.Replay_Info.Units[Index][1]++;
                 else
-                    Battle.Replay_Info.Units.Add(new[] {this.GlobalId, 1});
+                    Battle.Replay_Info.Units.Add(new[] { this.GlobalId, 1 });
 
                 Battle.Attacker.Heroes_Health.Add(new Slot(GlobalId, 0));
             }

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using ClashLand.Extensions.List;
+using ClashLand.Logic.Structure.Slots.Items;
 using System.Collections.Generic;
 using System.Linq;
-using ClashLand.Extensions.List;
-using ClashLand.Files;
-using ClashLand.Files.CSV_Logic;
-using ClashLand.Logic.Structure.Slots.Items;
 
 namespace ClashLand.Logic.Structure.Slots
 {
@@ -112,44 +109,43 @@ namespace ClashLand.Logic.Structure.Slots
             }
         }
 
-       /* [Obsolete]
-        internal void ResourceChangeHelper(int GlobalID, int count)
-        {
-            int current = this.Get(GlobalID);
-            int newResourceValue = Math.Max(current + count, 0);
+        /* [Obsolete]
+         internal void ResourceChangeHelper(int GlobalID, int count)
+         {
+             int current = this.Get(GlobalID);
+             int newResourceValue = Math.Max(current + count, 0);
+             if (count >= 1)
+             {
+                 int resourceCap = this.Player.Resources_Cap.Get(GlobalID);
+                 if (current < resourceCap)
+                 {
+                     if (newResourceValue > resourceCap)
+                     {
+                         newResourceValue = resourceCap;
+                     }
+                 }
+             }
+             this.Plus(GlobalID, count);
+         }
+
+         [Obsolete]
+         internal void ResourceChangeHelper(Enums.Resource resource, int count)
+         {
+             int current = this.Get(resource);
+             int newResourceValue = Math.Max(current + count, 0);
             if (count >= 1)
-            {
-                int resourceCap = this.Player.Resources_Cap.Get(GlobalID);
-                if (current < resourceCap)
-                {
-                    if (newResourceValue > resourceCap)
-                    {
-                        newResourceValue = resourceCap;
-                    }
-                }
-            }
-            this.Plus(GlobalID, count);
-        }
-
-
-        [Obsolete]
-        internal void ResourceChangeHelper(Enums.Resource resource, int count)
-        {
-            int current = this.Get(resource);
-            int newResourceValue = Math.Max(current + count, 0);
-           if (count >= 1)
-            {
-                int resourceCap = this.Player.Resources_Cap.Get(resource);
-                if (resourceCap > current)
-                {
-                    if (newResourceValue > resourceCap)
-                    {
-                        newResourceValue = resourceCap;
-                    }
-                }
-            }
-            this.Plus(resource, count);
-        }*/
+             {
+                 int resourceCap = this.Player.Resources_Cap.Get(resource);
+                 if (resourceCap > current)
+                 {
+                     if (newResourceValue > resourceCap)
+                     {
+                         newResourceValue = resourceCap;
+                     }
+                 }
+             }
+             this.Plus(resource, count);
+         }*/
 
         internal void Initialize()
         {

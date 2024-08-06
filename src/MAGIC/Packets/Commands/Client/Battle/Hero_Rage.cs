@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
@@ -13,7 +7,6 @@ namespace ClashLand.Packets.Commands.Client.Battle
 {
     internal class Hero_Rage : Command
     {
-
         internal int GlobalId;
         internal int Tick;
 
@@ -37,7 +30,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                     Battle_Command Command = new Battle_Command
                     {
                         Command_Type = this.Identifier,
-                        Command_Base = new Command_Base {Base = {Tick = this.Tick}, Data = this.GlobalId}
+                        Command_Base = new Command_Base { Base = { Tick = this.Tick }, Data = this.GlobalId }
                     };
                     Battle.Add_Command(Command);
                 }
@@ -50,10 +43,9 @@ namespace ClashLand.Packets.Commands.Client.Battle
                 Battle_Command Command = new Battle_Command
                 {
                     Command_Type = this.Identifier,
-                    Command_Base = new Command_Base {Base = {Tick = this.Tick}, Data = this.GlobalId}
+                    Command_Base = new Command_Base { Base = { Tick = this.Tick }, Data = this.GlobalId }
                 };
                 Battle.Add_Command(Command);
-
             }
         }
     }

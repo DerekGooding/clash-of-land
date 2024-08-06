@@ -6,14 +6,14 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
     {
         public const uint kTopValue = (1 << 24);
 
-        System.IO.Stream Stream;
+        private System.IO.Stream Stream;
 
         public UInt64 Low;
         public uint Range;
-        uint _cacheSize;
-        byte _cache;
+        private uint _cacheSize;
+        private byte _cache;
 
-        long StartPosition;
+        private long StartPosition;
 
         public void SetStream(System.IO.Stream stream)
         {
@@ -64,19 +64,19 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
 
         public void ShiftLow()
         {
-            if ((uint) Low < (uint) 0xFF000000 || (uint) (Low >> 32) == 1)
+            if ((uint)Low < (uint)0xFF000000 || (uint)(Low >> 32) == 1)
             {
                 byte temp = _cache;
                 do
                 {
-                    Stream.WriteByte((byte) (temp + (Low >> 32)));
+                    Stream.WriteByte((byte)(temp + (Low >> 32)));
                     temp = 0xFF;
                 }
                 while (--_cacheSize != 0);
-                _cache = (byte) (((uint) Low) >> 24);
+                _cache = (byte)(((uint)Low) >> 24);
             }
             _cacheSize++;
-            Low = ((uint) Low) << 8;
+            Low = ((uint)Low) << 8;
         }
 
         public void EncodeDirectBits(uint v, int numTotalBits)
@@ -133,7 +133,7 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
             Code = 0;
             Range = 0xFFFFFFFF;
             for (int i = 0; i < 5; i++)
-                Code = (Code << 8) | (byte) Stream.ReadByte();
+                Code = (Code << 8) | (byte)Stream.ReadByte();
         }
 
         public void ReleaseStream()
@@ -150,7 +150,7 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
         {
             while (Range < kTopValue)
             {
-                Code = (Code << 8) | (byte) Stream.ReadByte();
+                Code = (Code << 8) | (byte)Stream.ReadByte();
                 Range <<= 8;
             }
         }
@@ -159,7 +159,7 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
         {
             if (Range < kTopValue)
             {
-                Code = (Code << 8) | (byte) Stream.ReadByte();
+                Code = (Code << 8) | (byte)Stream.ReadByte();
                 Range <<= 8;
             }
         }
@@ -190,7 +190,7 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
 
                 if (range < kTopValue)
                 {
-                    code = (code << 8) | (byte) Stream.ReadByte();
+                    code = (code << 8) | (byte)Stream.ReadByte();
                     range <<= 8;
                 }
             }

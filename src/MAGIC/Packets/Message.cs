@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Extensions.List;
@@ -13,6 +6,11 @@ using ClashLand.External.Sodium;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Packets.Messages.Server;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography;
 
 namespace ClashLand.Packets
 {
@@ -66,12 +64,10 @@ namespace ClashLand.Packets
 
         internal virtual void Decode()
         {
-
         }
 
         internal virtual void Encode()
         {
-
         }
 
         internal virtual void Process()
@@ -104,8 +100,6 @@ namespace ClashLand.Packets
                 this.Length = (ushort)Decrypted.Length;
             }
 
-
-
             var buffer = Data.ToArray();
             if (Identifier != 10100)
                 this.Device.Decrypt(buffer);
@@ -113,7 +107,6 @@ namespace ClashLand.Packets
             this.Reader = new Reader(buffer);
             this.Length = buffer.Length;
         }
-
 
         internal virtual void Encrypt()
         {
@@ -128,7 +121,7 @@ namespace ClashLand.Packets
             Console.WriteLine(this.GetType().Name + " : " +
                               BitConverter.ToString(
                                   this.Reader.ReadBytes(
-                                      (int) (this.Reader.BaseStream.Length - this.Reader.BaseStream.Position))));
+                                      (int)(this.Reader.BaseStream.Length - this.Reader.BaseStream.Position))));
         }
 
         internal void SendChatMessage(string message)

@@ -5,7 +5,6 @@ namespace ClashLand.Packets.Commands.Client
 {
     internal class Swap_Buildings : Command
     {
-
         internal int Building1;
         internal int Building2;
         internal int Tick;

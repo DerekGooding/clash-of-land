@@ -1,14 +1,12 @@
-﻿using ClashLand.Logic;
-using ClashLand.Extensions.Binary;
-
+﻿using ClashLand.Extensions.Binary;
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client.Unknown
 {
-
     internal class Unknown_581 : Command
     {
         internal int Count;
-                
+
         public Unknown_581(Reader Reader, Device Device, int Identifier) : base(Reader, Device, Identifier)
         {
             //Seems to be war related

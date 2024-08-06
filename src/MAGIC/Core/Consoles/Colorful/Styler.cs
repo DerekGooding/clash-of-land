@@ -4,7 +4,7 @@
     using System.Drawing;
 
     /// <summary>
-    /// A StyleClass instance that exposes a delegate instance which can be used for more 
+    /// A StyleClass instance that exposes a delegate instance which can be used for more
     /// customized styling.
     /// </summary>
     public sealed class Styler : StyleClass<TextPattern>, IEquatable<Styler>
@@ -18,6 +18,7 @@
         /// <param name="match">The "matching" portion of the input string.</param>
         /// <returns>A transformed version of the 'match' parameter.</returns>
         public delegate string MatchFound(string unstyledInput, MatchLocation matchLocation, string match);
+
         /// <summary>
         /// Defines a simpler string transformation.
         /// </summary>
@@ -31,7 +32,7 @@
         public MatchFound MatchFoundHandler { get; private set; }
 
         /// <summary>
-        /// A StyleClass instance that exposes a delegate instance which can be used for more 
+        /// A StyleClass instance that exposes a delegate instance which can be used for more
         /// customized styling.
         /// </summary>
         /// <param name="target">The string to be styled.</param>

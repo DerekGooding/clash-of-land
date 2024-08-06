@@ -1,9 +1,5 @@
-﻿using System;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
-using ClashLand.Files;
-using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
 using ClashLand.Logic.Structure.Slots.Items;
 using ClashLand.Packets.Messages.Server.Battle;
@@ -13,6 +9,7 @@ namespace ClashLand.Packets.Messages.Client.Battle
     internal class Attack_NPC : Message
     {
         internal int Npc_ID;
+
         public Attack_NPC(Device device) : base(device)
         {
             // Attack_NPC.
@@ -22,7 +19,7 @@ namespace ClashLand.Packets.Messages.Client.Battle
         {
             this.Npc_ID = this.Reader.ReadInt32();
         }
-        
+
         internal override void Process()
         {
             new Npc_Data(this.Device) { Npc_ID = this.Npc_ID }.Send();

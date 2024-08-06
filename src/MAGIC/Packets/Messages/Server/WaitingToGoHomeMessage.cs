@@ -1,11 +1,8 @@
-﻿using ClashLand.Logic;
-using ClashLand.Extensions.List;
-
-
+﻿using ClashLand.Extensions.List;
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Messages.Server
 {
-
     internal class WaitingToGoHomeMessage : Message
     {
         internal int EstimatedTime;
@@ -15,7 +12,6 @@ namespace ClashLand.Packets.Messages.Server
             this.EstimatedTime = estimatedTime;
             this.Identifier = 24112;
         }
-
 
         internal override void Encode()
         {

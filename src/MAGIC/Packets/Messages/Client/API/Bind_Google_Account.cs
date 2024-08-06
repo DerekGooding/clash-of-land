@@ -1,6 +1,4 @@
-﻿using System;
-using ClashLand.Extensions.Binary;
-using ClashLand.Logic;
+﻿using ClashLand.Logic;
 
 namespace ClashLand.Packets.Messages.Client.API
 {

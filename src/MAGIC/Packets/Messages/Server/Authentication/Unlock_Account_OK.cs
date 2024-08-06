@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ClashLand.Extensions;
-using ClashLand.Extensions.List;
-using ClashLand.External.Sodium;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
 
 namespace ClashLand.Packets.Messages.Server.Authentication
@@ -11,6 +6,7 @@ namespace ClashLand.Packets.Messages.Server.Authentication
     internal class Unlock_Account_OK : Message
     {
         internal Player Account;
+
         internal Unlock_Account_OK(Device Device) : base(Device)
         {
             this.Identifier = 20132;

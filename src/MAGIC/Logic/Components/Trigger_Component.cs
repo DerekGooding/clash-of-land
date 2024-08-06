@@ -7,4 +7,3 @@ namespace ClashLand.Logic.Components
         internal override int Type => 8;
     }
 }
-

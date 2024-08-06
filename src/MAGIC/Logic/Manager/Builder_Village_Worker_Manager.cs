@@ -1,6 +1,6 @@
+using ClashLand.Logic.Structure;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ClashLand.Logic.Structure;
 
 namespace ClashLand.Logic.Manager
 {

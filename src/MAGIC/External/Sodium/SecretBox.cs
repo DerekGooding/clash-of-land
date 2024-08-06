@@ -1,7 +1,7 @@
 ﻿namespace ClashLand.External.Sodium
 {
-    using System;
     using ClashLand.External.TweetNaCl;
+    using System;
 
     public class SecretBox
     {

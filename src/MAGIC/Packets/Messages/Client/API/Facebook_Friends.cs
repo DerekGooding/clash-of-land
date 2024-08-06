@@ -1,12 +1,7 @@
 ﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.API;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClashLand.Packets.Messages.Client.API
 {
@@ -29,6 +24,7 @@ namespace ClashLand.Packets.Messages.Client.API
                 this.Friends.Add(this.Reader.ReadString());
             }
         }
+
         internal override void Process()
         {
             new Friend_List_Data(this.Device, this.Friends).Send();

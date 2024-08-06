@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace ClashLand.Logic.Structure.API
 {
@@ -19,10 +14,12 @@ namespace ClashLand.Logic.Structure.API
         {
             // Gamecenter.
         }
+
         internal Gamecenter(Player Player)
         {
             this.Player = Player;
         }
+
         internal bool Filled => !string.IsNullOrEmpty(this.Identifier) && !string.IsNullOrEmpty(this.Certificate) && !string.IsNullOrEmpty(this.AppBundle);
     }
 }

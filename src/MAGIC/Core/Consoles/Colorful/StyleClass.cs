@@ -13,6 +13,7 @@
         /// The object to be styled.
         /// </summary>
         public T Target { get; protected set; }
+
         /// <summary>
         /// The color to be applied to the target.
         /// </summary>

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic.Structure.Slots.Items;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure.Slots
 {

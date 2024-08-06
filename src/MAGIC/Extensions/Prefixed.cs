@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 
@@ -47,6 +46,5 @@ namespace ClashLand.Extensions
                 this.Original.WriteLine();
             }
         }
-
     }
 }

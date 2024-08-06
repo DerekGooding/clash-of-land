@@ -26,4 +26,3 @@ namespace ClashLand.Packets.Commands.Server
         }
     }
 }
-

@@ -39,6 +39,7 @@ namespace ClashLand.Files.CSV_Logic
         public int UnitHousing { get; set; }
 
         public override int GetUpgradeLevelCount() => 2;
+
         public override int GetConstructionTime(int level)
         {
             int Total_Time = 0;
@@ -51,13 +52,14 @@ namespace ClashLand.Files.CSV_Logic
             if (BuildTimeS.Length > level + 1)
                 Total_Time += BuildTimeS[level];
 
-
             return Total_Time;
             //return BuildTimeS[level] + BuildTimeM[level] * 60 + BuildTimeH[level] * 60 * 60 + BuildTimeD[level] * 60 * 60 * 24;
         }
 
         public override int GetRequiredTownHallLevel(int level) => TownHallLevel[level] - 1;
+
         public override Resource GetBuildResource(int level) => CSV.Tables.Get(Gamefile.Resources).GetData(BuildResource) as Resource;
+
         public override int GetBuildCost(int level) => BuildCost;
     }
 }

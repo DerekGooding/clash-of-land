@@ -1,12 +1,11 @@
 ﻿using ClashLand.Extensions.Binary;
-using System.Collections.Generic;
-using System.Windows;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
 using ClashLand.Logic.Components;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
+using System.Collections.Generic;
 
 namespace ClashLand.Packets.Commands.Client
 {
@@ -16,6 +15,7 @@ namespace ClashLand.Packets.Commands.Client
         internal int WallID;
         internal int Count;
         internal int Tick;
+
         public Buy_Multiple_Wall(Reader reader, Device client, int id) : base(reader, client, id)
         {
         }
@@ -49,7 +49,7 @@ namespace ClashLand.Packets.Commands.Client
                             var rd = bd.GetBuildResource(0);
                             this.Device.Player.Avatar.Resources.Minus(rd.GetGlobalID(), bd.GetBuildCost(0));
 
-                            var a = (Combat_Component) b.GetComponent(1, false);
+                            var a = (Combat_Component)b.GetComponent(1, false);
                             a.WallI = this.Device.Player.Avatar.Wall_Group_ID;
                             b.StartConstructing(WallXY, this.Device.Player.Avatar.Variables.IsBuilderVillage);
                             this.Device.Player.GameObjectManager.AddGameObject(b);

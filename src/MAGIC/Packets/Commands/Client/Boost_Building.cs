@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
 using ClashLand.Logic.Components;
 using ClashLand.Logic.Structure;
+using System.Linq;
 using Resource = ClashLand.Logic.Enums.Resource;
 
 namespace ClashLand.Packets.Commands.Client
@@ -34,13 +34,13 @@ namespace ClashLand.Packets.Commands.Client
                     if (!c.IsSpellForge)
                     {
                         if (c.GetParent.ClassId == 0)
-                        { 
-                            var Object = ((Building) c.GetParent);
+                        {
+                            var Object = ((Building)c.GetParent);
 
                             if (Object != null)
                             {
                                 int diamondCount =
-                                    ((Buildings) Object.GetConstructionItemData()).BoostCost[Object.UpgradeLevel];
+                                    ((Buildings)Object.GetConstructionItemData()).BoostCost[Object.UpgradeLevel];
                                 if (avatar.Resources.Gems >= diamondCount)
                                 {
                                     Object.BoostBuilding();
@@ -62,11 +62,9 @@ namespace ClashLand.Packets.Commands.Client
                                     avatar.Resources.Minus(Resource.Diamonds, diamondCount);
                                 }
                             }
-
                         }
                     }
                 }
-
             }
             else if (this.IsBarrack == 0)
             {
@@ -76,11 +74,11 @@ namespace ClashLand.Packets.Commands.Client
                     {
                         if (c.GetParent.ClassId == 0)
                         {
-                            var Object = ((Building) c.GetParent);
+                            var Object = ((Building)c.GetParent);
                             if (Object != null)
                             {
                                 int diamondCount =
-                                    ((Buildings) Object.GetConstructionItemData()).BoostCost[Object.UpgradeLevel];
+                                    ((Buildings)Object.GetConstructionItemData()).BoostCost[Object.UpgradeLevel];
                                 if (avatar.Resources.Gems >= diamondCount)
                                 {
                                     Object.BoostBuilding();

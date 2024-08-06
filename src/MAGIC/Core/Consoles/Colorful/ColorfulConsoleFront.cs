@@ -144,6 +144,7 @@
         }
 
 #if !NET40
+
         public static bool IsErrorRedirected
         {
             get
@@ -167,6 +168,7 @@
                 return System.Console.IsOutputRedirected;
             }
         }
+
 #endif
 
         public static bool KeyAvailable
@@ -294,7 +296,7 @@
         }
 
         public static event ConsoleCancelEventHandler CancelKeyPress = delegate { };
-        
+
         static Console()
         {
             bool isInCompatibilityMode = false;
@@ -1271,10 +1273,12 @@
         }
 
 #if !NETSTANDARD1_3
+
         public static Stream OpenStandardError(int bufferSize)
         {
             return System.Console.OpenStandardError(bufferSize);
         }
+
 #endif
 
         public static Stream OpenStandardInput()
@@ -1283,10 +1287,12 @@
         }
 
 #if !NETSTANDARD1_3
+
         public static Stream OpenStandardInput(int bufferSize)
         {
             return System.Console.OpenStandardInput(bufferSize);
         }
+
 #endif
 
         public static Stream OpenStandardOutput()
@@ -1295,10 +1301,12 @@
         }
 
 #if !NETSTANDARD1_3
+
         public static Stream OpenStandardOutput(int bufferSize)
         {
             return System.Console.OpenStandardOutput(bufferSize);
         }
+
 #endif
 
         public static void MoveBufferArea(int sourceLeft, int sourceTop, int sourceWidth, int sourceHeight, int targetLeft, int targetTop)

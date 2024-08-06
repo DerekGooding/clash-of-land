@@ -13,7 +13,6 @@ namespace ClashLand.Logic.Structure.Slots.Items
 
         internal Npc()
         {
-
         }
 
         internal Npc(int NPC_Id, int Star = 3, int Gold = 1000000, int Elixir = 1000000, int DarkElixir = 1000000)

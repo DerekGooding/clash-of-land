@@ -19,7 +19,7 @@
         /// </summary>
         public ColorAlternator()
         {
-            this.Colors = new Color[]{};
+            this.Colors = new Color[] { };
         }
 
         /// <summary>

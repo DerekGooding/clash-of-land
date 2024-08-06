@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using ClashLand.Files;
+﻿using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
+using System;
+using System.Linq;
+using System.Text;
 
 namespace ClashLand.Extensions
 {
@@ -21,10 +21,10 @@ namespace ClashLand.Extensions
             {
                 StringBuilder Stringer = new StringBuilder();
                 int Count = 11;
-                Identifier = ((long) GameUtils.GetLowID(Identifier) << 8) + GameUtils.GetHighID(Identifier);
+                Identifier = ((long)GameUtils.GetLowID(Identifier) << 8) + GameUtils.GetHighID(Identifier);
                 while (++Count > 0)
                 {
-                    Stringer.Append(GameUtils.SEARCH_TAG_CHARS[(int) (Identifier % GameUtils.SEARCH_TAG_LENGTH)]);
+                    Stringer.Append(GameUtils.SEARCH_TAG_CHARS[(int)(Identifier % GameUtils.SEARCH_TAG_LENGTH)]);
                     Identifier /= GameUtils.SEARCH_TAG_LENGTH;
                     if (Identifier <= 0)
                     {
@@ -56,12 +56,12 @@ namespace ClashLand.Extensions
 
         internal static int GetLowID(long Identifier)
         {
-            return (int) (Identifier & 0xFFFFFFFF);
+            return (int)(Identifier & 0xFFFFFFFF);
         }
 
         internal static int GetHighID(long Identifier)
         {
-            return (int) (Identifier >> 32);
+            return (int)(Identifier >> 32);
         }
 
         internal static double WinTrophies(this Battle _Battle)
@@ -75,7 +75,6 @@ namespace ClashLand.Extensions
                 return Math.Round(-0.0794 * (_Battle.Attacker.Trophies - _Battle.Defender.Trophies) + 29.35838);
             }
             return Core.Resources.Random.Next(10, 15);
-
         }
 
         internal static double LoseTrophies(this Battle _Battle)
@@ -85,7 +84,6 @@ namespace ClashLand.Extensions
                 return Math.Round(0.0531 * (_Battle.Attacker.Trophies - _Battle.Defender.Trophies) + 19.60453);
             }
             return Core.Resources.Random.Next(10, 15);
-
         }
 
         internal static double WinTrophies(this Battle_V2 _Battle)
@@ -99,7 +97,6 @@ namespace ClashLand.Extensions
                 return Math.Round(-0.0794 * (_Battle.Attacker.Trophies - _Battle.Defender.Trophies) + 29.35838);
             }
             return Core.Resources.Random.Next(10, 15);
-
         }
 
         internal static double LoseTrophies(this Battle_V2 _Battle)
@@ -109,7 +106,6 @@ namespace ClashLand.Extensions
                 return Math.Round(0.0531 * (_Battle.Attacker.Trophies - _Battle.Defender.Trophies) + 19.60453);
             }
             return Core.Resources.Random.Next(10, 15);
-
         }
 
         internal static void AddExperience(this Player User, int Value)
@@ -318,7 +314,7 @@ namespace ClashLand.Extensions
 
                                 Total_Gems =
                                     (int)
-                                    Math.Round((SupCost - Inf_Cost) * (long) (Count - 10000) / (100000 - 10000 * 1.0)) +
+                                    Math.Round((SupCost - Inf_Cost) * (long)(Count - 10000) / (100000 - 10000 * 1.0)) +
                                     Inf_Cost;
                             }
                             else
@@ -332,7 +328,7 @@ namespace ClashLand.Extensions
 
                                 Total_Gems =
                                     (int)
-                                    Math.Round((SupCost - Inf_Cost) * (long) (Count - 1000) / (10000 - 1000 * 1.0)) +
+                                    Math.Round((SupCost - Inf_Cost) * (long)(Count - 1000) / (10000 - 1000 * 1.0)) +
                                     Inf_Cost;
                             }
                         }
@@ -346,7 +342,7 @@ namespace ClashLand.Extensions
                                 .NumberValue;
 
                             Total_Gems =
-                                (int) Math.Round((SupCost - Inf_Cost) * (long) (Count - 100) / (1000 - 100 * 1.0)) +
+                                (int)Math.Round((SupCost - Inf_Cost) * (long)(Count - 100) / (1000 - 100 * 1.0)) +
                                 Inf_Cost;
                         }
                     }
@@ -359,7 +355,7 @@ namespace ClashLand.Extensions
                             (CSV.Tables.Get(Gamefile.Globals).GetData("DARK_ELIXIR_DIAMOND_COST_10") as Globals)
                             .NumberValue;
 
-                        Total_Gems = (int) Math.Round((SupCost - Inf_Cost) * (long) (Count - 10) / (100 - 10 * 1.0)) +
+                        Total_Gems = (int)Math.Round((SupCost - Inf_Cost) * (long)(Count - 10) / (100 - 10 * 1.0)) +
                                      Inf_Cost;
                     }
                 }
@@ -371,7 +367,7 @@ namespace ClashLand.Extensions
                     int Inf_Cost =
                         (CSV.Tables.Get(Gamefile.Globals).GetData("DARK_ELIXIR_DIAMOND_COST_1") as Globals).NumberValue;
 
-                    Total_Gems = (int) Math.Round((SupCost - Inf_Cost) * (long) (Count - 1) / (10 - 1 * 1.0)) +
+                    Total_Gems = (int)Math.Round((SupCost - Inf_Cost) * (long)(Count - 1) / (10 - 1 * 1.0)) +
                                  Inf_Cost;
                 }
             }
@@ -407,7 +403,7 @@ namespace ClashLand.Extensions
 
                                     Total_Gems =
                                         (int)
-                                        Math.Round((SupCost - Inf_Cost) * (long) (Count - 1000000) /
+                                        Math.Round((SupCost - Inf_Cost) * (long)(Count - 1000000) /
                                                    (10000000 - 1000000 * 1.0)) + Inf_Cost;
                                 }
                                 else
@@ -421,7 +417,7 @@ namespace ClashLand.Extensions
 
                                     Total_Gems =
                                         (int)
-                                        Math.Round((SupCost - Inf_Cost) * (long) (Count - 100000) /
+                                        Math.Round((SupCost - Inf_Cost) * (long)(Count - 100000) /
                                                    (1000000 - 100000 * 1.0)) + Inf_Cost;
                                 }
                             }
@@ -437,7 +433,7 @@ namespace ClashLand.Extensions
 
                                 Total_Gems =
                                     (int)
-                                    Math.Round((SupCost - Inf_Cost) * (long) (Count - 10000) / (100000 - 10000 * 1.0)) +
+                                    Math.Round((SupCost - Inf_Cost) * (long)(Count - 10000) / (100000 - 10000 * 1.0)) +
                                     Inf_Cost;
                             }
                         }
@@ -451,7 +447,7 @@ namespace ClashLand.Extensions
                                 .NumberValue;
 
                             Total_Gems =
-                                (int) Math.Round((SupCost - Inf_Cost) * (long) (Count - 1000) / (10000 - 1000 * 1.0)) +
+                                (int)Math.Round((SupCost - Inf_Cost) * (long)(Count - 1000) / (10000 - 1000 * 1.0)) +
                                 Inf_Cost;
                         }
                     }
@@ -465,7 +461,7 @@ namespace ClashLand.Extensions
                             .NumberValue;
 
                         Total_Gems =
-                            (int) Math.Round((SupCost - Inf_Cost) * (long) (Count - 100) / (1000 - 100 * 1.0)) +
+                            (int)Math.Round((SupCost - Inf_Cost) * (long)(Count - 100) / (1000 - 100 * 1.0)) +
                             Inf_Cost;
                     }
                 }
@@ -496,7 +492,7 @@ namespace ClashLand.Extensions
                                 .NumberValue;
 
                             Total_Gems =
-                                (int) ((SupCost - Inf_Cost) * (long) (Total_Seconds - 86400) / (604800 - 86400 * 1.0)) +
+                                (int)((SupCost - Inf_Cost) * (long)(Total_Seconds - 86400) / (604800 - 86400 * 1.0)) +
                                 Inf_Cost;
                         }
                         else
@@ -509,7 +505,7 @@ namespace ClashLand.Extensions
                                 .NumberValue;
 
                             Total_Gems =
-                                (int) ((SupCost - Inf_Cost) * (long) (Total_Seconds - 3600) / (86400 - 3600 * 1.0)) +
+                                (int)((SupCost - Inf_Cost) * (long)(Total_Seconds - 3600) / (86400 - 3600 * 1.0)) +
                                 Inf_Cost;
                         }
                     }
@@ -522,7 +518,7 @@ namespace ClashLand.Extensions
                             (CSV.Tables.Get(Gamefile.Globals).GetData("SPEED_UP_DIAMOND_COST_1_MIN") as Globals)
                             .NumberValue;
 
-                        Total_Gems = (int) ((SupCost - Inf_Cost) * (long) (Total_Seconds - 60) / (3600 - 60 * 1.0)) +
+                        Total_Gems = (int)((SupCost - Inf_Cost) * (long)(Total_Seconds - 60) / (3600 - 60 * 1.0)) +
                                      Inf_Cost;
                     }
                 }

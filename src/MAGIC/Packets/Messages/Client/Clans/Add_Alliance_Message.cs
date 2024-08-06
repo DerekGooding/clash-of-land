@@ -1,6 +1,4 @@
 ﻿using ClashLand.Core;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Structure.Slots.Items;
 
@@ -12,7 +10,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
 
         public Add_Alliance_Message(Device device) : base(device)
         {
-
         }
 
         internal override void Decode()

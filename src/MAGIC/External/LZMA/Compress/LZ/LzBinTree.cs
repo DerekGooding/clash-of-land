@@ -1,35 +1,35 @@
 // LzBinTree.cs
-using System;
 using ClashLand.External.LZMA.Common;
+using System;
 
 namespace ClashLand.External.LZMA.Compress.LZ
 {
     public class BinTree : InWindow, IMatchFinder
     {
-        UInt32 _cyclicBufferPos;
-        UInt32 _cyclicBufferSize = 0;
-        UInt32 _matchMaxLen;
+        private UInt32 _cyclicBufferPos;
+        private UInt32 _cyclicBufferSize = 0;
+        private UInt32 _matchMaxLen;
 
-        UInt32[] _son;
-        UInt32[] _hash;
+        private UInt32[] _son;
+        private UInt32[] _hash;
 
-        UInt32 _cutValue = 0xFF;
-        UInt32 _hashMask;
-        UInt32 _hashSizeSum = 0;
+        private UInt32 _cutValue = 0xFF;
+        private UInt32 _hashMask;
+        private UInt32 _hashSizeSum = 0;
 
-        bool HASH_ARRAY = true;
+        private bool HASH_ARRAY = true;
 
-        const UInt32 kHash2Size = 1 << 10;
-        const UInt32 kHash3Size = 1 << 16;
-        const UInt32 kBT2HashSize = 1 << 16;
-        const UInt32 kStartMaxLen = 1;
-        const UInt32 kHash3Offset = kHash2Size;
-        const UInt32 kEmptyHashValue = 0;
-        const UInt32 kMaxValForNormalize = ((UInt32) 1 << 31) - 1;
+        private const UInt32 kHash2Size = 1 << 10;
+        private const UInt32 kHash3Size = 1 << 16;
+        private const UInt32 kBT2HashSize = 1 << 16;
+        private const UInt32 kStartMaxLen = 1;
+        private const UInt32 kHash3Offset = kHash2Size;
+        private const UInt32 kEmptyHashValue = 0;
+        private const UInt32 kMaxValForNormalize = ((UInt32)1 << 31) - 1;
 
-        UInt32 kNumHashDirectBytes = 0;
-        UInt32 kMinMatchCheck = 4;
-        UInt32 kFixHashSize = kHash2Size + kHash3Size;
+        private UInt32 kNumHashDirectBytes = 0;
+        private UInt32 kMinMatchCheck = 4;
+        private UInt32 kFixHashSize = kHash2Size + kHash3Size;
 
         public void SetType(int numHashBytes)
         {
@@ -153,12 +153,12 @@ namespace ClashLand.External.LZMA.Compress.LZ
             {
                 UInt32 temp = CRC.Table[_bufferBase[cur]] ^ _bufferBase[cur + 1];
                 hash2Value = temp & (kHash2Size - 1);
-                temp ^= ((UInt32) (_bufferBase[cur + 2]) << 8);
+                temp ^= ((UInt32)(_bufferBase[cur + 2]) << 8);
                 hash3Value = temp & (kHash3Size - 1);
                 hashValue = (temp ^ (CRC.Table[_bufferBase[cur + 3]] << 5)) & _hashMask;
             }
             else
-                hashValue = _bufferBase[cur] ^ ((UInt32) (_bufferBase[cur + 1]) << 8);
+                hashValue = _bufferBase[cur] ^ ((UInt32)(_bufferBase[cur + 1]) << 8);
 
             UInt32 curMatch = _hash[kFixHashSize + hashValue];
             if (HASH_ARRAY)
@@ -289,13 +289,13 @@ namespace ClashLand.External.LZMA.Compress.LZ
                     UInt32 temp = CRC.Table[_bufferBase[cur]] ^ _bufferBase[cur + 1];
                     UInt32 hash2Value = temp & (kHash2Size - 1);
                     _hash[hash2Value] = _pos;
-                    temp ^= ((UInt32) (_bufferBase[cur + 2]) << 8);
+                    temp ^= ((UInt32)(_bufferBase[cur + 2]) << 8);
                     UInt32 hash3Value = temp & (kHash3Size - 1);
                     _hash[kHash3Offset + hash3Value] = _pos;
                     hashValue = (temp ^ (CRC.Table[_bufferBase[cur + 3]] << 5)) & _hashMask;
                 }
                 else
-                    hashValue = _bufferBase[cur] ^ ((UInt32) (_bufferBase[cur + 1]) << 8);
+                    hashValue = _bufferBase[cur] ^ ((UInt32)(_bufferBase[cur + 1]) << 8);
 
                 UInt32 curMatch = _hash[kFixHashSize + hashValue];
                 _hash[kFixHashSize + hashValue] = _pos;
@@ -354,7 +354,7 @@ namespace ClashLand.External.LZMA.Compress.LZ
             while (--num != 0);
         }
 
-        void NormalizeLinks(UInt32[] items, UInt32 numItems, UInt32 subValue)
+        private void NormalizeLinks(UInt32[] items, UInt32 numItems, UInt32 subValue)
         {
             for (UInt32 i = 0; i < numItems; i++)
             {
@@ -367,12 +367,12 @@ namespace ClashLand.External.LZMA.Compress.LZ
             }
         }
 
-        void Normalize()
+        private void Normalize()
         {
             UInt32 subValue = _pos - _cyclicBufferSize;
             NormalizeLinks(_son, _cyclicBufferSize * 2, subValue);
             NormalizeLinks(_hash, _hashSizeSum, subValue);
-            ReduceOffsets((Int32) subValue);
+            ReduceOffsets((Int32)subValue);
         }
 
         public void SetCutValue(UInt32 cutValue)

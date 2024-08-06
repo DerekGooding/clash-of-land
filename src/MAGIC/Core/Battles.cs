@@ -1,16 +1,13 @@
-﻿using System;
+﻿using ClashLand.Core.Database;
+using ClashLand.Extensions;
+using ClashLand.Logic;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
-using ClashLand.Core.Database;
-using ClashLand.Extensions;
-using ClashLand.Logic;
-using ClashLand.Logic.Enums;
-using Newtonsoft.Json;
-using NLog;
 using Battle = ClashLand.Logic.Battle;
 
 namespace ClashLand.Core
@@ -19,10 +16,14 @@ namespace ClashLand.Core
     {
         internal JsonSerializerSettings Settings = new JsonSerializerSettings
         {
-            TypeNameHandling            = TypeNameHandling.Auto,            MissingMemberHandling   = MissingMemberHandling.Ignore,
-            DefaultValueHandling        = DefaultValueHandling.Include,     NullValueHandling       = NullValueHandling.Ignore,
-            PreserveReferencesHandling  = PreserveReferencesHandling.All,   ReferenceLoopHandling   = ReferenceLoopHandling.Ignore,
-            Formatting                  = Formatting.Indented,              Converters              = { new Utils.ArrayReferencePreservngConverter() },
+            TypeNameHandling = TypeNameHandling.Auto,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Include,
+            NullValueHandling = NullValueHandling.Ignore,
+            PreserveReferencesHandling = PreserveReferencesHandling.All,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            Formatting = Formatting.Indented,
+            Converters = { new Utils.ArrayReferencePreservngConverter() },
         };
 
         internal long Seed;
@@ -87,7 +88,7 @@ namespace ClashLand.Core
 
                 Database.SaveChanges();
             }
-           
+
             return _Battle;
         }
 
@@ -157,7 +158,6 @@ namespace ClashLand.Core
                 {
                     case DBMS.Mysql:
                         {
-
                             using (MysqlEntities Database = new MysqlEntities())
                             {
                                 Database.Configuration.AutoDetectChangesEnabled = false;

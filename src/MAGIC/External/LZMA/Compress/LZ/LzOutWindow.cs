@@ -2,11 +2,11 @@ namespace ClashLand.External.LZMA.Compress.LZ
 {
     public class OutWindow
     {
-        byte[] _buffer = null;
-        uint _pos;
-        uint _windowSize = 0;
-        uint _streamPos;
-        System.IO.Stream _stream;
+        private byte[] _buffer = null;
+        private uint _pos;
+        private uint _windowSize = 0;
+        private uint _streamPos;
+        private System.IO.Stream _stream;
 
         public uint TrainSize = 0;
 
@@ -37,7 +37,7 @@ namespace ClashLand.External.LZMA.Compress.LZ
         public bool Train(System.IO.Stream stream)
         {
             long len = stream.Length;
-            uint size = (len < _windowSize) ? (uint) len : _windowSize;
+            uint size = (len < _windowSize) ? (uint)len : _windowSize;
             TrainSize = size;
             stream.Position = len - size;
             _streamPos = _pos = 0;
@@ -46,12 +46,12 @@ namespace ClashLand.External.LZMA.Compress.LZ
                 uint curSize = _windowSize - _pos;
                 if (size < curSize)
                     curSize = size;
-                int numReadBytes = stream.Read(_buffer, (int) _pos, (int) curSize);
+                int numReadBytes = stream.Read(_buffer, (int)_pos, (int)curSize);
                 if (numReadBytes == 0)
                     return false;
-                size -= (uint) numReadBytes;
-                _pos += (uint) numReadBytes;
-                _streamPos += (uint) numReadBytes;
+                size -= (uint)numReadBytes;
+                _pos += (uint)numReadBytes;
+                _streamPos += (uint)numReadBytes;
                 if (_pos == _windowSize)
                     _streamPos = _pos = 0;
             }
@@ -69,7 +69,7 @@ namespace ClashLand.External.LZMA.Compress.LZ
             uint size = _pos - _streamPos;
             if (size == 0)
                 return;
-            _stream.Write(_buffer, (int) _streamPos, (int) size);
+            _stream.Write(_buffer, (int)_streamPos, (int)size);
             if (_pos >= _windowSize)
                 _pos = 0;
             _streamPos = _pos;

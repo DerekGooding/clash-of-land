@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Extensions.List;
-using ClashLand.External.Blake2B;
-using ClashLand.External.Sodium;
 using ClashLand.Files;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
-using ClashLand.Packets.Cryptography;
+using System;
 
 namespace ClashLand.Packets.Messages.Server.Authentication
 {
@@ -22,7 +15,6 @@ namespace ClashLand.Packets.Messages.Server.Authentication
             this.Reason = Reason;
             this.Version = 9;
         }
-
 
         internal Reason Reason = Reason.Default;
         //internal string PatchingHost => Fingerprint.Custom ? Constants.PatchServer : "http://127.0.0.1/Patchs/"; //built in patch server
@@ -37,7 +29,7 @@ namespace ClashLand.Packets.Messages.Server.Authentication
             this.Data.AddString(this.RedirectDomain);
             this.Data.AddString(null); //Old Patching Host
             this.Data.AddString(this.Message);
-            this.Data.AddInt(this.Reason == Reason.Maintenance? Constants.Maintenance.GetRemainingSeconds(DateTime.Now) : 0);
+            this.Data.AddInt(this.Reason == Reason.Maintenance ? Constants.Maintenance.GetRemainingSeconds(DateTime.Now) : 0);
             //this.Data.AddBool(false);
             this.Data.AddByte(0);
             this.Data.AddCompressed(this.Reason == Reason.Patch ? Fingerprint.Json : null, false);

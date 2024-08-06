@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.API;
 
@@ -12,12 +11,11 @@ namespace ClashLand.Packets.Messages.Client.API
         internal string FBIdentifier;
         internal string FBToken;
 
-
         public Facebook_Connect(Device device) : base(device)
         {
             // Facebook_Connect.
         }
-        
+
         internal override void Decode()
         {
             this.Unknown = this.Reader.ReadByte();
@@ -32,8 +30,8 @@ namespace ClashLand.Packets.Messages.Client.API
 
             this.Device.Player.Avatar.Facebook.Connect();
 
-            if(this.Device.Player.Avatar.Facebook.Connected)
-            new Facebook_Connect_OK(this.Device).Send();
+            if (this.Device.Player.Avatar.Facebook.Connected)
+                new Facebook_Connect_OK(this.Device).Send();
         }
     }
 }

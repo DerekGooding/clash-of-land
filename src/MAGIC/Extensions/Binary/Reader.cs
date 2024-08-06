@@ -1,11 +1,10 @@
-﻿using System;
+﻿using ClashLand.Files;
+using ClashLand.Files.CSV_Helpers;
+using Ionic.Zlib;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using Ionic.Zlib;
-using ClashLand.Files;
-using ClashLand.Files.CSV_Helpers;
-using ClashLand.Files.CSV_Reader;
 
 namespace ClashLand.Extensions.Binary
 {
@@ -14,14 +13,14 @@ namespace ClashLand.Extensions.Binary
         public Reader(byte[] _Buffer) : base(new MemoryStream(_Buffer))
         {
         }
-        
+
         public bool EndOfStream => this.BaseStream.Length == this.BaseStream.Position;
 
         public override int Read(byte[] _Buffer, int _Offset, int _Count)
         {
             return this.BaseStream.Read(_Buffer, 0, _Count);
         }
-        
+
         public byte[] ReadArray()
         {
             int _Length = this.ReadInt32();
@@ -33,7 +32,7 @@ namespace ClashLand.Extensions.Binary
             byte[] _Buffer = this.ReadBytesWithEndian(_Length, false);
             return _Buffer;
         }
-        
+
         public override bool ReadBoolean()
         {
             byte state = this.ReadByte();

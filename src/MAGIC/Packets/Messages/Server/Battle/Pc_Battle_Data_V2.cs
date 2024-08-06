@@ -82,7 +82,6 @@ namespace ClashLand.Packets.Messages.Server.Battle
             th_v2_lvl = this.Enemy.Avatar.Builder_TownHall_Level,
             score = this.Enemy.Avatar.Trophies,
             duel_score = this.Enemy.Avatar.Builder_Trophies,
-
         }, this.Client_JsonSettings);
     }
 }

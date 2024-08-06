@@ -1,12 +1,8 @@
-﻿using System;
-using ClashLand.Core;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
-using ClashLand.Extensions;
 using ClashLand.Logic.Structure.Slots.Items;
-using ClashLand.Packets.Messages.Server.Battle;
 
 namespace ClashLand.Packets.Commands.Client.Battle
 {
@@ -33,7 +29,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                     Battle_Command Command = new Battle_Command
                     {
                         Command_Type = this.Identifier,
-                        Command_Base = new Command_Base {Tick = this.Tick}
+                        Command_Base = new Command_Base { Tick = this.Tick }
                     };
                     Battle.Add_Command(Command);
                 }
@@ -47,7 +43,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                 Battle_Command Command = new Battle_Command
                 {
                     Command_Type = this.Identifier,
-                    Command_Base = new Command_Base {Tick = this.Tick}
+                    Command_Base = new Command_Base { Tick = this.Tick }
                 };
                 Home.Add_Command(Command);
             }

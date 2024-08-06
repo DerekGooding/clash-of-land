@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Files.CSV_Helpers;
+﻿using ClashLand.Files.CSV_Helpers;
 using ClashLand.Files.CSV_Reader;
 using ClashLand.Logic.Enums;
 
@@ -15,6 +10,7 @@ namespace ClashLand.Files.CSV_Logic
         {
             Load(Row);
         }
+
         public string Name { get; set; }
         public string TID { get; set; }
         public string InfoTID { get; set; }
@@ -58,7 +54,7 @@ namespace ClashLand.Files.CSV_Logic
         public bool TallGrassSpawnPoint { get; set; }
         public int LootHighlightPercentage { get; set; }
         public string HighlightExportName { get; set; }
-        public Resource GetClearingResource() => CSV.Tables.Get(Gamefile.Resources).GetData(ClearResource) as Resource;
 
+        public Resource GetClearingResource() => CSV.Tables.Get(Gamefile.Resources).GetData(ClearResource) as Resource;
     }
 }

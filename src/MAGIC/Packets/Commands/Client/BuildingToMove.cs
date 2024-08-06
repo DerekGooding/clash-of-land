@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace ClashLand.Packets.Commands.Client
+﻿namespace ClashLand.Packets.Commands.Client
 {
     internal struct BuildingToMove
     {

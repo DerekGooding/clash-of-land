@@ -44,6 +44,7 @@ namespace ClashLand.Extensions
         {
             return ((tick * TickDuration) / 1000d);
         }
+
         public static DateTime FirstDayOfMonth(this DateTime value)
         {
             return new DateTime(value.Year, value.Month, 1);

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions;
-using System.Threading;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions.List;
-using System.Timers;
+using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.Reflection;
+using System.Threading;
 
 namespace ClashLand
 {
@@ -36,17 +31,12 @@ namespace ClashLand
 
             Core.Consoles.Colorful.Console.WriteWithGradient(@"
 
-
-
-
-
-
                         _________ .__                .__     .____                       .___
                         \_   ___ \|  | _____    _____|  |__  |    |   _____    ____    __| _/
                         /    \  \/|  | \__  \  /  ___/  |  \ |    |   \__  \  /    \  / __ |
-                        \     \___|  |__/ __ \_\___ \|   Y  \|    |___ / __ \|   |  \/ /_/ | 
-                         \______  /____(____  /____  >___|  /|_______ (____  /___|  /\____ | 
-                                \/          \/     \/     \/         \/    \/     \/      \/ 
+                        \     \___|  |__/ __ \_\___ \|   Y  \|    |___ / __ \|   |  \/ /_/ |
+                         \______  /____(____  /____  >___|  /|_______ (____  /___|  /\____ |
+                                \/          \/     \/     \/         \/    \/     \/      \/
                                                Version 9.256 Support (+ v10.134 mod)
             ", Color.OrangeRed, Color.LimeGreen, 14);
             Console.ResetColor();

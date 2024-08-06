@@ -1,5 +1,4 @@
-﻿using System;
-using ClashLand.Files.CSV_Helpers;
+﻿using ClashLand.Files.CSV_Helpers;
 using ClashLand.Files.CSV_Reader;
 using ClashLand.Logic.Enums;
 
@@ -77,6 +76,7 @@ namespace ClashLand.Files.CSV_Logic
         public bool EnabledByCalendar { get; set; }
         public int DirectionCount { get; set; }
         public bool HasAltMode { get; set; }
+
         public override int GetConstructionTime(int level)
         {
             int Total_Time = 0;
@@ -86,10 +86,11 @@ namespace ClashLand.Files.CSV_Logic
                 Total_Time += this.BuildTimeH[level] * 3600;
             if (this.BuildTimeM.Length > level + 1)
                 Total_Time += this.BuildTimeM[level] * 60;
-            
+
             return Total_Time;
             //return BuildTimeS[level] + BuildTimeM[level] * 60 + BuildTimeH[level] * 60 * 60 + BuildTimeD[level] * 60 * 60 * 24;
         }
+
         public int GetSellPrice(int level)
         {
             var calculation = (int)(((long)BuildCost[level] * 2 * 1717986919) >> 32);
@@ -97,10 +98,11 @@ namespace ClashLand.Files.CSV_Logic
         }
 
         public override int GetRequiredTownHallLevel(int level) => TownHallLevel[level] - 1;
+
         public override int GetUpgradeLevelCount() => BuildCost.Length;
+
         public override Resource GetBuildResource(int level) => CSV.Tables.Get(Gamefile.Resources).GetData(BuildResource) as Resource;
+
         public override int GetBuildCost(int level) => BuildCost[level];
-
-
     }
 }

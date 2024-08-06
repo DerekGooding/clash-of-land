@@ -1,6 +1,4 @@
 ﻿using ClashLand.Core;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
@@ -15,6 +13,7 @@ namespace ClashLand.Packets.Messages.Client.Clans
         public Request_Join_Alliance(Device device) : base(device)
         {
         }
+
         internal override void Decode()
         {
             this.AllianceID = this.Reader.ReadInt64();

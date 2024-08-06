@@ -1,10 +1,8 @@
-﻿using ClashLand.Logic;
-using ClashLand.Extensions.Binary;
-
+﻿using ClashLand.Extensions.Binary;
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client
 {
-
     internal class Swap_Building_Edit_Mode : Command
     {
         public Swap_Building_Edit_Mode(Reader Reader, Device Device, int Identifier) : base(Reader, Device, Identifier)

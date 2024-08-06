@@ -1,26 +1,25 @@
-﻿using System;
-using System.Linq;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server;
+using System;
+using System.Linq;
 
 namespace ClashLand.Packets.Messages.Client
 {
-    internal class Add_Global_Chat : Message 
+    internal class Add_Global_Chat : Message
     {
         internal string Message = string.Empty;
-        
+
         public Add_Global_Chat(Device device) : base(device)
         {
         }
-        
+
         internal override void Decode()
         {
             this.Message = this.Reader.ReadString();
         }
-        
+
         internal override void Process()
         {
             if (this.Message.StartsWith(DebugFactory.Delimiter))
@@ -56,7 +55,6 @@ namespace ClashLand.Packets.Messages.Client
                                     this.Device.Player?.Avatar.UserId ?? 0);
                             }
                         }
-
                     }
                     else
                     {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic.Structure;
@@ -33,7 +28,7 @@ namespace ClashLand.Logic.Components
             {
                 if (GetParent.ClassId == 0)
                 {
-                    var b = (Building) GetParent;
+                    var b = (Building)GetParent;
                     var ca = GetParent.Level.Avatar;
                     var cm = GetParent.Level.GetComponentManager;
                     var maxProductionBuildingLevel = data.GetCombatItemType() == 1
@@ -141,6 +136,7 @@ namespace ClashLand.Logic.Components
             }
             return jsonObject;
         }
+
         public void SpeedUp()
         {
             if (this.Unit != null)

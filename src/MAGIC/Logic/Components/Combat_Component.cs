@@ -38,10 +38,8 @@ namespace ClashLand.Logic.Components
 
                 if (bd.VillageType != null)
                     _ = this.ActiveVillage2Layout >= 0;
-
                 else
                     _ = this.ActiveLayout >= 0;
-
             }
         }
 
@@ -88,7 +86,6 @@ namespace ClashLand.Logic.Components
 
         internal override void Load(JObject jsonObject)
         {
-
             if (jsonObject["gear"] != null)
                 this.GearUp = jsonObject["gear"].ToObject<int>();
 
@@ -100,7 +97,6 @@ namespace ClashLand.Logic.Components
 
             if (jsonObject["ammo"] != null)
                 this.Ammo = jsonObject["ammo"].ToObject<int>();
-
 
             if (jsonObject["wX"] != null)
                 this.WallX = jsonObject["wX"].ToObject<int>();
@@ -114,7 +110,6 @@ namespace ClashLand.Logic.Components
                 if (this.WallI > GetParent.Level.Avatar.Wall_Group_ID)
                     GetParent.Level.Avatar.Wall_Group_ID = this.WallI;
             }
-
 
             if (jsonObject["attack_mode"] != null)
             {
@@ -143,12 +138,10 @@ namespace ClashLand.Logic.Components
                 this.TrapDirection = jsonObject["trapd"].ToObject<int>();
                 this.TrapDirectionDraft = jsonObject["trapd_draft"].ToObject<int>();
             }
-
         }
 
         internal override JObject Save(JObject jsonObject)
         {
-
             if (this.GearUp >= 0)
                 jsonObject.Add("gear", this.GearUp);
 
@@ -207,7 +200,6 @@ namespace ClashLand.Logic.Components
                     jsonObject.Add("trapd4", this.TrapDirectionLayout4);
                     jsonObject.Add("trapd_d4", this.TrapDirectionLayout4Draft);
                 }
-
             }
 
             return jsonObject;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
@@ -11,7 +6,6 @@ using ClashLand.Logic.Enums;
 
 namespace ClashLand.Packets.Commands.Client
 {
-
     internal class Train_Unit : Command
     {
         internal Characters Troop;
@@ -22,9 +16,9 @@ namespace ClashLand.Packets.Commands.Client
         internal int Tick;
 
         internal bool IsSpell;
+
         public Train_Unit(Reader reader, Device client, int id) : base(reader, client, id)
         {
-
         }
 
         internal override void Decode()
@@ -57,7 +51,6 @@ namespace ClashLand.Packets.Commands.Client
             else
             {
                 _Player.Add_Unit(this.Troop.GetGlobalID(), Count);
-
             }
         }
     }

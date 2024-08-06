@@ -18,7 +18,6 @@ namespace ClashLand.Packets.Cryptography
 
         internal static readonly byte[] ServerPublicKey =
         {
-            
         };
 
         public static readonly byte[] NonceKey =

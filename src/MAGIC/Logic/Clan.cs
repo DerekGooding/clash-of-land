@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Logic
 {
@@ -33,7 +30,7 @@ namespace ClashLand.Logic
 
         [JsonProperty("war_frequency")] internal int War_Frequency;
         [JsonProperty("war_history")] internal bool War_History;
-        [JsonProperty("war_amical")]  internal bool War_Amical;
+        [JsonProperty("war_amical")] internal bool War_Amical;
 
         [JsonProperty("type")] internal Hiring Type = Hiring.OPEN;
 
@@ -69,6 +66,7 @@ namespace ClashLand.Logic
             this.Members = new Members(this);
             this.Chats = new Chats(this);
         }
+
         internal Clan(long ClanID = 0)
         {
             this.Clan_ID = ClanID;
@@ -76,12 +74,13 @@ namespace ClashLand.Logic
             this.Members = new Members(this);
             this.Chats = new Chats(this);
         }
+
         internal byte[] ToBytes
         {
             get
             {
                 List<byte> _Packet = new List<byte>();
-                
+
                 _Packet.AddLong(this.Clan_ID);
 
                 _Packet.AddString(this.Name);
@@ -90,14 +89,14 @@ namespace ClashLand.Logic
                 _Packet.AddInt((int)this.Type);
                 _Packet.AddInt(this.Members.Values.Count);
                 _Packet.AddInt(this.Trophies);
-                _Packet.AddInt(this.BuilderTrophies); 
+                _Packet.AddInt(this.BuilderTrophies);
 
                 _Packet.AddInt(this.Required_Trophies);
                 _Packet.AddInt(this.Required_BB_Trophies);
 
                 _Packet.AddInt(this.Won_War);
                 _Packet.AddInt(this.Lost_War);
-                _Packet.AddInt(this.Draw_War); 
+                _Packet.AddInt(this.Draw_War);
 
                 _Packet.AddInt(2000001);
                 _Packet.AddInt(this.War_Frequency);
@@ -114,6 +113,7 @@ namespace ClashLand.Logic
                 return _Packet.ToArray();
             }
         }
+
         internal byte[] ToBytesHeader()
         {
             var Packet = new List<byte>();

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
-using ClashLand.Extensions.Binary;
-using ClashLand.Extensions.List;
 
 namespace ClashLand.Packets.Messages.Client
 {
-
     internal class Search_Clans : Message
     {
         public Search_Clans(Device Device, Reader Reader) : base(Device, Reader)
@@ -17,15 +10,17 @@ namespace ClashLand.Packets.Messages.Client
             // SearchClans.
         }
 
-        const int m_vAllianceLimit = 40;
-        int m_vAllianceOrigin;
-        int m_vAllianceScore;
-        int m_vMaximumAllianceMembers;
-        int m_vMinimumAllianceLevel;
-        int m_vMinimumAllianceMembers;
+        private const int m_vAllianceLimit = 40;
+        private int m_vAllianceOrigin;
+        private int m_vAllianceScore;
+        private int m_vMaximumAllianceMembers;
+        private int m_vMinimumAllianceLevel;
+        private int m_vMinimumAllianceMembers;
+
         //string m_vSearchString;
-        byte m_vShowOnlyJoinableAlliances;
-        int m_vWarFrequency;
+        private byte m_vShowOnlyJoinableAlliances;
+
+        private int m_vWarFrequency;
 
         internal override void Decode()
         {
@@ -61,7 +56,8 @@ namespace ClashLand.Packets.Messages.Client
                 //p.m_vAlliances = joinableAlliances;
                 //p.m_vSearchString = m_vSearchString;
                 //p.Send();*/
-            }
         }
     }
+}
+
 //}

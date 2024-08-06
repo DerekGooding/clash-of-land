@@ -1,7 +1,4 @@
-﻿using System.IO;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.Leaderboard;
 
@@ -20,7 +17,7 @@ namespace ClashLand.Packets.Messages.Client.Leaderboard
 
         internal override void Process()
         {
-          new League_Players(this.Device).Send();
+            new League_Players(this.Device).Send();
         }
     }
 }

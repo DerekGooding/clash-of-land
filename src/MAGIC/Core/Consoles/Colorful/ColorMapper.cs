@@ -113,7 +113,7 @@
         /// <summary>
         /// Sets all 16 colors in the console buffer using colors supplied in a dictionary.
         /// </summary>
-        /// <param name="colors">A dictionary containing COLORREFs keyed by the COLORREF's alias in the buffer's 
+        /// <param name="colors">A dictionary containing COLORREFs keyed by the COLORREF's alias in the buffer's
         /// ColorTable.</param>
         public void SetBatchBufferColors(Dictionary<string, COLORREF> colors)
         {
@@ -170,48 +170,63 @@
                 case ConsoleColor.Black:
                     csbe.black = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.DarkBlue:
                     csbe.darkBlue = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.DarkGreen:
                     csbe.darkGreen = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.DarkCyan:
                     csbe.darkCyan = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.DarkRed:
                     csbe.darkRed = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.DarkMagenta:
                     csbe.darkMagenta = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.DarkYellow:
                     csbe.darkYellow = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.Gray:
                     csbe.gray = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.DarkGray:
                     csbe.darkGray = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.Blue:
                     csbe.blue = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.Green:
                     csbe.green = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.Cyan:
                     csbe.cyan = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.Red:
                     csbe.red = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.Magenta:
                     csbe.magenta = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.Yellow:
                     csbe.yellow = new COLORREF(r, g, b);
                     break;
+
                 case ConsoleColor.White:
                     csbe.white = new COLORREF(r, g, b);
                     break;

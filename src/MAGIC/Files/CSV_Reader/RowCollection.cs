@@ -19,6 +19,7 @@
         bool ICollection<Row>.IsReadOnly => false;
         public int Count => _rows.Count;
         public Row this[int index] => _rows[index];
+
         public Row this[string name]
         {
             get
@@ -30,6 +31,7 @@
                 return _rows[index];
             }
         }
+
         public void Add(Row row)
         {
             if (row == null)
@@ -38,6 +40,7 @@
             _name2index.Add(row.Name, _rows.Count);
             _rows.Add(row);
         }
+
         public bool Remove(Row row)
         {
             if (row == null)
@@ -46,6 +49,7 @@
             _name2index.Remove(row.Name);
             return _rows.Remove(row);
         }
+
         public bool Contains(Row row)
         {
             if (row == null)
@@ -53,14 +57,17 @@
 
             return _rows.Contains(row);
         }
+
         public void Clear()
         {
             _rows.Clear();
         }
+
         public void CopyTo(Row[] array, int arrayIndex)
         {
             _rows.CopyTo(array, arrayIndex);
         }
+
         public IEnumerator<Row> GetEnumerator()
         {
             return _rows.GetEnumerator();

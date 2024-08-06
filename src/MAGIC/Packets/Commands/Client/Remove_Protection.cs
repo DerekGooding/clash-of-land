@@ -1,17 +1,14 @@
-﻿using ClashLand.Logic;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions.Binary;
-using ClashLand.Core.Networking;
-using ClashLand.Packets.Messages.Server;
+using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.Errors;
 
 namespace ClashLand.Packets.Commands.Client
 {
-    
     internal class Remove_Protection : Command
     {
         public Remove_Protection(Reader Reader, Device Device, int Identifier) : base(Reader, Device, Identifier)
         {
-            
         }
 
         public int Tick { get; private set; }

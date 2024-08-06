@@ -1,5 +1,5 @@
-﻿using System;
-using ClashLand.Logic.Structure.Slots.Items;
+﻿using ClashLand.Logic.Structure.Slots.Items;
+using System;
 using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure.Slots

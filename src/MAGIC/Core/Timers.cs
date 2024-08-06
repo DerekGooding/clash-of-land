@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using ClashLand.Core.Database;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
 using ClashLand.Packets.Messages.Server.Errors;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Timer = System.Timers.Timer;
 
 namespace ClashLand.Core
@@ -43,7 +41,7 @@ namespace ClashLand.Core
             };
 
             Timer.Elapsed += (_Sender, _Args) =>
-            {   
+            {
                 foreach (var _Device in Devices._Devices.Values.ToList())
                 {
                     Devices.Remove(_Device.SocketHandle);
@@ -72,9 +70,7 @@ namespace ClashLand.Core
                     Console.WriteLine("# " + DateTime.Now.ToString("d") + " ---- Exited from Maintanance Mode---- " + DateTime.Now.ToString("T") + " #");
                 };
                 this.LTimers.Add(5, Timer2);
-
             };
-
 
             this.LTimers.Add(4, Timer);
         }
@@ -129,8 +125,9 @@ namespace ClashLand.Core
 #endif
             };
 
-            this.LTimers.Add(1 ,Timer);
+            this.LTimers.Add(1, Timer);
         }
+
         internal void DeadSockets()
         {
             Timer Timer = new Timer
@@ -163,7 +160,6 @@ namespace ClashLand.Core
                 {
                     Devices.Remove(Device.SocketHandle);
                 }
-
 
 #if DEBUG
                 Loggers.Log(
@@ -202,9 +198,9 @@ namespace ClashLand.Core
                 }
 #if DEBUG
                 if (numDisc > 0)
-                Loggers.Log(
-                    Utils.Padding(this.GetType().Name, 6) + $" : KeepAlive dropped {numDisc} clients due to keep alive timeouts at " + DateTime.Now.ToString("T") +
-                    ".", true);
+                    Loggers.Log(
+                        Utils.Padding(this.GetType().Name, 6) + $" : KeepAlive dropped {numDisc} clients due to keep alive timeouts at " + DateTime.Now.ToString("T") +
+                        ".", true);
 #endif
                 Loggers.Log("#" + DateTime.Now.ToString("d") + " ---- Pools ---- " + DateTime.Now.ToString("T") + " #", true);
                 Loggers.Log($"SocketAsyncEventArgs: created -> {Gateway.NumberOfArgsCreated} in-use -> {Gateway.NumberOfArgsInUse} available -> {Gateway.NumberOfArgs}.", true);

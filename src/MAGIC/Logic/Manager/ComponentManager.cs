@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Windows;
 using ClashLand.Files;
-using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic.Components;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Manager
 {
@@ -64,7 +61,7 @@ namespace ClashLand.Logic.Manager
                     {
                         if (c.GetParent.ClassId == 0)
                         {
-                            var level = ((Building) c.GetParent).GetUpgradeLevel();
+                            var level = ((Building)c.GetParent).GetUpgradeLevel();
                             if (level > result)
                                 result = level;
                         }
@@ -88,7 +85,7 @@ namespace ClashLand.Logic.Manager
                     {
                         if (c.GetParent.ClassId == 0)
                         {
-                            var b = (Building) c.GetParent;
+                            var b = (Building)c.GetParent;
                             if (!b.IsConstructing || b.IsUpgrading())
                             {
                                 var level = b.GetUpgradeLevel();
@@ -116,7 +113,7 @@ namespace ClashLand.Logic.Manager
             var components = this.Components[11];
             if (components.Count >= 1)
                 foreach (var c in components)
-                result += ((Unit_Storage_V2_Componenent) c).MaxCapacity;
+                    result += ((Unit_Storage_V2_Componenent)c).MaxCapacity;
             return result;
         }
 
@@ -126,17 +123,18 @@ namespace ClashLand.Logic.Manager
             var components = this.Components[0];
             //if (components.Count >= 1)
             //    foreach (var c in components)
-                  //  if (((UnitStorageComponent) c).IsSpellForge == IsSpellForge)
-                    //    result += ((UnitStorageComponent) c).GetMaxCapacity();
+            //  if (((UnitStorageComponent) c).IsSpellForge == IsSpellForge)
+            //    result += ((UnitStorageComponent) c).GetMaxCapacity();
             return result;
         }
+
         public int GetTotalUsedHousingV2()
         {
             var result = 0;
             var components = this.Components[11];
             if (components.Count >= 1)
-              foreach (var c in components)
-                result += ((Unit_Storage_V2_Componenent) c).GetUsedCapacity();
+                foreach (var c in components)
+                    result += ((Unit_Storage_V2_Componenent)c).GetUsedCapacity();
             return result;
         }
 
@@ -145,9 +143,9 @@ namespace ClashLand.Logic.Manager
             var result = 0;
             var components = this.Components[0];
             //if (components.Count >= 1)
-              //  foreach (var c in components)
-                   // if (((UnitStorageComponent) c).IsSpellForge == IsSpellForge)
-                    //    result += ((UnitStorageComponent) c).GetUsedCapacity();
+            //  foreach (var c in components)
+            // if (((UnitStorageComponent) c).IsSpellForge == IsSpellForge)
+            //    result += ((UnitStorageComponent) c).GetUsedCapacity();
             return result;
         }
 
@@ -161,7 +159,7 @@ namespace ClashLand.Logic.Manager
                 var resourceCap = 0;
                 for (var j = 0; j < resourceStorageComponentCount; j++)
                 {
-                    var res = (Resource_Storage_Component) GetComponents(6)[j];
+                    var res = (Resource_Storage_Component)GetComponents(6)[j];
                     if (res.IsEnable)
                         resourceCap += res.GetMax(i);
                     var resource = (Files.CSV_Logic.Resource)table.Datas[i];

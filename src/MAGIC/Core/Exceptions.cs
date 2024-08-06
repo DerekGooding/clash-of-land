@@ -1,15 +1,14 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using SharpRaven;
 using SharpRaven.Data;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace ClashLand.Core
 {
     internal class Exceptions
     {
-
         private static readonly object s_sync = new object();
         internal static RavenClient RavenClient;
 
@@ -29,14 +28,14 @@ namespace ClashLand.Core
                 Enviroment = "production";
 #endif
             }
-           RavenClient =
-                new RavenClient(
-                    "https://c011a726734a4b5baf17f2d1a7519374:534d376264934c7084a24079726b8e99@sentry.io/187787")
-                {
-                    Environment = Enviroment,
-                    Release = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
-                    Timeout = TimeSpan.FromSeconds(5)
-                };
+            RavenClient =
+                 new RavenClient(
+                     "https://c011a726734a4b5baf17f2d1a7519374:534d376264934c7084a24079726b8e99@sentry.io/187787")
+                 {
+                     Environment = Enviroment,
+                     Release = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
+                     Timeout = TimeSpan.FromSeconds(5)
+                 };
         }
 
         public static void Log(Exception ex, string moreInfo, string Model = "", string OS = "", string Token = "", long ID = 0)
@@ -64,7 +63,6 @@ namespace ClashLand.Core
                     Message = moreInfo,
                 };
 
-
                 Event.Tags.Add("token", Token);
                 Event.Tags.Add("userid", ID.ToString());
                 Event.Tags.Add("model", Model);
@@ -73,6 +71,7 @@ namespace ClashLand.Core
                 RavenClient.Capture(Event);
             }
         }
+
         private static string GetLogFileName(Exception ex)
         {
             if (string.IsNullOrWhiteSpace(ex.Message))

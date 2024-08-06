@@ -1,9 +1,7 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Database;
-using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +10,7 @@ namespace ClashLand.Packets.Messages.Server.API
     internal class Friend_List_Data : Message
     {
         internal List<Level> Players;
+
         public Friend_List_Data(Device Device, List<string> ID) : base(Device)
         {
             this.Identifier = 20105;
@@ -23,8 +22,8 @@ namespace ClashLand.Packets.Messages.Server.API
         {
             this.Data.AddInt(0);
             this.Data.AddInt(this.Players.Count);
-            
-            foreach(var Player in Players)
+
+            foreach (var Player in Players)
             {
                 this.Data.AddLong(Player.Avatar.UserId);
                 this.Data.AddBool(true);
@@ -51,7 +50,6 @@ namespace ClashLand.Packets.Messages.Server.API
                     this.Data.AddInt(_Clan.Level);
                     this.Data.AddBool(false);
                 }
-
             }
         }
     }

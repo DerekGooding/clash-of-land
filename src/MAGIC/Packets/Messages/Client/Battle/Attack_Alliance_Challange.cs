@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
@@ -20,6 +13,7 @@ namespace ClashLand.Packets.Messages.Client.Battle
     {
         internal int Stream_High_ID;
         internal int Stream_Low_ID;
+
         public Attack_Alliance_Challange(Device device) : base(device)
         {
             // Attack_Alliance_Challange.
@@ -42,7 +36,7 @@ namespace ClashLand.Packets.Messages.Client.Battle
                 {
                     this.Device.Player.Avatar.Amical_ID = this.Stream_Low_ID;
 
-                    new Pc_Battle_Data(this.Device){Enemy = Player, BattleMode = Battle_Mode.AMICAL}.Send();
+                    new Pc_Battle_Data(this.Device) { Enemy = Player, BattleMode = Battle_Mode.AMICAL }.Send();
 
                     Stream.Amical_State = Amical_Mode.LIVE_REPLAY;
 
@@ -59,7 +53,6 @@ namespace ClashLand.Packets.Messages.Client.Battle
                     new Own_Home_Data(this.Device).Send();
                 }
             }
-
         }
     }
 }

@@ -1,13 +1,6 @@
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core;
 using ClashLand.Extensions.Binary;
-using ClashLand.Packets;
-using ClashLand.Extensions.List;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.DataSlots
 {

@@ -13,7 +13,7 @@
         /// <summary>
         /// Exposes methods and properties representing a text pattern.
         /// </summary>
-        /// <param name="pattern">A string representation of the pattern.  This can be either a 
+        /// <param name="pattern">A string representation of the pattern.  This can be either a
         /// regular string *or* a regular expression (as string).</param>
         public TextPattern(string pattern)
             : base(pattern)

@@ -1,10 +1,5 @@
 ﻿using ClashLand.Files.CSV_Helpers;
 using ClashLand.Files.CSV_Reader;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ClashLand.Logic.Enums;
 
 namespace ClashLand.Files.CSV_Logic
@@ -15,6 +10,7 @@ namespace ClashLand.Files.CSV_Logic
         {
             Load(Row);
         }
+
         public string Name { get; set; }
         public string TID { get; set; }
         public string InfoTID { get; set; }
@@ -96,6 +92,7 @@ namespace ClashLand.Files.CSV_Logic
         public bool EnabledByCalendar { get; set; }
 
         public override int GetCombatItemType() => 1;
+
         public override int GetHousingSpace() => HousingSpace[0];
 
         public override int GetRequiredLaboratoryLevel(int level) => LaboratoryLevel[level];

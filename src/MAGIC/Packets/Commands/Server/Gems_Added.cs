@@ -1,5 +1,4 @@
-﻿using ClashLand.Logic;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 
 namespace ClashLand.Packets.Commands.Server
 {
@@ -17,11 +16,11 @@ namespace ClashLand.Packets.Commands.Server
         {
             this.Identifier = 7;
 
-            this.Gems       = Gems;
-            this.Package    = Package;
-            this.OfferID    = OfferID;
+            this.Gems = Gems;
+            this.Package = Package;
+            this.OfferID = OfferID;
 
-            this.Gift       = Gift;
+            this.Gift = Gift;
         }
 
         internal override void Encode()

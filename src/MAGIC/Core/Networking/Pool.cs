@@ -1,7 +1,6 @@
 ﻿//#define CONCURRENT_STACK
 #define LIST // Use LIST to enable tracing n stuff.
 
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace ClashLand.Core.Networking
@@ -13,7 +12,6 @@ namespace ClashLand.Core.Networking
 #elif LIST
         private readonly List<T> _list;
 #endif
-
 
         internal Pool()
         {
@@ -27,6 +25,7 @@ namespace ClashLand.Core.Networking
 #if CONCURRENT_STACK
         internal int Count => _stack.Count;
 #elif LIST
+
         internal int Count
         {
             get
@@ -35,6 +34,7 @@ namespace ClashLand.Core.Networking
                     return _list.Count;
             }
         }
+
 #endif
 
         internal T Pop()
@@ -69,7 +69,7 @@ namespace ClashLand.Core.Networking
                 if (_list.Contains(item))
                 {
                     //if (Constants.Verbosity > 2)
-                        //Logger.Error("We're pushing an item to the pool, but its already there! Ignoring it.");
+                    //Logger.Error("We're pushing an item to the pool, but its already there! Ignoring it.");
                 }
                 else
                 {

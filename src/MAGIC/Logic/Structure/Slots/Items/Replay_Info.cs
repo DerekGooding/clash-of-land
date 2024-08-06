@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure.Slots.Items
 {
@@ -22,7 +22,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
         [JsonProperty("spells")] internal List<int[]> Spells = new List<int[]>();
 
         [JsonProperty("levels")] internal List<int[]> Levels = new List<int[]>();
-        
+
         [JsonProperty("stats")] internal Replay_Stats Stats = new Replay_Stats();
 
         internal void Add_Unit(int Data, int Count)
@@ -32,7 +32,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
             if (Index > -1)
                 this.Units[Index][1] += Count;
             else
-                this.Units.Add(new[] {Data, Count});
+                this.Units.Add(new[] { Data, Count });
         }
 
         internal void Add_Spell(int Data, int Count)
@@ -42,7 +42,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
             if (Index > -1)
                 this.Spells[Index][1] += Count;
             else
-                this.Spells.Add(new[] {Data, Count});
+                this.Spells.Add(new[] { Data, Count });
         }
 
         internal void Add_Level(int Data, int Count)
@@ -52,7 +52,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
             if (Index > -1)
                 this.Levels[Index][1] += Count;
             else
-                this.Levels.Add(new[] {Data, Count});
+                this.Levels.Add(new[] { Data, Count });
         }
 
         internal void Add_Available_Loot(int Data, int Count)
@@ -62,7 +62,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
             if (Index > -1)
                 this.Available_Loot[Index][1] += Count;
             else
-                this.Available_Loot.Add(new[] {Data, Count});
+                this.Available_Loot.Add(new[] { Data, Count });
         }
 
         internal string Json => JsonConvert.SerializeObject(new

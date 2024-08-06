@@ -1,13 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Extensions.List;
-using ClashLand.External.Blake2B;
-using ClashLand.External.Sodium;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
-using System;
-using ClashLand.Packets.Cryptography;
 
 namespace ClashLand.Packets.Messages.Server.Authentication
 {
@@ -34,7 +28,6 @@ namespace ClashLand.Packets.Messages.Server.Authentication
             this.Data.AddString(avatar.Facebook.Identifier);
             this.Data.AddString(avatar.Gamecenter.Identifier);
 
-
             this.Data.AddInt(ServerMajorVersion);
             this.Data.AddInt(ServerBuild);
             this.Data.AddInt(ContentVersion);
@@ -44,7 +37,7 @@ namespace ClashLand.Packets.Messages.Server.Authentication
             this.Data.AddInt(avatar.Login_Count++); //Session Count
             this.Data.AddInt((int)avatar.PlayTime.TotalSeconds); //Playtime Second
             this.Data.AddInt(0);
-            
+
             this.Data.AddString(Logic.Structure.API.Facebook.ApplicationID);
 
             this.Data.AddString(TimeUtils.ToJavaTimestamp(avatar.LastSave).ToString()); // 14 75 26 87 86 11 24 33
@@ -60,7 +53,6 @@ namespace ClashLand.Packets.Messages.Server.Authentication
             //this.Data.AddString("http://api.clashersrepublic.net:8082/api/v1/events/download"); //Aidids events host
             //this.Data.AddString("http://b46f744d64acd2191eda-3720c0374d47e9a0dd52be4d281c260f.r11.cf2.rackcdn.com/"); //Patch server?
             this.Data.AddString("null");
-
         }
     }
 }

@@ -1,18 +1,18 @@
-using System;
 using ClashLand.External.LZMA.Compress.RangeCoder;
+using System;
 
 namespace ClashLand.External.LZMA.Compress.LZMA
 {
-    public class Decoder : ICoder, ISetDecoderProperties 
+    public class Decoder : ICoder, ISetDecoderProperties
     {
-        class LenDecoder
+        private class LenDecoder
         {
-            BitDecoder m_Choice = new BitDecoder();
-            BitDecoder m_Choice2 = new BitDecoder();
-            BitTreeDecoder[] m_LowCoder = new BitTreeDecoder[Base.kNumPosStatesMax];
-            BitTreeDecoder[] m_MidCoder = new BitTreeDecoder[Base.kNumPosStatesMax];
-            BitTreeDecoder m_HighCoder = new BitTreeDecoder(Base.kNumHighLenBits);
-            uint m_NumPosStates = 0;
+            private BitDecoder m_Choice = new BitDecoder();
+            private BitDecoder m_Choice2 = new BitDecoder();
+            private BitTreeDecoder[] m_LowCoder = new BitTreeDecoder[Base.kNumPosStatesMax];
+            private BitTreeDecoder[] m_MidCoder = new BitTreeDecoder[Base.kNumPosStatesMax];
+            private BitTreeDecoder m_HighCoder = new BitTreeDecoder(Base.kNumHighLenBits);
+            private uint m_NumPosStates = 0;
 
             public void Create(uint numPosStates)
             {
@@ -55,11 +55,11 @@ namespace ClashLand.External.LZMA.Compress.LZMA
             }
         }
 
-        class LiteralDecoder
+        private class LiteralDecoder
         {
-            struct Decoder2
+            private struct Decoder2
             {
-                BitDecoder[] m_Decoders;
+                private BitDecoder[] m_Decoders;
 
                 public void Create()
                 {
@@ -78,7 +78,7 @@ namespace ClashLand.External.LZMA.Compress.LZMA
                     do
                         symbol = (symbol << 1) | m_Decoders[symbol].Decode(rangeDecoder);
                     while (symbol < 0x100);
-                    return (byte) symbol;
+                    return (byte)symbol;
                 }
 
                 public byte DecodeWithMatchByte(RangeCoder.Decoder rangeDecoder, byte matchByte)
@@ -86,7 +86,7 @@ namespace ClashLand.External.LZMA.Compress.LZMA
                     uint symbol = 1;
                     do
                     {
-                        uint matchBit = (uint) (matchByte >> 7) & 1;
+                        uint matchBit = (uint)(matchByte >> 7) & 1;
                         matchByte <<= 1;
                         uint bit = m_Decoders[((1 + matchBit) << 8) + symbol].Decode(rangeDecoder);
                         symbol = (symbol << 1) | bit;
@@ -98,14 +98,14 @@ namespace ClashLand.External.LZMA.Compress.LZMA
                         }
                     }
                     while (symbol < 0x100);
-                    return (byte) symbol;
+                    return (byte)symbol;
                 }
             }
 
-            Decoder2[] m_Coders;
-            int m_NumPrevBits;
-            int m_NumPosBits;
-            uint m_PosMask;
+            private Decoder2[] m_Coders;
+            private int m_NumPrevBits;
+            private int m_NumPosBits;
+            private uint m_PosMask;
 
             public void Create(int numPosBits, int numPrevBits)
             {
@@ -113,9 +113,9 @@ namespace ClashLand.External.LZMA.Compress.LZMA
                     m_NumPosBits == numPosBits)
                     return;
                 m_NumPosBits = numPosBits;
-                m_PosMask = ((uint) 1 << numPosBits) - 1;
+                m_PosMask = ((uint)1 << numPosBits) - 1;
                 m_NumPrevBits = numPrevBits;
-                uint numStates = (uint) 1 << (m_NumPrevBits + m_NumPosBits);
+                uint numStates = (uint)1 << (m_NumPrevBits + m_NumPosBits);
                 m_Coders = new Decoder2[numStates];
                 for (uint i = 0; i < numStates; i++)
                     m_Coders[i].Create();
@@ -123,13 +123,13 @@ namespace ClashLand.External.LZMA.Compress.LZMA
 
             public void Init()
             {
-                uint numStates = (uint) 1 << (m_NumPrevBits + m_NumPosBits);
+                uint numStates = (uint)1 << (m_NumPrevBits + m_NumPosBits);
                 for (uint i = 0; i < numStates; i++)
                     m_Coders[i].Init();
             }
 
-            uint GetState(uint pos, byte prevByte)
-            { return ((pos & m_PosMask) << m_NumPrevBits) + (uint) (prevByte >> (8 - m_NumPrevBits)); }
+            private uint GetState(uint pos, byte prevByte)
+            { return ((pos & m_PosMask) << m_NumPrevBits) + (uint)(prevByte >> (8 - m_NumPrevBits)); }
 
             public byte DecodeNormal(RangeCoder.Decoder rangeDecoder, uint pos, byte prevByte)
             { return m_Coders[GetState(pos, prevByte)].DecodeNormal(rangeDecoder); }
@@ -138,30 +138,30 @@ namespace ClashLand.External.LZMA.Compress.LZMA
             { return m_Coders[GetState(pos, prevByte)].DecodeWithMatchByte(rangeDecoder, matchByte); }
         };
 
-        LZ.OutWindow m_OutWindow = new LZ.OutWindow();
-        RangeCoder.Decoder m_RangeDecoder = new RangeCoder.Decoder();
+        private LZ.OutWindow m_OutWindow = new LZ.OutWindow();
+        private RangeCoder.Decoder m_RangeDecoder = new RangeCoder.Decoder();
 
-        BitDecoder[] m_IsMatchDecoders = new BitDecoder[Base.kNumStates << Base.kNumPosStatesBitsMax];
-        BitDecoder[] m_IsRepDecoders = new BitDecoder[Base.kNumStates];
-        BitDecoder[] m_IsRepG0Decoders = new BitDecoder[Base.kNumStates];
-        BitDecoder[] m_IsRepG1Decoders = new BitDecoder[Base.kNumStates];
-        BitDecoder[] m_IsRepG2Decoders = new BitDecoder[Base.kNumStates];
-        BitDecoder[] m_IsRep0LongDecoders = new BitDecoder[Base.kNumStates << Base.kNumPosStatesBitsMax];
+        private BitDecoder[] m_IsMatchDecoders = new BitDecoder[Base.kNumStates << Base.kNumPosStatesBitsMax];
+        private BitDecoder[] m_IsRepDecoders = new BitDecoder[Base.kNumStates];
+        private BitDecoder[] m_IsRepG0Decoders = new BitDecoder[Base.kNumStates];
+        private BitDecoder[] m_IsRepG1Decoders = new BitDecoder[Base.kNumStates];
+        private BitDecoder[] m_IsRepG2Decoders = new BitDecoder[Base.kNumStates];
+        private BitDecoder[] m_IsRep0LongDecoders = new BitDecoder[Base.kNumStates << Base.kNumPosStatesBitsMax];
 
-        BitTreeDecoder[] m_PosSlotDecoder = new BitTreeDecoder[Base.kNumLenToPosStates];
-        BitDecoder[] m_PosDecoders = new BitDecoder[Base.kNumFullDistances - Base.kEndPosModelIndex];
+        private BitTreeDecoder[] m_PosSlotDecoder = new BitTreeDecoder[Base.kNumLenToPosStates];
+        private BitDecoder[] m_PosDecoders = new BitDecoder[Base.kNumFullDistances - Base.kEndPosModelIndex];
 
-        BitTreeDecoder m_PosAlignDecoder = new BitTreeDecoder(Base.kNumAlignBits);
+        private BitTreeDecoder m_PosAlignDecoder = new BitTreeDecoder(Base.kNumAlignBits);
 
-        LenDecoder m_LenDecoder = new LenDecoder();
-        LenDecoder m_RepLenDecoder = new LenDecoder();
+        private LenDecoder m_LenDecoder = new LenDecoder();
+        private LenDecoder m_RepLenDecoder = new LenDecoder();
 
-        LiteralDecoder m_LiteralDecoder = new LiteralDecoder();
+        private LiteralDecoder m_LiteralDecoder = new LiteralDecoder();
 
-        uint m_DictionarySize;
-        uint m_DictionarySizeCheck;
+        private uint m_DictionarySize;
+        private uint m_DictionarySizeCheck;
 
-        uint m_PosStateMask;
+        private uint m_PosStateMask;
 
         public Decoder()
         {
@@ -170,7 +170,7 @@ namespace ClashLand.External.LZMA.Compress.LZMA
                 m_PosSlotDecoder[i] = new BitTreeDecoder(Base.kNumPosSlotBits);
         }
 
-        void SetDictionarySize(uint dictionarySize)
+        private void SetDictionarySize(uint dictionarySize)
         {
             if (m_DictionarySize != dictionarySize)
             {
@@ -181,7 +181,7 @@ namespace ClashLand.External.LZMA.Compress.LZMA
             }
         }
 
-        void SetLiteralProperties(int lp, int lc)
+        private void SetLiteralProperties(int lp, int lc)
         {
             if (lp > 8)
                 throw new InvalidParamException();
@@ -190,19 +190,19 @@ namespace ClashLand.External.LZMA.Compress.LZMA
             m_LiteralDecoder.Create(lp, lc);
         }
 
-        void SetPosBitsProperties(int pb)
+        private void SetPosBitsProperties(int pb)
         {
             if (pb > Base.kNumPosStatesBitsMax)
                 throw new InvalidParamException();
-            uint numPosStates = (uint) 1 << pb;
+            uint numPosStates = (uint)1 << pb;
             m_LenDecoder.Create(numPosStates);
             m_RepLenDecoder.Create(numPosStates);
             m_PosStateMask = numPosStates - 1;
         }
 
-        bool _solid = false;
+        private bool _solid = false;
 
-        void Init(System.IO.Stream inStream, System.IO.Stream outStream)
+        private void Init(System.IO.Stream inStream, System.IO.Stream outStream)
         {
             m_RangeDecoder.Init(inStream);
             m_OutWindow.Init(outStream, _solid);
@@ -244,7 +244,7 @@ namespace ClashLand.External.LZMA.Compress.LZMA
             uint rep0 = 0, rep1 = 0, rep2 = 0, rep3 = 0;
 
             UInt64 nowPos64 = 0;
-            UInt64 outSize64 = (UInt64) outSize;
+            UInt64 outSize64 = (UInt64)outSize;
             if (nowPos64 < outSize64)
             {
                 if (m_IsMatchDecoders[state.Index << Base.kNumPosStatesBitsMax].Decode(m_RangeDecoder) != 0)
@@ -259,16 +259,16 @@ namespace ClashLand.External.LZMA.Compress.LZMA
                 // UInt64 next = Math.Min(nowPos64 + (1 << 18), outSize64);
                 // while(nowPos64 < next)
                 {
-                    uint posState = (uint) nowPos64 & m_PosStateMask;
+                    uint posState = (uint)nowPos64 & m_PosStateMask;
                     if (m_IsMatchDecoders[(state.Index << Base.kNumPosStatesBitsMax) + posState].Decode(m_RangeDecoder) == 0)
                     {
                         byte b;
                         byte prevByte = m_OutWindow.GetByte(0);
                         if (!state.IsCharState())
                             b = m_LiteralDecoder.DecodeWithMatchByte(m_RangeDecoder,
-                                (uint) nowPos64, prevByte, m_OutWindow.GetByte(rep0));
+                                (uint)nowPos64, prevByte, m_OutWindow.GetByte(rep0));
                         else
-                            b = m_LiteralDecoder.DecodeNormal(m_RangeDecoder, (uint) nowPos64, prevByte);
+                            b = m_LiteralDecoder.DecodeNormal(m_RangeDecoder, (uint)nowPos64, prevByte);
                         m_OutWindow.PutByte(b);
                         state.UpdateChar();
                         nowPos64++;
@@ -322,7 +322,7 @@ namespace ClashLand.External.LZMA.Compress.LZMA
                             uint posSlot = m_PosSlotDecoder[Base.GetLenToPosState(len)].Decode(m_RangeDecoder);
                             if (posSlot >= Base.kStartPosModelIndex)
                             {
-                                int numDirectBits = (int) ((posSlot >> 1) - 1);
+                                int numDirectBits = (int)((posSlot >> 1) - 1);
                                 rep0 = ((2 | (posSlot & 1)) << numDirectBits);
                                 if (posSlot < Base.kEndPosModelIndex)
                                     rep0 += BitTreeDecoder.ReverseDecode(m_PosDecoders,
@@ -365,7 +365,7 @@ namespace ClashLand.External.LZMA.Compress.LZMA
                 throw new InvalidParamException();
             UInt32 dictionarySize = 0;
             for (int i = 0; i < 4; i++)
-                dictionarySize += ((UInt32) (properties[1 + i])) << (i * 8);
+                dictionarySize += ((UInt32)(properties[1 + i])) << (i * 8);
             SetDictionarySize(dictionarySize);
             SetLiteralProperties(lp, lc);
             SetPosBitsProperties(pb);

@@ -3,13 +3,13 @@ namespace ClashLand.External.LZMA.Common
 {
     public class InBuffer
     {
-        byte[] m_Buffer;
-        uint m_Pos;
-        uint m_Limit;
-        uint m_BufferSize;
-        System.IO.Stream m_Stream;
-        bool m_StreamWasExhausted;
-        ulong m_ProcessedSize;
+        private byte[] m_Buffer;
+        private uint m_Pos;
+        private uint m_Limit;
+        private uint m_BufferSize;
+        private System.IO.Stream m_Stream;
+        private bool m_StreamWasExhausted;
+        private ulong m_ProcessedSize;
 
         public InBuffer(uint bufferSize)
         {
@@ -31,9 +31,9 @@ namespace ClashLand.External.LZMA.Common
             if (m_StreamWasExhausted)
                 return false;
             m_ProcessedSize += m_Pos;
-            int aNumProcessedBytes = m_Stream.Read(m_Buffer, 0, (int) m_BufferSize);
+            int aNumProcessedBytes = m_Stream.Read(m_Buffer, 0, (int)m_BufferSize);
             m_Pos = 0;
-            m_Limit = (uint) aNumProcessedBytes;
+            m_Limit = (uint)aNumProcessedBytes;
             m_StreamWasExhausted = (aNumProcessedBytes == 0);
             return (!m_StreamWasExhausted);
         }
@@ -43,7 +43,7 @@ namespace ClashLand.External.LZMA.Common
             m_Stream = null;
         }
 
-        public bool ReadByte(byte b) 
+        public bool ReadByte(byte b)
         {
             if (m_Pos >= m_Limit)
                 if (!ReadBlock())

@@ -1,18 +1,11 @@
-﻿using ClashLand.Core;
-using ClashLand.Extensions;
-//using ClashLand.Extensions.Game;
-using ClashLand.Logic;
+﻿//using ClashLand.Extensions.Game;
 //using ClashLand.Logic.Clan;
 //using ClashLand.Logic.Clan.Items;
-using ClashLand.Logic.Enums;
-using ClashLand.Packets.Commands.Server;
 using ClashLand.Extensions.Binary;
-
-
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client
 {
-
     internal class ElderKick : Command
     {
         internal bool HaveMessage;
@@ -40,6 +33,7 @@ namespace ClashLand.Packets.Commands.Client
 
             base.Decode();
         }
+
         internal override void Process()
         {
             base.Process();
@@ -231,7 +225,6 @@ namespace ClashLand.Packets.Commands.Client
     {
         public ElderKick(Reader Reader, Device Device, int Identifier) : base(Reader, Device, Identifier)
         {
-            
         }
 
         internal override void Decode()
@@ -245,5 +238,3 @@ namespace ClashLand.Packets.Commands.Client
         }
     }
 }*/
-
-

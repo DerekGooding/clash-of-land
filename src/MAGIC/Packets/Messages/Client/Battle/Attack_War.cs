@@ -1,9 +1,8 @@
-﻿using System;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Packets.Messages.Server.Battle;
+using System;
 
 namespace ClashLand.Packets.Messages.Client.Battle
 {
@@ -23,7 +22,7 @@ namespace ClashLand.Packets.Messages.Client.Battle
 
         internal override void Process()
         {
-            new Pc_Battle_Data(this.Device) { Enemy = this.Device.Player, BattleMode = Battle_Mode.NEXT_BUTTON_DISABLE}.Send();
+            new Pc_Battle_Data(this.Device) { Enemy = this.Device.Player, BattleMode = Battle_Mode.NEXT_BUTTON_DISABLE }.Send();
         }
     }
 }

@@ -17,7 +17,6 @@
 
         public Battle_V2()
         {
-
         }
 
         public Battle_V2(Level _Player1, Level _Player2)
@@ -26,7 +25,6 @@
             this.Player2 = _Player2;
             this.Battle1 = new Items.Battle_V2(_Player1, _Player2);
             this.Battle2 = new Items.Battle_V2(_Player2, _Player1);
-
         }
 
         internal Level GetPlayer(long UserID)
@@ -46,7 +44,6 @@
 
         internal Items.Battle_V2 GetEnemyBattle(long UserID)
         {
-
             return this.Battle2.Attacker.UserId != UserID ? this.Battle2 : this.Battle1;
         }
     }

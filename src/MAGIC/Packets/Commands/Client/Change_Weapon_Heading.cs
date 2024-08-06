@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Components;
 
@@ -13,9 +8,9 @@ namespace ClashLand.Packets.Commands.Client
     {
         internal int BuildingID;
         internal int Tick;
+
         public Change_Weapon_Heading(Reader reader, Device client, int id) : base(reader, client, id)
         {
-
         }
 
         internal override void Decode()

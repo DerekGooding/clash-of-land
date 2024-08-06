@@ -1,8 +1,6 @@
-﻿using System;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
 using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Structure.Slots.Items;
 using ClashLand.Packets.Messages.Server;
@@ -46,29 +44,28 @@ namespace ClashLand.Packets.Messages.Client
 
                                 if (Utils.IsOdd(Resources.Random.Next(1, 1000)))
                                 {
-                                    int lost = (int) Battle.LoseTrophies();
-                                    Player.Avatar.Trophies += (int) Battle.WinTrophies();
+                                    int lost = (int)Battle.LoseTrophies();
+                                    Player.Avatar.Trophies += (int)Battle.WinTrophies();
 
                                     if (this.Device.Player.Avatar.Trophies >= lost)
-                                        this.Device.Player.Avatar.Trophies -= (int) Battle.LoseTrophies();
+                                        this.Device.Player.Avatar.Trophies -= (int)Battle.LoseTrophies();
                                     else
                                         this.Device.Player.Avatar.Trophies = 0;
 
-                                    Battle.Replay_Info.Stats.Defender_Score = (int) Battle.WinTrophies();
+                                    Battle.Replay_Info.Stats.Defender_Score = (int)Battle.WinTrophies();
                                     Battle.Replay_Info.Stats.Attacker_Score = lost > 0 ? -lost : 0;
                                     Battle.Replay_Info.Stats.Destruction_Percentage = Resources.Random.Next(49);
                                 }
                                 else
                                 {
-
-                                    int lost = (int) Battle.LoseTrophies();
+                                    int lost = (int)Battle.LoseTrophies();
                                     if (Player.Avatar.Trophies >= lost)
-                                        Player.Avatar.Trophies -= (int) Battle.LoseTrophies();
+                                        Player.Avatar.Trophies -= (int)Battle.LoseTrophies();
                                     else
                                         Player.Avatar.Trophies = 0;
 
-                                    this.Device.Player.Avatar.Trophies += (int) Battle.WinTrophies();
-                                    Battle.Replay_Info.Stats.Attacker_Score = (int) Battle.WinTrophies();
+                                    this.Device.Player.Avatar.Trophies += (int)Battle.WinTrophies();
+                                    Battle.Replay_Info.Stats.Attacker_Score = (int)Battle.WinTrophies();
                                     Battle.Replay_Info.Stats.Defender_Score = lost > 0 ? -lost : 0;
 
                                     Battle.Replay_Info.Stats.Destruction_Percentage = Resources.Random.Next(50, 100);
@@ -129,7 +126,6 @@ namespace ClashLand.Packets.Messages.Client
                 }
                 else if (this.Device.State == Logic.Enums.State.IN_1VS1_BATTLE)
                 {
-
                     long UserID = this.Device.Player.Avatar.UserId;
                     long BattleID = this.Device.Player.Avatar.Battle_ID_V2;
                     var Home = Resources.Battles_V2.GetPlayer(BattleID, UserID);
@@ -161,7 +157,6 @@ namespace ClashLand.Packets.Messages.Client
 
                     new V2_Battle_Result(this.Device, Battle).Send();
 
-
                     this.Device.Player.Avatar.Battle_ID_V2 = 0;
                     this.Device.State = Logic.Enums.State.LOGGED;
                 }
@@ -170,7 +165,6 @@ namespace ClashLand.Packets.Messages.Client
 
                 if (this.Device.Player.Avatar.ClanId > 0)
                 {
-                    
                 }
             }
         }

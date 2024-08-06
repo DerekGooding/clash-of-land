@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ClashLand.Extensions;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Logic.Structure.Slots
 {
     internal class Members : Dictionary<long, Member>
     {
-
         internal Clan Alliance;
 
         internal object Gate = new object();
+
         public Members()
         {
         }
@@ -53,6 +52,7 @@ namespace ClashLand.Logic.Structure.Slots
                     this.Add(_Member.UserID, _Member);
             }
         }
+
         internal void Remove(Player Player)
         {
             lock (this.Gate)
@@ -82,14 +82,14 @@ namespace ClashLand.Logic.Structure.Slots
                 List<byte> _Packet = new List<byte>();
 
                 _Packet.AddInt(this.Values.Count);
-                    
+
                 foreach (Member Member in this.Values.ToList())
                 {
                     Level _Player = Core.Players.Get(Member.UserID, false, true);
 
                     _Packet.AddLong(_Player.Avatar.UserId);
                     _Packet.AddString(_Player.Avatar.Name);
-                    _Packet.AddInt((int) Member.Role);
+                    _Packet.AddInt((int)Member.Role);
 
                     _Packet.AddInt(_Player.Avatar.Level);
                     _Packet.AddInt(_Player.Avatar.League);

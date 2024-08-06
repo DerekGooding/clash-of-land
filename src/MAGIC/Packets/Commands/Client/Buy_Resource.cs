@@ -1,10 +1,10 @@
-﻿using System;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Packets.Messages.Server.Errors;
+using System;
 
 namespace ClashLand.Packets.Commands.Client
 {
@@ -38,7 +38,7 @@ namespace ClashLand.Packets.Commands.Client
             {
                 this.Device.Depth--;
             }
-            this.Reader.ReadInt32(); 
+            this.Reader.ReadInt32();
         }
 
         internal override void Process()
@@ -68,7 +68,7 @@ namespace ClashLand.Packets.Commands.Client
                             Command.Process();
                         }
                     }
-                }   
+                }
             }
             else
             {

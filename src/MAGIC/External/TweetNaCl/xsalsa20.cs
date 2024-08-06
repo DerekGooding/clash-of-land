@@ -23,7 +23,7 @@
             byte[] subkey = new byte[32];
 
             hsalsa20.crypto_core(subkey, n, k, xsalsa20.sigma);
-            return salsa20.crypto_stream_xor(c, m, (int) mlen, n, 16, subkey);
+            return salsa20.crypto_stream_xor(c, m, (int)mlen, n, 16, subkey);
         }
     }
 }

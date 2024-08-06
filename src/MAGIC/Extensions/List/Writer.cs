@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ClashLand.Files.CSV_Helpers;
+using ClashLand.Logic.Structure.Slots.Items;
+using Ionic.Zlib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Ionic.Zlib;
-using ClashLand.Files.CSV_Helpers;
-using ClashLand.Logic.Structure.Slots.Items;
 using Resources = ClashLand.Core.Resources;
 
 namespace ClashLand.Extensions.List
@@ -15,17 +15,17 @@ namespace ClashLand.Extensions.List
         {
             _Packet.Add((byte)_Value);
         }
-        
+
         public static void AddInt(this List<byte> _Packet, int _Value)
         {
             _Packet.AddRange(BitConverter.GetBytes(_Value).Reverse());
         }
-        
+
         public static void AddIntEndian(this List<byte> _Packet, int _Value)
         {
             _Packet.AddRange(BitConverter.GetBytes(_Value));
         }
-        
+
         public static void AddInt(this List<byte> _Packet, int _Value, int _Skip)
         {
             _Packet.AddRange(BitConverter.GetBytes(_Value).Reverse().Skip(_Skip));
@@ -40,6 +40,7 @@ namespace ClashLand.Extensions.List
         {
             _Packet.AddRange(BitConverter.GetBytes(_Value).Reverse());
         }
+
         public static void AddLongEndian(this List<byte> _Packet, long _Value)
         {
             _Packet.AddRange(BitConverter.GetBytes(_Value));
@@ -49,12 +50,12 @@ namespace ClashLand.Extensions.List
         {
             _Packet.AddRange(BitConverter.GetBytes(_Value).Reverse().Skip(_Skip));
         }
-        
+
         public static void AddBool(this List<byte> _Packet, bool _Value)
         {
             _Packet.Add(_Value ? (byte)1 : (byte)0);
         }
-        
+
         public static void AddString(this List<byte> _Packet, string _Value)
         {
             if (_Value == null)
@@ -68,7 +69,7 @@ namespace ClashLand.Extensions.List
                 _Packet.AddInt(_Buffer.Length);
                 _Packet.AddRange(_Buffer);
             }
-        } 
+        }
 
         public static void AddVInt(this List<byte> _Packet, int _Value)
         {
@@ -94,7 +95,6 @@ namespace ClashLand.Extensions.List
                     }
                     else
                         _Value >>= 13 & 0x7F;
-
                 }
                 else
                     _Value >>= 6 & 0x7F;
@@ -138,13 +138,13 @@ namespace ClashLand.Extensions.List
         {
             _Packet.AddRange(_Value.HexaToBytes());
         }
-        
+
         public static byte[] HexaToBytes(this string _Value)
         {
             string _Tmp = _Value.Contains("-") ? _Value.Replace("-", string.Empty) : _Value.Replace(" ", string.Empty);
             return Enumerable.Range(0, _Tmp.Length).Where(x => x % 2 == 0).Select(x => Convert.ToByte(_Tmp.Substring(x, 2), 16)).ToArray();
         }
-        
+
         internal static void AddData(this List<byte> _Writer, Data _Data)
         {
             int Reference = _Data.Id;

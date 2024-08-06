@@ -9,7 +9,6 @@ namespace ClashLand.Logic.Structure.Slots.Items
 
         internal Slot()
         {
-
         }
 
         internal Slot(int Data, int Cnt)

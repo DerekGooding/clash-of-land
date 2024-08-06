@@ -1,7 +1,5 @@
-﻿using System;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.Errors;
@@ -23,12 +21,11 @@ namespace ClashLand.Packets.Messages.Server.Clans
             this.Identifier = 24301;
             this.Clan = clan;
         }
-        
+
         internal override void Encode()
         {
             if (Clan == null)
                 Clan = Resources.Clans.Get(this.ClanID == 0 ? this.Device.Player.Avatar.ClanId : this.ClanID, false);
-
 
             if (Clan != null)
             {

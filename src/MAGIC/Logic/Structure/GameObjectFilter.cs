@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ClashLand.Logic.Structure
 {
     internal class GameObjectFilter
     {
-        List<int> m_vIgnoredObjects;
+        private List<int> m_vIgnoredObjects;
 
         public void AddIgnoreObject(GameObject go)
         {

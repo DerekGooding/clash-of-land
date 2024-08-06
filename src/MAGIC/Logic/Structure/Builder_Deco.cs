@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace ClashLand.Logic.Structure
+﻿namespace ClashLand.Logic.Structure
 {
     using ClashLand.Files.CSV_Helpers;
     using ClashLand.Files.CSV_Logic;
-    using Newtonsoft.Json.Linq;
 
     internal class Builder_Deco : GameObject
     {
@@ -16,6 +12,5 @@ namespace ClashLand.Logic.Structure
         internal override int ClassId => 13;
 
         public Decos GetDecoData => (Decos)GetData();
-
     }
 }

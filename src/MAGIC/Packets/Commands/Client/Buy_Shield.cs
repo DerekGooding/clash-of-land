@@ -1,9 +1,5 @@
-﻿using System;
-using ClashLand.Extensions.Binary;
-using ClashLand.Files;
-using ClashLand.Files.CSV_Logic;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
-using ClashLand.Logic.Enums;
 
 namespace ClashLand.Packets.Commands.Client
 {
@@ -11,7 +7,6 @@ namespace ClashLand.Packets.Commands.Client
     {
         public Buy_Shield(Reader Reader, Device Device, int Identifier) : base(Reader, Device, Identifier)
         {
-
         }
 
         /*internal override void Decode()
@@ -28,6 +23,7 @@ namespace ClashLand.Packets.Commands.Client
 
         public int ShieldId;
         public int Tick;*/
+
         internal override void Decode()
         {
             //this.Debug();
@@ -39,6 +35,7 @@ namespace ClashLand.Packets.Commands.Client
         {
             base.Process();
         }
+
         public int ShieldId;
         public int Tick;
     }

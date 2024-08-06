@@ -11,7 +11,6 @@ namespace ClashLand.Packets.Messages.Server
         {
             this.Identifier = 20300;
             this.Name = Name;
-
         }
 
         internal override void Encode()

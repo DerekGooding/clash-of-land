@@ -60,7 +60,7 @@ namespace ClashLand.External.LZMA.Common
     public class Parser
     {
         public ArrayList NonSwitchStrings = new ArrayList();
-        SwitchResult[] _switches;
+        private SwitchResult[] _switches;
 
         public Parser(int numSwitches)
         {
@@ -69,7 +69,7 @@ namespace ClashLand.External.LZMA.Common
                 _switches[i] = new SwitchResult();
         }
 
-        bool ParseString(string srcString, SwitchForm[] switchForms)
+        private bool ParseString(string srcString, SwitchForm[] switchForms)
         {
             int len = srcString.Length;
             if (len == 0)
@@ -187,7 +187,8 @@ namespace ClashLand.External.LZMA.Common
             }
         }
 
-        public SwitchResult this[int index] { get { return _switches[index]; } }
+        public SwitchResult this[int index]
+        { get { return _switches[index]; } }
 
         public static int ParseCommand(CommandForm[] commandForms, string commandString,
             out string postString)
@@ -214,7 +215,7 @@ namespace ClashLand.External.LZMA.Common
             return -1;
         }
 
-        static bool ParseSubCharsCommand(int numForms, CommandSubCharsSet[] forms,
+        private static bool ParseSubCharsCommand(int numForms, CommandSubCharsSet[] forms,
             string commandString, ArrayList indices)
         {
             indices.Clear();
@@ -245,13 +246,13 @@ namespace ClashLand.External.LZMA.Common
             return (numUsedChars == commandString.Length);
         }
 
-        const char kSwitchID1 = '-';
-        const char kSwitchID2 = '/';
+        private const char kSwitchID1 = '-';
+        private const char kSwitchID2 = '/';
 
-        const char kSwitchMinus = '-';
-        const string kStopSwitchParsing = "--";
+        private const char kSwitchMinus = '-';
+        private const string kStopSwitchParsing = "--";
 
-        static bool IsItSwitchChar(char c)
+        private static bool IsItSwitchChar(char c)
         {
             return (c == kSwitchID1 || c == kSwitchID2);
         }

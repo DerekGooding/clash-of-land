@@ -1,16 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
-using ClashLand.External.Sodium;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
-using ClashLand.Packets;
 using ClashLand.Packets.Messages.Server.Authentication;
+using System;
 
 namespace ClashLand.Packets.Client.Authentication
 {
@@ -63,7 +56,6 @@ namespace ClashLand.Packets.Client.Authentication
                     {
                         new Unlock_Account_Failed(this.Device) { Reason = UnlockReason.UnlockError }.Send();
                     }
-
                 }
                 else
                 {
@@ -78,7 +70,6 @@ namespace ClashLand.Packets.Client.Authentication
             else
             {
                 new Unlock_Account_Failed(this.Device) { Reason = UnlockReason.Default }.Send();
-
             }
         }
     }

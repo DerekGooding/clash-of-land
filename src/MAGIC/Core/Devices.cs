@@ -1,14 +1,14 @@
-﻿using System;
+﻿using ClashLand.Logic;
+using System;
 using System.Collections.Concurrent;
 using System.Net.Sockets;
-using System.Threading;
-using ClashLand.Logic;
 
 namespace ClashLand.Core
 {
     internal static class Devices
     {
         internal static ConcurrentDictionary<IntPtr, Device> _Devices;
+
         internal static void Initialize()
         {
             _Devices = new ConcurrentDictionary<IntPtr, Device>();
@@ -27,7 +27,6 @@ namespace ClashLand.Core
                 var device = default(Device);
                 if (_Devices.TryRemove(Socket, out device))
                 {
-
                     var socket = device.Socket;
 
                     try { socket.Shutdown(SocketShutdown.Both); }
@@ -43,7 +42,6 @@ namespace ClashLand.Core
                             Players.Remove(device.Player);
                         }
                     }
-
                 }
             }
             catch (Exception ex)

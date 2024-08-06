@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
 using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
@@ -10,13 +7,13 @@ using ClashLand.External.Sodium;
 using ClashLand.Files;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
-using ClashLand.Packets.Messages.Server.Authentication;
-using ClashLand.Packets.Messages.Server;
-using ClashLand.Packets.Messages.Server.Clans;
-using ClashLand.Packets.Messages.Server.Clans.War;
 using ClashLand.Packets.Cryptography;
-using ClashLand.Packets.Messages.Server.Battle;
-using ClashLand.External.TweetNaCl;
+using ClashLand.Packets.Messages.Server;
+using ClashLand.Packets.Messages.Server.Authentication;
+using ClashLand.Packets.Messages.Server.Clans;
+using System;
+using System.Linq;
+using System.Text;
 
 namespace ClashLand.Packets.Messages.Client.Authentication
 {
@@ -36,12 +33,11 @@ namespace ClashLand.Packets.Messages.Client.Authentication
 
         internal string[] ClientVersion;
 
-
         internal override void DecryptSexy()
         {
             byte[] Buffer = this.Reader.ReadBytes((int)this.Length);
             this.Device.Keys.PublicKey = Buffer.Take(32).ToArray();
-            
+
             Blake2BHasher Blake = new Blake2BHasher();
 
             Blake.Update(this.Device.Keys.PublicKey);
@@ -55,11 +51,10 @@ namespace ClashLand.Packets.Messages.Client.Authentication
             this.Reader = new Reader(Buffer.Skip(48).ToArray());
 
             this.Length = (ushort)Buffer.Length;
-
         }
 
         internal override void Decode()
-        { 
+        {
             this.UserId = this.Reader.ReadInt64();
 
             this.Token = this.Reader.ReadString();
@@ -152,14 +147,14 @@ namespace ClashLand.Packets.Messages.Client.Authentication
                 }
                 else
                 {
-                    new Authentication_Failed(this.Device, (Reason) 2).Send();
+                    new Authentication_Failed(this.Device, (Reason)2).Send();
                 }
             }
             else if (this.UserId > 0)
             {
                 if (Token == null)
                 {
-                    new Authentication_Failed(this.Device, (Reason) 2).Send();
+                    new Authentication_Failed(this.Device, (Reason)2).Send();
                     return;
                 }
                 else
@@ -242,7 +237,7 @@ namespace ClashLand.Packets.Messages.Client.Authentication
                 {
                     this.Device.Player.Avatar.Alliance_Level = Alliance.Level;
 
-                    new Alliance_Full_Entry(this.Device) {Clan = Alliance}.Send();
+                    new Alliance_Full_Entry(this.Device) { Clan = Alliance }.Send();
                     //new War_Map(this.Device).Send();
 
                     if (Alliance.Chats != null)

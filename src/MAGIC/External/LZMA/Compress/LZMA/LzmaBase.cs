@@ -26,17 +26,17 @@ namespace ClashLand.External.LZMA.Compress.LZMA
 
             public void UpdateMatch()
             {
-                Index = (uint) (Index < 7 ? 7 : 10);
+                Index = (uint)(Index < 7 ? 7 : 10);
             }
 
             public void UpdateRep()
             {
-                Index = (uint) (Index < 7 ? 8 : 11);
+                Index = (uint)(Index < 7 ? 8 : 11);
             }
 
             public void UpdateShortRep()
             {
-                Index = (uint) (Index < 7 ? 9 : 11);
+                Index = (uint)(Index < 7 ? 9 : 11);
             }
 
             public bool IsCharState()
@@ -58,7 +58,7 @@ namespace ClashLand.External.LZMA.Compress.LZMA
             len -= kMatchMinLen;
             if (len < kNumLenToPosStates)
                 return len;
-            return (uint) (kNumLenToPosStates - 1);
+            return (uint)(kNumLenToPosStates - 1);
         }
 
         public const int kNumAlignBits = 4;

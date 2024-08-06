@@ -33,10 +33,9 @@ namespace Magic.ClashOfClans.Core.API.Discord.Modules
             };
             _Builder.WithTitle(Utils.ParseConfigString("DiscordServerName") + " Status");
 
-
             _Builder.AddInlineField("SocketAsyncEventArgs", $"Created: {Gateway.NumberOfArgsCreated}\nIn-use: {Gateway.NumberOfArgsInUse}\nAvailable: {Gateway.NumberOfArgs}");
             _Builder.AddInlineField("Buffer", $"Created: {Gateway.NumberOfBuffersCreated}\nIn-use: {Gateway.NumberOfBuffersInUse}\nAvailable: {Gateway.NumberOfBuffers}");
-   
+
             _Builder.AddInlineField("Online Players", $"{ResourcesManager.OnlinePlayers.Count}");
             _Builder.AddInlineField("In Memory Clans", $"{ResourcesManager.GetInMemoryAllianceCount()}");
 
@@ -56,7 +55,6 @@ namespace Magic.ClashOfClans.Core.API.Discord.Modules
                 Timestamp = DateTime.UtcNow,
             };
             _Builder.WithTitle(Utils.ParseConfigString("DiscordServerName") + " Status");
-
 
             _Builder.AddInlineField("SocketAsyncEventArgs", $"Created: {Gateway.NumberOfArgsCreated}\nIn-use: {Gateway.NumberOfArgsInUse}\nAvailable: {Gateway.NumberOfArgs}");
             _Builder.AddInlineField("Buffer", $"Created: {Gateway.NumberOfBuffersCreated}\nIn-use: {Gateway.NumberOfBuffersInUse}\nAvailable: {Gateway.NumberOfBuffers}");

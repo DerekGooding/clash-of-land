@@ -1,6 +1,4 @@
 ﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
@@ -11,7 +9,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
 {
     internal class Edit_Alliance_Settings : Message
     {
-
         internal string Message = string.Empty;
 
         internal Clan Clan;
@@ -38,14 +35,17 @@ namespace ClashLand.Packets.Messages.Client.Clans
                     this.Clan.War_History = false;
                     this.Clan.War_Amical = false;
                     break;
+
                 case 1:
                     this.Clan.War_History = true;
                     this.Clan.War_Amical = false;
                     break;
+
                 case 2:
                     this.Clan.War_History = false;
                     this.Clan.War_Amical = true;
                     break;
+
                 case 3:
                     this.Clan.War_History = true;
                     this.Clan.War_Amical = true;

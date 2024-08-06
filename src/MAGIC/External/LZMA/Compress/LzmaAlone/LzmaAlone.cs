@@ -1,7 +1,7 @@
-using System;
-using System.IO;
 using ClashLand.External.LZMA.Common;
 using ClashLand.External.LZMA.Compress.LZMA;
+using System;
+using System.IO;
 
 namespace ClashLand.External.LZMA.Compress.LzmaAlone
 {
@@ -12,10 +12,14 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
         public int fileIndex;
         public long skipSize;
 
-        public override bool CanRead { get { return true; } }
-        public override bool CanWrite { get { return false; } }
-        public override bool CanSeek { get { return false; } }
-        public override long Length { get { return s1.Length + s2.Length - skipSize; } }
+        public override bool CanRead
+        { get { return true; } }
+        public override bool CanWrite
+        { get { return false; } }
+        public override bool CanSeek
+        { get { return false; } }
+        public override long Length
+        { get { return s1.Length + s2.Length - skipSize; } }
 
         public override long Position
         {
@@ -68,7 +72,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
 
     internal class LzmaAlone
     {
-        enum Key
+        private enum Key
         {
             Help1 = 0,
             Help2,
@@ -85,7 +89,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
             Train
         };
 
-        static void PrintHelp()
+        private static void PrintHelp()
         {
             System.Console.WriteLine("\nUsage:  LZMA <e|d> [<switches>...] inputFile outputFile\n" +
                 "  e: encode file\n" +
@@ -105,7 +109,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
                 );
         }
 
-        static bool GetNumber(string s, out Int32 v)
+        private static bool GetNumber(string s, out Int32 v)
         {
             v = 0;
             for (int i = 0; i < s.Length; i++)
@@ -114,19 +118,19 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
                 if (c < '0' || c > '9')
                     return false;
                 v *= 10;
-                v += (Int32) (c - '0');
+                v += (Int32)(c - '0');
             }
             return true;
         }
 
-        static int IncorrectCommand()
+        private static int IncorrectCommand()
         {
             throw (new Exception("Command line error"));
             // System.Console.WriteLine("\nCommand line error\n");
             // return 1;
         }
 
-        static int Start(string[] args)
+        private static int Start(string[] args)
         {
             System.Console.WriteLine("\nLZMA# 4.61  2008-11-23\n");
 
@@ -162,7 +166,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
                 return IncorrectCommand();
             }
 
-            if (parser[(int) Key.Help1].ThereIs || parser[(int) Key.Help2].ThereIs)
+            if (parser[(int)Key.Help1].ThereIs || parser[(int)Key.Help2].ThereIs)
             {
                 PrintHelp();
                 return 0;
@@ -173,22 +177,22 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
             int paramIndex = 0;
             if (paramIndex >= nonSwitchStrings.Count)
                 return IncorrectCommand();
-            string command = (string) nonSwitchStrings[paramIndex++];
+            string command = (string)nonSwitchStrings[paramIndex++];
             command = command.ToLower();
 
             bool dictionaryIsDefined = false;
             Int32 dictionary = 1 << 21;
-            if (parser[(int) Key.Dictionary].ThereIs)
+            if (parser[(int)Key.Dictionary].ThereIs)
             {
                 Int32 dicLog;
-                if (!GetNumber((string) parser[(int) Key.Dictionary].PostStrings[0], out dicLog))
+                if (!GetNumber((string)parser[(int)Key.Dictionary].PostStrings[0], out dicLog))
                     IncorrectCommand();
-                dictionary = (Int32) 1 << dicLog;
+                dictionary = (Int32)1 << dicLog;
                 dictionaryIsDefined = true;
             }
             string mf = "bt4";
-            if (parser[(int) Key.MatchFinder].ThereIs)
-                mf = (string) parser[(int) Key.MatchFinder].PostStrings[0];
+            if (parser[(int)Key.MatchFinder].ThereIs)
+                mf = (string)parser[(int)Key.MatchFinder].PostStrings[0];
             mf = mf.ToLower();
 
             if (command == "b")
@@ -196,14 +200,14 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
                 const Int32 kNumDefaultItereations = 10;
                 Int32 numIterations = kNumDefaultItereations;
                 if (paramIndex < nonSwitchStrings.Count)
-                    if (!GetNumber((string) nonSwitchStrings[paramIndex++], out numIterations))
+                    if (!GetNumber((string)nonSwitchStrings[paramIndex++], out numIterations))
                         numIterations = kNumDefaultItereations;
-                return LzmaBench.LzmaBenchmark(numIterations, (UInt32) dictionary);
+                return LzmaBench.LzmaBenchmark(numIterations, (UInt32)dictionary);
             }
 
             string train = "";
-            if (parser[(int) Key.Train].ThereIs)
-                train = (string) parser[(int) Key.Train].PostStrings[0];
+            if (parser[(int)Key.Train].ThereIs)
+                train = (string)parser[(int)Key.Train].PostStrings[0];
 
             bool encodeMode = false;
             if (command == "e")
@@ -213,8 +217,8 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
             else
                 IncorrectCommand();
 
-            bool stdInMode = parser[(int) Key.StdIn].ThereIs;
-            bool stdOutMode = parser[(int) Key.StdOut].ThereIs;
+            bool stdInMode = parser[(int)Key.StdIn].ThereIs;
+            bool stdOutMode = parser[(int)Key.StdOut].ThereIs;
 
             Stream inStream = null;
             if (stdInMode)
@@ -225,7 +229,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
             {
                 if (paramIndex >= nonSwitchStrings.Count)
                     IncorrectCommand();
-                string inputName = (string) nonSwitchStrings[paramIndex++];
+                string inputName = (string)nonSwitchStrings[paramIndex++];
                 inStream = new FileStream(inputName, FileMode.Open, FileAccess.Read);
             }
 
@@ -238,7 +242,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
             {
                 if (paramIndex >= nonSwitchStrings.Count)
                     IncorrectCommand();
-                string outputName = (string) nonSwitchStrings[paramIndex++];
+                string outputName = (string)nonSwitchStrings[paramIndex++];
                 outStream = new FileStream(outputName, FileMode.Create, FileAccess.Write);
             }
 
@@ -259,23 +263,23 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
                 Int32 algorithm = 2;
                 Int32 numFastBytes = 128;
 
-                bool eos = parser[(int) Key.EOS].ThereIs || stdInMode;
+                bool eos = parser[(int)Key.EOS].ThereIs || stdInMode;
 
-                if (parser[(int) Key.Mode].ThereIs)
-                    if (!GetNumber((string) parser[(int) Key.Mode].PostStrings[0], out algorithm))
+                if (parser[(int)Key.Mode].ThereIs)
+                    if (!GetNumber((string)parser[(int)Key.Mode].PostStrings[0], out algorithm))
                         IncorrectCommand();
 
-                if (parser[(int) Key.FastBytes].ThereIs)
-                    if (!GetNumber((string) parser[(int) Key.FastBytes].PostStrings[0], out numFastBytes))
+                if (parser[(int)Key.FastBytes].ThereIs)
+                    if (!GetNumber((string)parser[(int)Key.FastBytes].PostStrings[0], out numFastBytes))
                         IncorrectCommand();
-                if (parser[(int) Key.LitContext].ThereIs)
-                    if (!GetNumber((string) parser[(int) Key.LitContext].PostStrings[0], out litContextBits))
+                if (parser[(int)Key.LitContext].ThereIs)
+                    if (!GetNumber((string)parser[(int)Key.LitContext].PostStrings[0], out litContextBits))
                         IncorrectCommand();
-                if (parser[(int) Key.LitPos].ThereIs)
-                    if (!GetNumber((string) parser[(int) Key.LitPos].PostStrings[0], out litPosBits))
+                if (parser[(int)Key.LitPos].ThereIs)
+                    if (!GetNumber((string)parser[(int)Key.LitPos].PostStrings[0], out litPosBits))
                         IncorrectCommand();
-                if (parser[(int) Key.PosBits].ThereIs)
-                    if (!GetNumber((string) parser[(int) Key.PosBits].PostStrings[0], out posStateBits))
+                if (parser[(int)Key.PosBits].ThereIs)
+                    if (!GetNumber((string)parser[(int)Key.PosBits].PostStrings[0], out posStateBits))
                         IncorrectCommand();
 
                 CoderPropID[] propIDs =
@@ -310,7 +314,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
                 else
                     fileSize = inStream.Length;
                 for (int i = 0; i < 8; i++)
-                    outStream.WriteByte((Byte) (fileSize >> (8 * i)));
+                    outStream.WriteByte((Byte)(fileSize >> (8 * i)));
                 if (trainStream != null)
                 {
                     CDoubleStream doubleStream = new CDoubleStream();
@@ -323,7 +327,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
                     if (trainFileSize > dictionary)
                         doubleStream.skipSize = trainFileSize - dictionary;
                     trainStream.Seek(doubleStream.skipSize, SeekOrigin.Begin);
-                    encoder.SetTrainSize((uint) (trainFileSize - doubleStream.skipSize));
+                    encoder.SetTrainSize((uint)(trainFileSize - doubleStream.skipSize));
                 }
                 encoder.Code(inStream, outStream, -1, -1, null);
             }
@@ -345,7 +349,7 @@ namespace ClashLand.External.LZMA.Compress.LzmaAlone
                     int v = inStream.ReadByte();
                     if (v < 0)
                         throw (new Exception("Can't Read 1"));
-                    outSize |= ((long) (byte) v) << (8 * i);
+                    outSize |= ((long)(byte)v) << (8 * i);
                 }
                 long compressedSize = inStream.Length - inStream.Position;
                 decoder.Code(inStream, outStream, compressedSize, outSize, null);

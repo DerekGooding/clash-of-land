@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Logic.Manager;
+﻿using ClashLand.Logic.Manager;
 using ClashLand.Logic.Structure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic
 {

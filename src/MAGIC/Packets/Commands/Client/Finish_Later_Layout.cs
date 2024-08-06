@@ -1,10 +1,8 @@
-﻿using ClashLand.Logic;
-using ClashLand.Extensions.Binary;
-
+﻿using ClashLand.Extensions.Binary;
+using ClashLand.Logic;
 
 namespace ClashLand.Packets.Commands.Client
 {
-
     internal class Finish_Later_Layout : Command
     {
         internal int Layout;

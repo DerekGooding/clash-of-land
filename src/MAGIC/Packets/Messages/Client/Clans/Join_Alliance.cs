@@ -1,7 +1,5 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
@@ -12,12 +10,11 @@ using ClashLand.Packets.Messages.Server.Clans;
 namespace ClashLand.Packets.Messages.Client.Clans
 {
     internal class Join_Alliance : Message
-    { 
+    {
         internal long ClanID;
 
         public Join_Alliance(Device device) : base(device)
         {
-
         }
 
         internal override void Decode()
@@ -37,7 +34,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
                 this.Device.Player.Avatar.Alliance_Name = Alliance.Name;
                 this.Device.Player.Avatar.Alliance_Role = (int)Role.Member;
                 this.Device.Player.Avatar.Badge_ID = Alliance.Badge;
-
 
                 new Server_Commands(this.Device)
                 {

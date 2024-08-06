@@ -27,7 +27,6 @@
         /// <param name="Parameters"></param>
         public Clear_Obstacles(params string[] Parameters) : base(Parameters)
         {
-            
         }
 
         public object PlayerHighID { get; private set; }

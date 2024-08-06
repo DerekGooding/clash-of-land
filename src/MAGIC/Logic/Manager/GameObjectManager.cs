@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using System.Linq;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Helpers;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Logic.Manager
 {
@@ -80,7 +80,6 @@ namespace ClashLand.Logic.Manager
             return this.GameObjects[classId].Find(g => g.GlobalId == id);
         }
 
-
         public List<GameObject> GetGameObjects(int id) => this.GameObjects[id];
 
         public JObject JSON
@@ -88,6 +87,7 @@ namespace ClashLand.Logic.Manager
             get
             {
                 #region Get
+
                 JArray JBuildings = new JArray();
                 int c = 0;
                 foreach (GameObject go in new List<GameObject>(this.GameObjects[0]))
@@ -131,7 +131,6 @@ namespace ClashLand.Logic.Manager
                     JDecos.Add(j);
                     e++;
                 }
-
 
                 JArray JObject = new JArray();
                 int jO = 0;
@@ -177,7 +176,6 @@ namespace ClashLand.Logic.Manager
                     u2++;
                 }
 
-
                 JArray JDecos2 = new JArray();
                 int e2 = 0;
                 foreach (GameObject go in new List<GameObject>(this.GameObjects[13]))
@@ -214,13 +212,11 @@ namespace ClashLand.Logic.Manager
                         {"cnt", 26},
                         {"t", true }
                     },
-
                 };
                 var unit = new JObject
                 {
                     {"t", TimeUtils.ToTick(TimeSpan.FromSeconds(0.5)) },
                     {"slots", unitSlot }
-
                 };
                 */
                 var jsonData = new JObject
@@ -257,11 +253,11 @@ namespace ClashLand.Logic.Manager
                     {"arr_war_base", false},
                     {"account_flags", 15},
                     {"bool_layout_edit_shown_erase", false},
-
                 };
 
                 return jsonData;
-                #endregion
+
+                #endregion Get
             }
             set
             {
@@ -359,7 +355,7 @@ namespace ClashLand.Logic.Manager
                     d.Load(jsonObject2);
                 }
                 /*
-    
+
                 m_vObstacleManager.Load(jsonObject); */
             }
         }
@@ -414,6 +410,7 @@ namespace ClashLand.Logic.Manager
             this.GameObjectsIndex[go.ClassId]++;
             return GlobalID.CreateGlobalID(go.ClassId + 500, index);
         }
+
         internal int GenerateBuilderVillageGameObjectGlobalId(GameObject go)
         {
             var index = this.GameObjectsIndex[go.ClassId];

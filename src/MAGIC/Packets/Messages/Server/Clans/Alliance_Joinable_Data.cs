@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core;
-using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
 
@@ -7,7 +6,6 @@ namespace ClashLand.Packets.Messages.Server.Clans
 {
     internal class Alliance_Joinable_Data : Message
     {
-
         internal long Alliance_Count = (Resources.Clans.Seed - 1 >= 50 ? 50 : Resources.Clans.Seed - 1);
 
         public Alliance_Joinable_Data(Device _Device) : base(_Device)
@@ -17,7 +15,6 @@ namespace ClashLand.Packets.Messages.Server.Clans
 
         internal override void Encode()
         {
-            
             long Base_ID = 0;
             if (Resources.Clans.Seed - this.Alliance_Count > 0)
                 Base_ID = Resources.Random.Next(1, (int)Resources.Clans.Seed - (int)this.Alliance_Count);

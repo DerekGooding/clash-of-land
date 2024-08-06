@@ -1,5 +1,5 @@
-﻿using System;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
+using System;
 
 namespace ClashLand.Logic.Structure
 {
@@ -27,6 +27,7 @@ namespace ClashLand.Logic.Structure
             this.Seconds += seconds;
             this.EndTime += seconds;
         }
+
         internal int GetRemainingSeconds(DateTime time)
         {
             int result = this.Seconds - (int)time.Subtract(this.StartTime).TotalSeconds;

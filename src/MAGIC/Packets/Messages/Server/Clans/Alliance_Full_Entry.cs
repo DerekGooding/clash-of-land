@@ -1,7 +1,6 @@
 ﻿using ClashLand.Core;
-using ClashLand.Extensions;
-using ClashLand.Logic;
 using ClashLand.Extensions.List;
+using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 
 namespace ClashLand.Packets.Messages.Server.Clans
@@ -30,9 +29,9 @@ namespace ClashLand.Packets.Messages.Server.Clans
             this.Data.AddString(this.Clan.Description);
             this.Data.AddInt((int)WarState.NONE); //War state:
 
-            this.Data.AddInt(0); 
+            this.Data.AddInt(0);
 
-            this.Data.Add(0); 
+            this.Data.Add(0);
             //pack.AddLong(WarID);
 
             this.Data.Add(0);

@@ -1,12 +1,5 @@
-﻿using System.IO;
-using ClashLand.Core;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
-using ClashLand.Files;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
-using ClashLand.Logic.Structure.Slots;
-using ClashLand.Packets.Messages.Server;
-using MySql.Data.MySqlClient.Memcached;
 
 namespace ClashLand.Packets.Messages.Client
 {
@@ -35,12 +28,11 @@ namespace ClashLand.Packets.Messages.Client
             var user = DatabaseManager.Single().Save(level);
             user.Wait();
         }*/
+
         internal override void Decode()
         {
             this.Debug();
         }
-
-
 
         internal override void Process()
         {

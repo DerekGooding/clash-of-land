@@ -19,7 +19,6 @@ namespace ClashLand.Files
                 throw new Exception($"{JsonPath} does not exist in current directory!");
 
             Home.Starting_Home = Regex.Replace(File.ReadAllText(JsonPath, Encoding.UTF8), "(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+", "$1");
-
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using System;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
 using Newtonsoft.Json.Linq;
+using System;
 using Resource = ClashLand.Logic.Enums.Resource;
 
 namespace ClashLand.Logic.Components

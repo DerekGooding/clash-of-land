@@ -1,12 +1,6 @@
-﻿using System.IO;
-using ClashLand.Logic;
-using ClashLand.Logic.Enums;
-using ClashLand.Extensions.List;
-using ClashLand.Core;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions.Binary;
-using ClashLand.Core.Networking;
-using ClashLand.Files.CSV_Helpers;
-using ClashLand.Packets;
+using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server;
 
 namespace ClashLand.Packets.Messages.Client
@@ -14,6 +8,7 @@ namespace ClashLand.Packets.Messages.Client
     internal class AskForBookmarkMessage : Message
     {
         internal int bookmarks;
+
         public AskForBookmarkMessage(Device Device, Reader Reader) : base(Device, Reader)
         {
             this.Identifier = 14341;

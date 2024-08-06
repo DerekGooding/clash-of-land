@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Files;
 using ClashLand.Logic.Enums;
+using System;
 
 namespace ClashLand.Logic.Structure
 {
@@ -19,6 +18,7 @@ namespace ClashLand.Logic.Structure
         internal override int ClassId => 3;
 
         internal Obstacles GetObstacleData() => (Obstacles)GetData();
+
         internal Timer Timer;
         internal bool IsClearing;
 

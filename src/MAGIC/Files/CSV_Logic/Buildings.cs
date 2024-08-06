@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Files.CSV_Helpers;
+﻿using ClashLand.Files.CSV_Helpers;
 using ClashLand.Files.CSV_Reader;
 using ClashLand.Logic.Enums;
+using System.Collections.Generic;
 
 namespace ClashLand.Files.CSV_Logic
 {
@@ -236,11 +232,15 @@ namespace ClashLand.Files.CSV_Logic
         public int GetAltUnitStorageCapacity(int level) => HousingSpaceAlt[level];
 
         public override bool IsTownHall() => BuildingClass == "Town Hall";
+
         public override bool IsTownHall2() => BuildingClass == "Town Hall2";
+
         public bool IsSpellForge() => ForgesSpells || ForgesMiniSpells;
+
         public bool IsAllianceCastle() => Name == "Alliance Castle";
 
         public bool IsWorkerBuilding() => BuildingClass == "Worker";
+
         public bool IsWorker2Building() => BuildingClass == "Worker2";
 
         public Resource GetAltBuildResource(int level) => CSV.Tables.Get(Gamefile.Resources).GetData(AltBuildResource[level]) as Resource;

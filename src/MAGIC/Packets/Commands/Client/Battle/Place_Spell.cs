@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
+using System.Collections.Generic;
 
 namespace ClashLand.Packets.Commands.Client.Battle
 {
@@ -53,7 +48,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                             Command_Base =
                                 new Command_Base
                                 {
-                                    Base = new Base {Tick = this.Tick},
+                                    Base = new Base { Tick = this.Tick },
                                     Data = this.GlobalId,
                                     X = this.X,
                                     Y = this.Y
@@ -65,10 +60,9 @@ namespace ClashLand.Packets.Commands.Client.Battle
                     if (Index > -1)
                         Battle.Replay_Info.Spells[Index][1]++;
                     else
-                        Battle.Replay_Info.Spells.Add(new[] {this.GlobalId, 1});
+                        Battle.Replay_Info.Spells.Add(new[] { this.GlobalId, 1 });
 
                     Battle.Attacker.Add_Spells(GlobalId, 1);
-
                 }
             }
             List<Slot> _PlayerSpells = this.Device.Player.Avatar.Spells;

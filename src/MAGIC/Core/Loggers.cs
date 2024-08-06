@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ClashLand.Logic.Enums;
+using ClashLand.Packets;
+using NLog;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using ClashLand.Logic.Enums;
-using ClashLand.Packets;
-using NLog;
 
 namespace ClashLand.Core
 {
-    internal static class Loggers 
+    internal static class Loggers
     {
         internal static Logger _logger;
 
@@ -47,51 +45,50 @@ namespace ClashLand.Core
             _logger.Fatal("Logger has been started.");
             _logger.Trace("Logger has been started.");
             _logger.Debug("Logger has been started.");
-
         }
+
         internal static void Log(string message = "OK.", bool show = false, Defcon defcon = Defcon.DEFAULT)
         {
             switch (defcon)
             {
-
                 case Defcon.INFO:
-                {
-                    _logger.Info(message);
-                    break;
-                }
+                    {
+                        _logger.Info(message);
+                        break;
+                    }
 
                 case Defcon.WARN:
-                {
-                    _logger.Warn(message);
-                    break;
-                }
+                    {
+                        _logger.Warn(message);
+                        break;
+                    }
 
                 case Defcon.ERROR:
-                {
-                    _logger.Error(message);
-                    break;
-                }
+                    {
+                        _logger.Error(message);
+                        break;
+                    }
 
                 case Defcon.TRACE:
-                {
-                    _logger.Trace(message);
-                    break;
-                }
+                    {
+                        _logger.Trace(message);
+                        break;
+                    }
 
                 case Defcon.FATAL:
-                {
-                    _logger.Fatal(message);
-                    break;
-                }
+                    {
+                        _logger.Fatal(message);
+                        break;
+                    }
 
                 default:
-                {
-                    _logger.Info(message);
-                    break;
-                }
+                    {
+                        _logger.Info(message);
+                        break;
+                    }
             }
             if (show)
-               Console.WriteLine(message);
+                Console.WriteLine(message);
         }
 
         internal static void Log(Message Message, string prefix = null, Defcon defcon = Defcon.DEBUG)
@@ -121,16 +118,16 @@ namespace ClashLand.Core
             switch (defcon)
             {
                 case Defcon.TRACE:
-                {
-                    _logger.Trace(packet.ToString);
-                    break;
-                }
+                    {
+                        _logger.Trace(packet.ToString);
+                        break;
+                    }
 
                 default:
-                {
-                    _logger.Debug(packet.ToString);
-                    break;
-                }
+                    {
+                        _logger.Debug(packet.ToString);
+                        break;
+                    }
             }
         }
     }

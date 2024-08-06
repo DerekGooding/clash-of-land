@@ -1,14 +1,9 @@
-﻿using ClashLand.Core;
-using ClashLand.Logic;
-using ClashLand.Extensions.Binary;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Logic;
 
 namespace ClashLand.Packets.Messages.Client.Battle
 {
-
     internal class CancelDuelMatchmakeMessage : Message
-    {    
-        
+    {
         public CancelDuelMatchmakeMessage(Device Device) : base(Device)
         {
             this.Identifier = 14103;
@@ -18,8 +13,6 @@ namespace ClashLand.Packets.Messages.Client.Battle
         {
             this.Debug();
         }
-
-
 
         internal override void Process()
         {

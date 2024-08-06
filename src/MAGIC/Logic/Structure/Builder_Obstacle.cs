@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Files;
 using ClashLand.Logic.Enums;
+using System;
 
 namespace ClashLand.Logic.Structure
 {
@@ -48,6 +47,7 @@ namespace ClashLand.Logic.Structure
                 this.Level.BuilderVillageWorkerManager.AllocateWorker(this);
             }
         }
+
         internal void SpeedUpClearing()
         {
             int remainingSeconds = 0;

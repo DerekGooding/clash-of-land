@@ -13,6 +13,5 @@
         Purchase_Failed = 14,
         Server_Not_Ready = 16,
         Extended_Break = 21,
-
     }
 }

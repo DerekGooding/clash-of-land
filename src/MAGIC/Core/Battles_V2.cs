@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Logic;
+﻿using ClashLand.Logic;
 using ClashLand.Logic.Structure.Slots;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace ClashLand.Core
 {

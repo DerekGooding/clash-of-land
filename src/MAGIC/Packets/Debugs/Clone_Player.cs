@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
 using ClashLand.Extensions;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server;
+using System.Text;
 
 namespace ClashLand.Packets.Debugs
 {
@@ -15,9 +11,9 @@ namespace ClashLand.Packets.Debugs
     {
         internal long UserID;
         internal StringBuilder Help;
+
         public Clone_Player(Device device, params string[] Parameters) : base(device, Parameters)
         {
-
         }
 
         internal override void Process()
@@ -75,7 +71,6 @@ namespace ClashLand.Packets.Debugs
                             this.Device.Player.JSON = level.JSON;
 
                             new Own_Home_Data(this.Device).Send();
-
                         }
                         else
                             SendChatMessage("Unable to clone base,Player is null");

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ClashLand.Core;
+﻿using ClashLand.Core;
+using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
-using ClashLand.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Packets.Messages.Client.Battle
 {
@@ -16,7 +16,6 @@ namespace ClashLand.Packets.Messages.Client.Battle
 
         internal byte[] Commands;
         internal List<Command> LCommands;
-
 
         public Execute_Battle_Commands(Device device) : base(device)
         {

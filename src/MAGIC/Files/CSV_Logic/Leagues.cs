@@ -9,6 +9,7 @@ namespace ClashLand.Files.CSV_Logic
         {
             Load(_Row);
         }
+
         public string Name { get; set; }
         public string TID { get; set; }
         public string TIDShort { get; set; }

@@ -1,25 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace ClashLand.Core.Database
 {
     internal class MySQL_V2
     {
-
         internal static string Credentials;
+
         internal static JsonSerializerSettings Settings = new JsonSerializerSettings
         {
-            TypeNameHandling            = TypeNameHandling.Auto,            MissingMemberHandling   = MissingMemberHandling.Ignore,
-            DefaultValueHandling        = DefaultValueHandling.Include,     NullValueHandling       = NullValueHandling.Ignore,
-            PreserveReferencesHandling  = PreserveReferencesHandling.All,   ReferenceLoopHandling   = ReferenceLoopHandling.Ignore,
-            Formatting                  = Formatting.Indented,              Converters              = { new Utils.ArrayReferencePreservngConverter() },
+            TypeNameHandling = TypeNameHandling.Auto,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Include,
+            NullValueHandling = NullValueHandling.Ignore,
+            PreserveReferencesHandling = PreserveReferencesHandling.All,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            Formatting = Formatting.Indented,
+            Converters = { new Utils.ArrayReferencePreservngConverter() },
         };
 
         internal static List<Level> GetPlayerViaFID(List<string> ID)
@@ -114,7 +116,6 @@ namespace ClashLand.Core.Database
                 }
             }
 
-
             return Seed;
         }
 
@@ -133,7 +134,6 @@ namespace ClashLand.Core.Database
                     Seed = Convert.ToInt64(CMD.ExecuteScalar());
                 }
             }
-
 
             return Seed;
         }
@@ -169,7 +169,7 @@ namespace ClashLand.Core.Database
                 const string SQL = "SELECT coalesce(MAX(ID), 0) FROM player";
                 long Seed = -1;
 
-                using (MySqlConnection Connections = new MySqlConnection(Credentials))  
+                using (MySqlConnection Connections = new MySqlConnection(Credentials))
                 {
                     Connections.Open();
                     using (MySqlCommand CMD = new MySqlCommand(SQL, Connections))

@@ -11,6 +11,7 @@
         /// The index of the beginning of the pattern match.
         /// </summary>
         public int Beginning { get; private set; }
+
         /// <summary>
         /// The index of the end of the pattern match.
         /// </summary>

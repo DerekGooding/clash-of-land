@@ -1,13 +1,9 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using ClashLand.Logic;
-using ClashLand.Core.Networking;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
-using ClashLand.Files;
+using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Packets.Messages.Server.Authentication;
+using System;
 
 namespace ClashLand.Packets.Messages.Client.Authentication
 {
@@ -42,7 +38,7 @@ namespace ClashLand.Packets.Messages.Client.Authentication
 
         internal override void Process()
         {
-            if (this.Major == Convert.ToInt32(Constants.ClientVersion[0]) &&  this.Minor == Convert.ToInt32(Constants.ClientVersion[1]))
+            if (this.Major == Convert.ToInt32(Constants.ClientVersion[0]) && this.Minor == Convert.ToInt32(Constants.ClientVersion[1]))
             {
                 if (Constants.Maintenance == null)
                 {
@@ -50,9 +46,9 @@ namespace ClashLand.Packets.Messages.Client.Authentication
                     {
                         new Pre_Authentication_OK(this.Device).Send();
                     }
-                   // else
+                    // else
                     {
-                     //   new Authentication_Failed(this.Device, Reason.Patch).Send();
+                        //   new Authentication_Failed(this.Device, Reason.Patch).Send();
                     }
                 }
                 else

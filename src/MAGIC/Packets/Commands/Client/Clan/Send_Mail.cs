@@ -1,10 +1,7 @@
 ﻿using ClashLand.Core;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Structure.Slots.Items;
-using ClashLand.Packets.Messages.Server.Clans;
 
 namespace ClashLand.Packets.Commands.Client.Clan
 {
@@ -12,7 +9,6 @@ namespace ClashLand.Packets.Commands.Client.Clan
     {
         internal string Message;
         internal int Tick;
-
 
         public Send_Mail(Reader reader, Device client, int id) : base(reader, client, id)
         {
@@ -41,7 +37,7 @@ namespace ClashLand.Packets.Commands.Client.Clan
                         Sender_Level = this.Device.Player.Avatar.Level,
                         Sender_League = this.Device.Player.Avatar.League,
                         Alliance_ID = AllianceID,
-                        Message =  this.Message
+                        Message = this.Message
                     };
                     foreach (Member Member in Clan.Members.Values)
                     {

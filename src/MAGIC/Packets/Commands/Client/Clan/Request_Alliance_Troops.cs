@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core;
-using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Logic;
@@ -26,7 +25,7 @@ namespace ClashLand.Packets.Commands.Client.Clan
             if (this.Have_Message) this.Message = this.Reader.ReadString();
         }
 
-        internal override  void Process()
+        internal override void Process()
         {
             var Clan = Resources.Clans.Get(this.Device.Player.Avatar.ClanId);
             foreach (var Old_Entry in Clan.Chats.Slots.FindAll(M => M.Sender_ID == this.Device.Player.Avatar.UserId && M.Stream_Type == Alliance_Stream.TROOP_REQUEST))
@@ -52,7 +51,6 @@ namespace ClashLand.Packets.Commands.Client.Clan
                     Used_Space_Spells = this.Device.Player.Avatar.Castle_Used_SP,
                     Units = this.Device.Player.Avatar.Castle_Units.Clone(),
                     //Spells = this.Device.Player.Avatar.Castle_Spells.Clone(),
-
                 });
         }
     }

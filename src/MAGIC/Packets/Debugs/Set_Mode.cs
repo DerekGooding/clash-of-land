@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ClashLand.Logic;
 using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Logic;
 
 namespace ClashLand.Packets.Debugs
 {
@@ -13,7 +9,6 @@ namespace ClashLand.Packets.Debugs
 
         public Set_Mode(Device device, params string[] Parameters) : base(device, Parameters)
         {
-
         }
 
         internal override void Process()

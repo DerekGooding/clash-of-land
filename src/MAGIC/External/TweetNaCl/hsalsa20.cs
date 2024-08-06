@@ -121,18 +121,18 @@
 
         internal static int rotate(int u, int c)
         {
-            return (u << c) | (int) ((uint) u >> (32 - c));
+            return (u << c) | (int)((uint)u >> (32 - c));
         }
 
         internal static void store_littleendian(byte[] x, int offset, int u)
         {
-            x[offset] = (byte) u;
-            u = (int) ((uint) u >> 8);
-            x[offset + 1] = (byte) u;
-            u = (int) ((uint) u >> 8);
-            x[offset + 2] = (byte) u;
-            u = (int) ((uint) u >> 8);
-            x[offset + 3] = (byte) u;
+            x[offset] = (byte)u;
+            u = (int)((uint)u >> 8);
+            x[offset + 1] = (byte)u;
+            u = (int)((uint)u >> 8);
+            x[offset + 2] = (byte)u;
+            u = (int)((uint)u >> 8);
+            x[offset + 3] = (byte)u;
         }
     }
 }

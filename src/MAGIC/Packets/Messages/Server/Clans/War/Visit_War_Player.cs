@@ -1,10 +1,10 @@
-﻿using System;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
+using System;
 
 namespace ClashLand.Packets.Messages.Server.Clans.War
 {
-   internal class Visit_War_Player : Message
+    internal class Visit_War_Player : Message
     {
         internal Level Avatar;
 

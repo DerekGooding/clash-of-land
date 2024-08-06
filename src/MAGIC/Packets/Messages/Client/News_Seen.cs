@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server;
 

@@ -1,9 +1,6 @@
-﻿using ClashLand.Logic;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
-using ClashLand.Files.CSV_Logic;
-using ClashLand.Logic.Structure.Slots.Items;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Files;
+using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 
 namespace ClashLand.Packets.Commands.Client
@@ -25,9 +22,9 @@ namespace ClashLand.Packets.Commands.Client
         {
             Device.Player.Avatar.Achievements.Add(new Logic.Achievement
             {
-               Id = AchievementId,
-               Data = ((Files.CSV_Logic.Achievements)CSV.Tables.Get(Gamefile.Achievements).GetDataWithID(Id)).ActionCount
-           });
+                Id = AchievementId,
+                Data = ((Files.CSV_Logic.Achievements)CSV.Tables.Get(Gamefile.Achievements).GetDataWithID(Id)).ActionCount
+            });
         }
 
         public int AchievementId;

@@ -22,7 +22,7 @@ namespace ClashLand.Logic.Structure.Slots.Items
 
         [JsonProperty("defenderScore", DefaultValueHandling = DefaultValueHandling.Include)] internal int Defender_Score = 0;
 
-        [JsonProperty("allianceName", DefaultValueHandling = DefaultValueHandling.Include)]  internal string Alliance_Name = string.Empty;
+        [JsonProperty("allianceName", DefaultValueHandling = DefaultValueHandling.Include)] internal string Alliance_Name = string.Empty;
 
         [JsonProperty("attackerStars", DefaultValueHandling = DefaultValueHandling.Include)] internal int Attacker_Stars = 0;
 

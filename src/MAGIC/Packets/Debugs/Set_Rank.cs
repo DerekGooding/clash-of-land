@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
+using System;
+using System.Text;
 
 namespace ClashLand.Packets.Debugs
 {
@@ -15,9 +12,9 @@ namespace ClashLand.Packets.Debugs
         internal long UserID;
         internal Rank Rank;
         internal StringBuilder Help;
+
         public Set_Rank(Device device, params string[] Parameters) : base(device, Parameters)
         {
-
         }
 
         internal override void Process()
@@ -100,7 +97,7 @@ namespace ClashLand.Packets.Debugs
                             this.Help.AppendLine("\t/rank {user-hashtag} {rank}");
                             SendChatMessage(this.Help.ToString());
                         }
-                    }                 
+                    }
                     catch (Exception ex)
                     {
                         SendChatMessage($"Command Processor: Failed with error {ex}");

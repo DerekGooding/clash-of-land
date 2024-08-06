@@ -1,7 +1,7 @@
 ﻿namespace ClashLand.Packets.Commands.Client.Unknown
 {
-    using ClashLand.Logic;
     using ClashLand.Extensions.Binary;
+    using ClashLand.Logic;
 
     internal class Unknown_585 : Command
     {

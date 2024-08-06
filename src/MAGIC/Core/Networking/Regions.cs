@@ -1,11 +1,11 @@
-﻿using System;
+﻿using MaxMind.Db;
+using MaxMind.GeoIP2;
+using MaxMind.GeoIP2.Exceptions;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
-using MaxMind.Db;
-using MaxMind.GeoIP2;
-using MaxMind.GeoIP2.Exceptions;
 
 namespace ClashLand.Core.Networking
 {
@@ -57,7 +57,6 @@ namespace ClashLand.Core.Networking
             }
         }
 
-
         internal string GetFullIpData(string ipAddress)
         {
             if (ipAddress == null || Reader == null)
@@ -108,6 +107,7 @@ namespace ClashLand.Core.Networking
             Console.WriteLine("Total second {0:N0}", s.Elapsed.TotalSeconds);
             Console.WriteLine("{0:N0} queries per second", count / s.Elapsed.TotalSeconds);
         }
+
         void IDisposable.Dispose()
         {
             this.Reader.Dispose();

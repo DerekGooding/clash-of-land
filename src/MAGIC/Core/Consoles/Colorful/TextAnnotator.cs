@@ -27,7 +27,7 @@
                 this.matchFoundHandlers.Add(styleClass, (styleClass as Styler).MatchFoundHandler);
             }
         }
-        
+
         /// <summary>
         /// Partitions the input text into styled and unstyled pieces.
         /// </summary>

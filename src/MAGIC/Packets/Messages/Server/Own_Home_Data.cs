@@ -1,7 +1,7 @@
-﻿using System;
-using ClashLand.Extensions.List;
+﻿using ClashLand.Extensions.List;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
+using System;
 
 namespace ClashLand.Packets.Messages.Server
 {

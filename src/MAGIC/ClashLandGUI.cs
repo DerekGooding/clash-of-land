@@ -1,28 +1,17 @@
-﻿using MaterialSkin;
+﻿using ClashLand.Core;
+using ClashLand.Core.Networking;
+using ClashLand.Extensions;
+using ClashLand.Logic;
+using ClashLand.Logic.Structure.Slots.Items;
+using ClashLand.Packets.Messages.Server;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Resources;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using ClashLand.Core;
-using ClashLand.Core.Networking;
-using ClashLand.Packets.Messages.Server;
-using System.Timers;
-using ClashLand.Logic;
-using ClashLand.Logic.Enums;
-using ClashLand.Extensions;
-using ClashLand.Logic.Structure.Slots.Items;
 
 namespace ClashLandGUI
 {
@@ -53,7 +42,6 @@ namespace ClashLandGUI
             materialLabel14.Text = Convert.ToString(Resources.Clans.Seed.ToString());
             //materialLabel15.Text = Utils.Padding(ClashLand.Core.Resources.Clans.Seed.ToString());
             materialLabel16.Text = Utils.Padding(Players.Levels.Count.ToString(), 15);
-
 
             // CONFIG EDITOR
             //txtStartingGems.Text = ConfigurationManager.AppSettings["startingGems"];
@@ -117,27 +105,26 @@ namespace ClashLandGUI
 
         /* MAIN TAB */
 
-        //Restart Button 
+        //Restart Button
         private void materialRaisedButton2_Click(object sender, EventArgs e)
         {
-                System.Diagnostics.Process.Start("CLS.bat");
+            System.Diagnostics.Process.Start("CLS.bat");
         }
 
-            //Shutdown ClashLand Button
-            private void materialRaisedButton12_Click(Object sender, EventArgs e)
+        //Shutdown ClashLand Button
+        private void materialRaisedButton12_Click(Object sender, EventArgs e)
+        {
+            foreach (System.Diagnostics.Process myProc in System.Diagnostics.Process.GetProcesses())
             {
-                foreach (System.Diagnostics.Process myProc in System.Diagnostics.Process.GetProcesses())
+                if (myProc.ProcessName == "CLS_v2018")
                 {
-                    if (myProc.ProcessName == "CLS_v2018")
-                    {
-                        myProc.Kill();
-                    }
+                    myProc.Kill();
                 }
-
             }
+        }
 
-            //Close Button
-            private void materialRaisedButton3_Click(object sender, EventArgs e)
+        //Close Button
+        private void materialRaisedButton3_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -312,10 +299,8 @@ namespace ClashLandGUI
             }
             else
             {
-
                 foreach (var _Device in Devices._Devices.Values.ToList())
                 {
-                    
                     new Global_Chat_Entry(_Device)
                     {
                         Message = Message,
@@ -352,6 +337,7 @@ namespace ClashLandGUI
         private void materialRaisedButton25_Click(object sender, EventArgs e)
         {
         }
+
         private void materialRaisedButton19_Click_1(object sender, EventArgs e)
         {
             T.Stop();
@@ -361,27 +347,22 @@ namespace ClashLandGUI
 
         private void materialTabSelector1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtDatabaseType_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtAdminMessage_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtUpdateURL_Click(object sender, EventArgs e)
         {
-
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void materialRaisedButton6_Click(object sender, EventArgs e)

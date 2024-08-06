@@ -1,11 +1,11 @@
-﻿using System;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace ClashLand.Logic.Components
 {
@@ -14,9 +14,9 @@ namespace ClashLand.Logic.Components
         public Resource_Production_Component(ConstructionItem ci, Level level) : base(ci)
         {
             this.TimeSinceLastClick = level.Avatar.LastTick;
-            this.ProductionResourceData = CSV.Tables.Get(Gamefile.Resources).GetData(((Buildings) ci.GetData()).ProducesResource) as Files.CSV_Logic.Resource;
+            this.ProductionResourceData = CSV.Tables.Get(Gamefile.Resources).GetData(((Buildings)ci.GetData()).ProducesResource) as Files.CSV_Logic.Resource;
             this.ResourcesPerHour = ((Buildings)ci.GetData()).ResourcePer100Hours;
-            this.MaxResources = ((Buildings) ci.GetData()).ResourceMax;
+            this.MaxResources = ((Buildings)ci.GetData()).ResourceMax;
         }
 
         internal override int Type => 5;
@@ -69,7 +69,7 @@ namespace ClashLand.Logic.Components
                                                      ca.Resources.Get(this.ProductionResourceData.GetGlobalID()));
                             this.TimeSinceLastClick =
                                 ci.Level.Avatar.LastTick.AddSeconds(-((currentResources - newCurrentResources) /
-                                                                      ((float) (this.ResourcesPerHour[ci.UpgradeLevel] /
+                                                                      ((float)(this.ResourcesPerHour[ci.UpgradeLevel] /
                                                                                 100.0) / (60f * 60f))));
                             currentResources = newCurrentResources;
                         }
@@ -109,12 +109,12 @@ namespace ClashLand.Logic.Components
         {
             if (((ConstructionItem)GetParent).GetUpgradeLevel() != -1)
             {
-                var productionObject = new JObject {{"t_lastClick", (int)TimeUtils.ToUnixTimestamp(this.TimeSinceLastClick)} };
+                var productionObject = new JObject { { "t_lastClick", (int)TimeUtils.ToUnixTimestamp(this.TimeSinceLastClick) } };
 
                 jsonObject.Add("production", productionObject);
                 var ci = (ConstructionItem)GetParent;
                 var seconds = (float)(GetParent.Level.Avatar.LastTick - TimeSinceLastClick).TotalSeconds;
-                
+
                 if (ci.IsBoosted)
                 {
                     if (ci.GetBoostEndTime >= ci.Level.Avatar.LastTick)

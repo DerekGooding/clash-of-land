@@ -120,7 +120,6 @@ namespace ClashLand.Files.CSV_Logic
         public int VillageType { get; set; }
         public bool NoDefence { get; set; }
 
-
         public override int GetCombatItemType() => 2;
 
         public int GetRequiredTownHallLevel(int level) => RequiredTownHallLevel[level];

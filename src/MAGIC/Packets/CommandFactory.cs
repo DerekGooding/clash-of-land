@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Commands.Client;
+﻿using ClashLand.Commands.Client;
 using ClashLand.Packets.Commands.Client;
 using ClashLand.Packets.Commands.Client.Battle;
 using ClashLand.Packets.Commands.Client.Clan;
 using ClashLand.Packets.Commands.Client.Unknown;
 using ClashLand.Packets.Commands.Server;
+using System;
+using System.Collections.Generic;
 
 namespace ClashLand.Packets
 {

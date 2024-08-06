@@ -9,6 +9,7 @@ namespace ClashLand.Files.CSV_Logic
         {
             Load(Row);
         }
+
         public string Name { get; set; }
         public string TID { get; set; }
         public string SWF { get; set; }
@@ -27,6 +28,5 @@ namespace ClashLand.Files.CSV_Logic
         public int TextBlue { get; set; }
         public string WarRefResource { get; set; }
         public string BundleIconExportName { get; set; }
-
     }
 }

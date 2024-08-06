@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Linq;
-using System.Collections.Generic;
-using ClashLand.Logic;
+﻿using ClashLand.Logic;
 using ClashLand.Logic.Structure.Slots.Items;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Core
 {

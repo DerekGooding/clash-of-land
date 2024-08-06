@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions.Binary;
-using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
-using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
+using System.Threading.Tasks;
 
 namespace ClashLand.Packets.Commands.Client
 {
@@ -20,7 +15,6 @@ namespace ClashLand.Packets.Commands.Client
 
         public Upgrade_Building(Reader reader, Device client, int id) : base(reader, client, id)
         {
-
         }
 
         internal override void Decode()
@@ -38,12 +32,12 @@ namespace ClashLand.Packets.Commands.Client
                 : this.Device.Player.GameObjectManager.GetGameObjectByID(BuildingId);
             if (go != null)
             {
-                var b = (ConstructionItem) go;
+                var b = (ConstructionItem)go;
                 if (b.CanUpgrade())
                 {
                     if (b.ClassId == 0 || b.ClassId == 7)
                     {
-                        var bd = (Buildings) b.GetConstructionItemData();
+                        var bd = (Buildings)b.GetConstructionItemData();
                         Files.CSV_Logic.Resource rd = IsAltResource
                             ? bd.GetAltBuildResource(b.GetUpgradeLevel() + 1)
                             : bd.GetBuildResource(b.GetUpgradeLevel() + 1);
@@ -66,30 +60,28 @@ namespace ClashLand.Packets.Commands.Client
                                         Parallel.ForEach(this.Device.Player.GameObjectManager.GetGameObjects(7),
                                             Object =>
                                             {
-                                                Builder_Building b2 = (Builder_Building) Object;
+                                                Builder_Building b2 = (Builder_Building)Object;
                                                 var bd2 = b2.GetBuildingData;
                                                 if (b2.Locked)
                                                 {
                                                     if (bd2.Locked)
                                                         return;
 #if DEBUG
-                                                Loggers.Log(
-                                                    $"Builder Building: Unlocking {bd2.Name} with ID {Object.GlobalId}",
-                                                    true);
+                                                    Loggers.Log(
+                                                        $"Builder Building: Unlocking {bd2.Name} with ID {Object.GlobalId}",
+                                                        true);
 #endif
                                                     b2.Unlock();
                                                 }
                                             });
-
                                     }
 
                                     ca.Builder_TownHall_Level++;
                                 }
 
-
                                 if (bd.IsAllianceCastle())
                                 {
-                                    var a = (Building) go;
+                                    var a = (Building)go;
                                     var al = a.GetBuildingData;
 
                                     ca.Castle_Level++;
@@ -106,7 +98,7 @@ namespace ClashLand.Packets.Commands.Client
                     }
                     else if (b.ClassId == 4 || b.ClassId == 11)
                     {
-                        var bd = (Traps) b.GetConstructionItemData();
+                        var bd = (Traps)b.GetConstructionItemData();
                         if (ca.HasEnoughResources(bd.GetBuildResource(b.GetUpgradeLevel()).GetGlobalID(),
                             bd.GetBuildCost(b.GetUpgradeLevel())))
                         {
@@ -127,7 +119,7 @@ namespace ClashLand.Packets.Commands.Client
                     }
                     else if (b.ClassId == 8 || b.ClassId == 15)
                     {
-                        var bd = (Village_Objects) b.GetConstructionItemData();
+                        var bd = (Village_Objects)b.GetConstructionItemData();
                         if (ca.HasEnoughResources(bd.GetBuildResource(b.GetUpgradeLevel()).GetGlobalID(),
                             bd.GetBuildCost(b.GetUpgradeLevel())))
                         {

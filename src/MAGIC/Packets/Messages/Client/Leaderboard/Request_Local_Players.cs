@@ -1,5 +1,4 @@
 ﻿using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.Leaderboard;
 
@@ -15,7 +14,6 @@ namespace ClashLand.Packets.Messages.Client.Leaderboard
         {
             if (this.Device.Player.Avatar.Variables.IsBuilderVillage)
             {
-
             }
             else
             {

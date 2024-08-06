@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows;
-using ClashLand.Extensions.Binary;
+﻿using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
 using ClashLand.Logic;
@@ -9,7 +7,6 @@ using ClashLand.Logic.Structure;
 
 namespace ClashLand.Packets.Commands.Client
 {
-
     internal class Buy_Building : Command
     {
         internal int BuildingId;
@@ -32,7 +29,7 @@ namespace ClashLand.Packets.Commands.Client
         internal override void Process()
         {
             var ca = this.Device.Player.Avatar;
-            var bd = (Buildings) CSV.Tables.Get(Gamefile.Buildings).GetDataWithID(BuildingId);
+            var bd = (Buildings)CSV.Tables.Get(Gamefile.Buildings).GetDataWithID(BuildingId);
             if (!ca.Variables.IsBuilderVillage)
             {
                 var b = new Building(bd, this.Device.Player);
@@ -48,7 +45,6 @@ namespace ClashLand.Packets.Commands.Client
                             if (this.Device.Player.VillageWorkerManager.WorkerCount == 1)
                             {
                                 Cost = ((Globals)row.GetData("WORKER_COST_2ND")).NumberValue;
-
                             }
                             else if (this.Device.Player.VillageWorkerManager.WorkerCount == 2)
                             {

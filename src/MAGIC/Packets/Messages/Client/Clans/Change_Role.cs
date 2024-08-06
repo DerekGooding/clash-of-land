@@ -1,7 +1,5 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure.Slots.Items;
@@ -17,13 +15,13 @@ namespace ClashLand.Packets.Messages.Client.Clans
         internal Role Role;
 
         public Change_Role(Device device) : base(device)
-        { 
+        {
         }
 
         internal override void Decode()
         {
             this.UserID = this.Reader.ReadInt64();
-            this.Role = (Role) this.Reader.ReadInt32();
+            this.Role = (Role)this.Reader.ReadInt32();
         }
 
         internal override void Process()
@@ -40,7 +38,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
                     {
                         if (JudgeRole == Role.Leader)
                         {
-
                             Alliance.Members[Player.Avatar.UserId].Role = Role.Leader;
                             Alliance.Members[this.Device.Player.Avatar.UserId].Role = Role.Co_Leader;
 
@@ -56,7 +53,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
                                     Event_ID = Events.PROMOTE_MEMBER,
                                     Event_Player_Name = this.Device.Player.Avatar.Name,
                                     Event_Player_ID = this.Device.Player.Avatar.UserId
-
                                 });
                             Alliance.Chats.Add(
                                 new Entry
@@ -70,25 +66,24 @@ namespace ClashLand.Packets.Messages.Client.Clans
                                     Event_ID = Events.DEPROMOTE_MEMBER,
                                     Event_Player_Name = this.Device.Player.Avatar.Name,
                                     Event_Player_ID = this.Device.Player.Avatar.UserId,
-
                                 });
 
                             if (Player.Device != null)
                                 new Server_Commands(Player.Device)
                                 {
                                     Command = new Role_Update(Player.Device)
-                                        {
-                                            Clan = Alliance,
-                                            Role = (int) Role.Leader
-                                        }
+                                    {
+                                        Clan = Alliance,
+                                        Role = (int)Role.Leader
+                                    }
                                         .Handle()
                                 }.Send();
 
                             new Alliance_Change_Role_Ok(this.Device)
-                                {
-                                    UserID = Player.Avatar.UserId,
-                                    Role = Role.Leader
-                                }
+                            {
+                                UserID = Player.Avatar.UserId,
+                                Role = Role.Leader
+                            }
                                 .Send();
 
                             new Alliance_Change_Role_Ok(this.Device)
@@ -100,10 +95,10 @@ namespace ClashLand.Packets.Messages.Client.Clans
                             new Server_Commands(this.Device)
                             {
                                 Command = new Role_Update(this.Device)
-                                    {
-                                        Clan = Alliance,
-                                        Role = (int) Role.Co_Leader
-                                    }
+                                {
+                                    Clan = Alliance,
+                                    Role = (int)Role.Co_Leader
+                                }
                                     .Handle()
                             }.Send();
                         }

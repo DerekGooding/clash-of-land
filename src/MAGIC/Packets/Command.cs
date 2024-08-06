@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace ClashLand.Packets
 {
@@ -37,21 +37,22 @@ namespace ClashLand.Packets
             this.Device = Device;
             this.Reader = Reader;
         }
-        
+
         internal virtual void Decode()
         {
             // Decode.
         }
-        
+
         internal virtual void Encode()
         {
             // Encode.
         }
-        
+
         internal virtual void Process()
         {
             // Process.
         }
+
         internal void Debug()
         {
             Console.WriteLine(Utils.Padding(this.GetType().Name, 15) + " : " + BitConverter.ToString(this.Reader.ReadBytes((int)(this.Reader.BaseStream.Length - this.Reader.BaseStream.Position))));

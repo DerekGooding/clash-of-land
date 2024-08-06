@@ -2,11 +2,11 @@ namespace ClashLand.External.LZMA.Common
 {
     public class OutBuffer
     {
-        byte[] m_Buffer;
-        uint m_Pos;
-        uint m_BufferSize;
-        System.IO.Stream m_Stream;
-        ulong m_ProcessedSize;
+        private byte[] m_Buffer;
+        private uint m_Pos;
+        private uint m_BufferSize;
+        private System.IO.Stream m_Stream;
+        private ulong m_ProcessedSize;
 
         public OutBuffer(uint bufferSize)
         {
@@ -51,7 +51,7 @@ namespace ClashLand.External.LZMA.Common
         {
             if (m_Pos == 0)
                 return;
-            m_Stream.Write(m_Buffer, 0, (int) m_Pos);
+            m_Stream.Write(m_Buffer, 0, (int)m_Pos);
             m_Pos = 0;
         }
 

@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ClashLand.Core;
+﻿using ClashLand.Core;
 using ClashLand.Extensions;
 using ClashLand.Extensions.List;
 using ClashLand.Logic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClashLand.Packets.Messages.Server.Leaderboard
 {
     internal class Global_Players : Message
     {
-
         internal List<Level> Players;
-    
+
         public Global_Players(Device client) : base(client)
         {
             this.Identifier = 24403;

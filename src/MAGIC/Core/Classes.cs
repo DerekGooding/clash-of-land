@@ -1,15 +1,14 @@
-﻿using System;
-using System.Data.Entity.Infrastructure;
-using ClashLand.Core.Database;
+﻿using ClashLand.Core.Database;
+using ClashLand.Core.Events;
 using ClashLand.Extensions;
 using ClashLand.Files;
 using ClashLand.Logic.Enums;
 using ClashLand.Packets;
-using ClashLand.Core.Events;
+using System;
 
 namespace ClashLand.Core
 {
-    internal class Classes 
+    internal class Classes
     {
         internal MessageFactory MFactory;
         internal CommandFactory CFactory;
@@ -24,6 +23,7 @@ namespace ClashLand.Core
         internal Fingerprint Fingerprint;
         internal EventsHandler Events;
         internal Test Test;
+
         internal Classes()
         {
             this.MFactory = new MessageFactory();
@@ -43,15 +43,15 @@ namespace ClashLand.Core
                     this.Redis = new Redis();
                     break;
             }
-            
+
             this.Events = new EventsHandler();
 #if DEBUG
             Console.WriteLine("We loaded " + MessageFactory.Messages.Count + " messages, " + CommandFactory.Commands.Count + " commands, and " + DebugFactory.Debugs.Count + " debug commands.\n");
 #endif
             this.Timers = new Timers();
-            
+
             this.Test = new Test();
-        
+
             MySQL_V2.GetAllSeed();
         }
     }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using ClashLand.Extensions;
+﻿using ClashLand.Extensions;
 using ClashLand.Extensions.List;
-using ClashLand.Logic.Structure.Slots.Items;
-using Newtonsoft.Json;
-using ClashLand.Logic.Structure.Slots;
 using ClashLand.Files;
+using System;
+using System.Collections.Generic;
 
 namespace ClashLand.Logic
 {

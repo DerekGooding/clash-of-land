@@ -22,7 +22,7 @@ namespace ClashLand.Files.CSV_Logic
         public virtual int GetUpgradeLevelCount() => -1;
 
         public virtual bool IsTownHall() => false;
+
         public virtual bool IsTownHall2() => false;
     }
-
 }

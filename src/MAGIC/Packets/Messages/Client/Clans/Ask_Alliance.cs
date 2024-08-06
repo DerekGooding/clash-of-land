@@ -1,6 +1,5 @@
 ﻿using ClashLand.Core;
 using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
 using ClashLand.Logic;
 using ClashLand.Packets.Messages.Server.Clans;
 
@@ -12,7 +11,6 @@ namespace ClashLand.Packets.Messages.Client.Clans
 
         public Ask_Alliance(Device device) : base(device)
         {
-
         }
 
         internal override void Decode()
@@ -22,7 +20,7 @@ namespace ClashLand.Packets.Messages.Client.Clans
 
         internal override void Process()
         {
-            new Alliance_Data(this.Device) {Clan = Resources.Clans.Get(this.ClanID)}.Send();
+            new Alliance_Data(this.Device) { Clan = Resources.Clans.Get(this.ClanID) }.Send();
         }
     }
 }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClashLand.Packets.Debugs
+﻿namespace ClashLand.Packets.Debugs
 {
-    class Kick_Player
+    internal class Kick_Player
     {
     }
 }

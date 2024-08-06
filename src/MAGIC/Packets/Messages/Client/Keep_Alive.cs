@@ -1,11 +1,10 @@
-﻿using System;
+﻿using ClashLand.Core.Networking;
 using ClashLand.Logic;
-using ClashLand.Core.Networking;
-using ClashLand.Extensions.Binary;
+using System;
 
 namespace ClashLand.Packets.Messages.Client
 {
-   internal class Keep_Alive : Message
+    internal class Keep_Alive : Message
     {
         public Keep_Alive(Device Device) : base(Device)
         {

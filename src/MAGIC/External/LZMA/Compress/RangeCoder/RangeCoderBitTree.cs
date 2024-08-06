@@ -1,10 +1,11 @@
 using System;
+
 namespace ClashLand.External.LZMA.Compress.RangeCoder
 {
     internal struct BitTreeEncoder
     {
-        BitEncoder[] Models;
-        int NumBitLevels;
+        private BitEncoder[] Models;
+        private int NumBitLevels;
 
         public BitTreeEncoder(int numBitLevels)
         {
@@ -101,8 +102,8 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
 
     internal struct BitTreeDecoder
     {
-        BitDecoder[] Models;
-        int NumBitLevels;
+        private BitDecoder[] Models;
+        private int NumBitLevels;
 
         public BitTreeDecoder(int numBitLevels)
         {
@@ -121,7 +122,7 @@ namespace ClashLand.External.LZMA.Compress.RangeCoder
             uint m = 1;
             for (int bitIndex = NumBitLevels; bitIndex > 0; bitIndex--)
                 m = (m << 1) + Models[m].Decode(rangeDecoder);
-            return m - ((uint) 1 << NumBitLevels);
+            return m - ((uint)1 << NumBitLevels);
         }
 
         public uint ReverseDecode(RangeCoder.Decoder rangeDecoder)

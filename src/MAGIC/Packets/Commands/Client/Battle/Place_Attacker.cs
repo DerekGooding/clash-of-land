@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ClashLand.Core;
-using ClashLand.Extensions;
+﻿using ClashLand.Core;
 using ClashLand.Extensions.Binary;
 using ClashLand.Files;
 using ClashLand.Files.CSV_Logic;
@@ -10,19 +7,18 @@ using ClashLand.Logic.Components;
 using ClashLand.Logic.Enums;
 using ClashLand.Logic.Structure;
 using ClashLand.Logic.Structure.Slots.Items;
+using System.Collections.Generic;
 
 namespace ClashLand.Packets.Commands.Client.Battle
 {
     internal class Place_Attacker : Command
     {
-
         internal Characters Troop;
 
         internal int GlobalId;
         internal int X;
         internal int Y;
         internal int Tick;
-
 
         public Place_Attacker(Reader reader, Device client, int id) : base(reader, client, id)
         {
@@ -46,7 +42,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
 
                 foreach (Component t in components)
                 {
-                    Unit_Storage_V2_Componenent c = (Unit_Storage_V2_Componenent) t;
+                    Unit_Storage_V2_Componenent c = (Unit_Storage_V2_Componenent)t;
                     if (c.GetUnitTypeIndex(this.Troop) != -1)
                     {
                         var storageCount = c.GetUnitCountByData(this.Troop);
@@ -81,7 +77,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                             Command_Base =
                                 new Command_Base
                                 {
-                                    Base = new Base {Tick = this.Tick},
+                                    Base = new Base { Tick = this.Tick },
                                     Data = this.GlobalId,
                                     X = this.X,
                                     Y = this.Y
@@ -89,12 +85,11 @@ namespace ClashLand.Packets.Commands.Client.Battle
                         };
                     Battle.Add_Command(Command);
 
-
                     int Index = Battle.Replay_Info.Units.FindIndex(T => T[0] == this.GlobalId);
                     if (Index > -1)
                         Battle.Replay_Info.Units[Index][1]++;
                     else
-                        Battle.Replay_Info.Units.Add(new[] {this.GlobalId, 1});
+                        Battle.Replay_Info.Units.Add(new[] { this.GlobalId, 1 });
 
                     Battle.Attacker.Add_Unit(GlobalId, 1);
                 }
@@ -111,7 +106,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                         Command_Base =
                             new Command_Base
                             {
-                                Base = new Base {Tick = this.Tick},
+                                Base = new Base { Tick = this.Tick },
                                 Data = this.GlobalId,
                                 X = this.X,
                                 Y = this.Y
@@ -121,7 +116,7 @@ namespace ClashLand.Packets.Commands.Client.Battle
                 if (Index > -1)
                     Battle.Replay_Info.Units[Index][1]++;
                 else
-                    Battle.Replay_Info.Units.Add(new[] {this.GlobalId, 1});
+                    Battle.Replay_Info.Units.Add(new[] { this.GlobalId, 1 });
                 Battle.Add_Command(Command);
             }
         }
