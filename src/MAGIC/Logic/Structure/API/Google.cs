@@ -43,7 +43,7 @@ namespace ClashLand.Logic.Structure.API
         {
             using (var Stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
             {
-                this.OCredentials = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(Stream).Secrets, new[]
+                this.OCredentials = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.FromStream(Stream).Secrets, new[]
                 {
                     GamesService.Scope.Games,
                 }, "com.supercell.clashland", CancellationToken.None, new FileDataStore("clashland.Server")).Result;

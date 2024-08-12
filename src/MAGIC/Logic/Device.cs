@@ -93,7 +93,7 @@ namespace ClashLand.Logic
                             else
                                 message.DecryptSexy();
                         }
-                        catch (Exception ex)
+                        catch
                         {
                             //ExceptionLogger.Log(ex, $"Unable to decrypt message with ID: {type}");
                         }
@@ -102,7 +102,7 @@ namespace ClashLand.Logic
                         {
                             message.Decode();
                         }
-                        catch (Exception ex)
+                        catch
                         {
                             //ExceptionLogger.Log(ex, $"Unable to decode message with ID: {type}");
                         }

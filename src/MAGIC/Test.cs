@@ -584,7 +584,7 @@ namespace ClashLand
         {
             using (var Stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
             {
-                this.OCredentials = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(Stream).Secrets, new[]
+                this.OCredentials = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.FromStream(Stream).Secrets, new[]
                 {
                     GamesService.Scope.Games,
                 }, "com.barbarianland.galileo", CancellationToken.None, new FileDataStore("Galileo.Server")).Result;
